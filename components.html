@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NVLCRK — Components</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    /* Page chrome for the component showcase only. Not shipped. */
+    .showcase {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: var(--space-6) var(--page-margin) var(--space-8);
+    }
+    .showcase__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: var(--space-3);
+      border-bottom: var(--border-thin);
+      margin-bottom: var(--space-6);
+    }
+    .showcase__title {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-title);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-title);
+      margin: 0;
+    }
+    .showcase__meta {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+    }
+
+    .component {
+      margin-bottom: var(--space-8);
+    }
+    .component__header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: baseline;
+      gap: var(--space-3);
+      padding-bottom: var(--space-2);
+      border-bottom: var(--border-hairline);
+      margin-bottom: var(--space-4);
+    }
+    .component__num {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-subhead);
+      letter-spacing: var(--tracking-title);
+    }
+    .component__name {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-subhead);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-title);
+      margin: 0;
+    }
+    .component__byline {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+    }
+
+    /* Component frame — shows the component in a bordered stage */
+    .stage {
+      border: var(--border-hairline);
+      background: var(--color-surface);
+    }
+    .stage__bar {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-1) var(--space-2);
+      border-bottom: var(--border-hairline);
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-muted);
+    }
+    .stage__body { padding: var(--space-4); }
+
+    /* Button showcase grid */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      align-items: center;
+      margin-bottom: var(--space-3);
+    }
+    .btn-row:last-child { margin-bottom: 0; }
+    .btn-rowset { margin-bottom: var(--space-5); }
+    .btn-rowset:last-child { margin-bottom: 0; }
+    .btn-rowset__label {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+      padding-bottom: var(--space-1);
+      margin-bottom: var(--space-2);
+      border-bottom: var(--border-hairline);
+    }
+    .btn-block-demo {
+      max-width: 320px;
+    }
+  </style>
+</head>
+<body>
+  <main class="showcase">
+
+    <header class="showcase__header">
+      <h1 class="showcase__title">Components</h1>
+      <div class="showcase__meta">Issue 01 · Component Library</div>
+    </header>
+
+    <!-- ===================== 01 / SITE NAV ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">01</div>
+        <h2 class="component__name">Site Nav</h2>
+        <div class="component__byline">Catalogue index · horizontal</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Component — Site Nav</span>
+          <span>Desktop</span>
+        </div>
+
+        <!-- ============ THE NAV ============ -->
+        <nav class="site-nav" aria-label="Primary">
+          <div class="site-nav__inner">
+
+            <div class="site-nav__top">
+              <a href="/" class="nav-brand__logo" aria-label="NivelCrack home">NVLCRK</a>
+
+              <ul class="site-nav__sections" role="list">
+                <li class="nav-section">
+                  <header class="nav-section__header">
+                    <span class="nav-section__num">01</span>
+                    <span class="nav-section__label">Shop</span>
+                  </header>
+                  <ul class="nav-section__list" role="list">
+                    <li><a href="#">West Ham United</a></li>
+                    <li><a href="#">Club America</a></li>
+                    <li><a href="#">Fresh Patterns Collective</a></li>
+                    <li><a href="#">Classic Football Shirts</a></li>
+                  </ul>
+                </li>
+                <li class="nav-section">
+                  <header class="nav-section__header">
+                    <span class="nav-section__num">02</span>
+                    <span class="nav-section__label">Archive</span>
+                  </header>
+                  <ul class="nav-section__list" role="list">
+                    <li><a href="#">Collaborations</a></li>
+                    <li><a href="#">Popups</a></li>
+                    <li><a href="#">Editorials</a></li>
+                  </ul>
+                </li>
+                <li class="nav-section">
+                  <header class="nav-section__header">
+                    <span class="nav-section__num">03</span>
+                    <span class="nav-section__label">About</span>
+                  </header>
+                  <ul class="nav-section__list" role="list">
+                    <li><a href="#">The Brand</a></li>
+                    <li><a href="#">Cafe NivelCrack</a></li>
+                  </ul>
+                </li>
+                <li class="nav-section">
+                  <header class="nav-section__header">
+                    <span class="nav-section__num">04</span>
+                    <span class="nav-section__label">Contact</span>
+                  </header>
+                  <ul class="nav-section__list" role="list">
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Stockists</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="site-nav__bottom">
+              <a href="#" class="site-nav__link">Account</a>
+              <a href="#" class="site-nav__link">Cart (0)</a>
+            </div>
+
+          </div>
+        </nav>
+        <!-- ============ /THE NAV ============ -->
+      </div>
+    </section>
+
+    <!-- ===================== 03 / PRODUCT GRID ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">03</div>
+        <h2 class="component__name">Product Grid</h2>
+        <div class="component__byline">Shop · catalogue view</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Component — Product Grid</span>
+          <span>Desktop</span>
+        </div>
+
+        <div class="product-grid">
+
+          <header class="product-grid__bar">
+            <div class="product-grid__heading">
+              <div class="collection-dropdown" data-open="false">
+                <button type="button" class="collection-dropdown__trigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="collection-dropdown__label" id="collection-title">All</span>
+                  <span class="collection-dropdown__caret" aria-hidden="true">▾</span>
+                </button>
+                <ul class="collection-dropdown__menu" role="listbox" hidden>
+                  <li role="option" data-collection="all" aria-selected="true">All Collections</li>
+                  <li role="option" data-collection="westham">West Ham United</li>
+                  <li role="option" data-collection="america">Club América</li>
+                  <li role="option" data-collection="fresh">Fresh Patterns</li>
+                  <li role="option" data-collection="classic">Classic Football Shirts</li>
+                </ul>
+              </div>
+            </div>
+
+            <nav class="product-grid__filters" aria-label="Filter by category">
+              <button type="button" class="product-grid__filter is-active" data-category="all">All</button>
+              <button type="button" class="product-grid__filter" data-category="outerwear">Outerwear</button>
+              <button type="button" class="product-grid__filter" data-category="tops">Tops</button>
+              <button type="button" class="product-grid__filter" data-category="bottoms">Bottoms</button>
+              <button type="button" class="product-grid__filter" data-category="headwear">Headwear</button>
+              <button type="button" class="product-grid__filter" data-category="accessories">Accessories</button>
+            </nav>
+
+            <span class="product-grid__count" id="product-count">(25)</span>
+
+          </header>
+
+          <ul class="product-grid__items" role="list" id="product-grid-items"></ul>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 04 / PRODUCT DETAIL ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">04</div>
+        <h2 class="component__name">Product Detail</h2>
+        <div class="component__byline">Magazine spread · open book</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Component — Product Detail</span>
+          <span>Desktop</span>
+        </div>
+
+        <article class="pdp">
+
+          <!-- Left: full-bleed product image -->
+          <div class="pdp__image">
+            <img src="Assets/WestHam.jpg" alt="West Ham Home Kit 25/26" class="pdp__hero-img" />
+          </div>
+
+          <!-- Right: product content -->
+          <div class="pdp__content">
+
+            <h1 class="pdp__name">Nivelcrack x West Ham United — Work Jacket</h1>
+
+            <div class="pdp__section">
+              <span class="pdp__section-label">Nivelcrack x West Ham United</span>
+              <div class="pdp__section-body">
+                <p>Official Licensed Product</p>
+              </div>
+            </div>
+
+            <div class="pdp__section">
+              <span class="pdp__section-label">Product Details:</span>
+              <div class="pdp__section-body pdp__detail-lines">
+                <span>100% cotton twill</span>
+                <span>Front button closure</span>
+                <span>Two chest patch pockets</span>
+                <span>Front hand pockets</span>
+                <span>Embroidered graphics</span>
+              </div>
+            </div>
+
+            <div class="pdp__section">
+              <span class="pdp__section-label">Size Information (cm):</span>
+              <div class="pdp__section-body pdp__size-chart">
+                <span>M — Length 70 / Shoulder 50 / Chest 60 / Sleeve 61</span>
+                <span>L — Length 72.5 / Shoulder 53.5 / Chest 62 / Sleeve 62</span>
+                <span>XL — Length 75 / Shoulder 57 / Chest 64 / Sleeve 63</span>
+              </div>
+            </div>
+
+            <div class="pdp__section">
+              <span class="pdp__section-label">Price:</span>
+              <div class="pdp__section-body">
+                <p>135.00 USD</p>
+              </div>
+            </div>
+
+            <div class="pdp__size-list">
+              <button type="button" class="pdp__size-option">Medium</button>
+              <button type="button" class="pdp__size-option">Large</button>
+              <button type="button" class="pdp__size-option">Extra Large</button>
+            </div>
+
+            <button type="button" class="btn btn--link btn--md pdp__atc" hidden><span class="btn__text">Add to Cart</span><span class="btn__arrow">→</span></button>
+
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===================== 05 / CART DRAWER ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">05</div>
+        <h2 class="component__name">Cart Drawer</h2>
+        <div class="component__byline">Slide-out · side panel</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Component — Cart Drawer</span>
+          <span>Desktop</span>
+        </div>
+
+        <div class="cart-drawer-demo">
+          <aside class="cart-drawer" aria-label="Shopping cart">
+
+            <header class="cart-drawer__header">
+              <span class="cart-drawer__title">Cart</span>
+              <button type="button" class="cart-drawer__close" aria-label="Close cart">Close</button>
+            </header>
+
+            <div class="cart-drawer__items">
+
+              <article class="cart-item" data-unit-price="135">
+                <div class="cart-item__image">
+                  <img src="Assets/WestHam.jpg" alt="Work Jacket" />
+                </div>
+                <div class="cart-item__details">
+                  <span class="cart-item__name">Nivelcrack x West Ham United — Work Jacket</span>
+                  <span class="cart-item__variant">Size: Large</span>
+                  <div class="cart-item__qty">
+                    <div class="cart-item__qty-controls">
+                      <button type="button" class="cart-item__qty-btn" data-dir="down" aria-label="Decrease quantity">–</button>
+                      <span class="cart-item__qty-value">1</span>
+                      <button type="button" class="cart-item__qty-btn" data-dir="up" aria-label="Increase quantity">+</button>
+                    </div>
+                    <span class="cart-item__price">135.00 USD</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="cart-item" data-unit-price="45">
+                <div class="cart-item__image">
+                  <img src="Assets/WestHam.jpg" alt="Stadium Cap" />
+                </div>
+                <div class="cart-item__details">
+                  <span class="cart-item__name">Nivelcrack x West Ham United — Stadium Cap</span>
+                  <span class="cart-item__variant">Size: One Size</span>
+                  <div class="cart-item__qty">
+                    <div class="cart-item__qty-controls">
+                      <button type="button" class="cart-item__qty-btn" data-dir="down" aria-label="Decrease quantity">–</button>
+                      <span class="cart-item__qty-value">1</span>
+                      <button type="button" class="cart-item__qty-btn" data-dir="up" aria-label="Increase quantity">+</button>
+                    </div>
+                    <span class="cart-item__price">45.00 USD</span>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+
+            <footer class="cart-drawer__footer">
+              <div class="cart-drawer__subtotal">
+                <span class="cart-drawer__subtotal-label">Subtotal</span>
+                <span class="cart-drawer__subtotal-value">180.00 USD</span>
+              </div>
+              <p class="cart-drawer__note">Exchange or refund due to size is not acceptable so please check the size chart carefully before ordering.</p>
+              <p class="cart-drawer__note">The customs duties and VAT are not included so please check the conditions of your country before purchasing.</p>
+              <button type="button" class="btn btn--primary btn--lg btn--block">Check Out</button>
+            </footer>
+
+          </aside>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 02 / BUTTONS ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">02</div>
+        <h2 class="component__name">Buttons</h2>
+        <div class="component__byline">Five variants · three sizes</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Component — Buttons</span>
+          <span>All variants</span>
+        </div>
+        <div class="stage__body">
+
+          <div class="btn-rowset">
+            <div class="btn-rowset__label">Primary · solid fill</div>
+            <div class="btn-row">
+              <button class="btn btn--primary btn--sm">Add to Cart</button>
+              <button class="btn btn--primary btn--md">Add to Cart</button>
+              <button class="btn btn--primary btn--lg">Add to Cart</button>
+              <button class="btn btn--primary btn--md" disabled>Sold Out</button>
+            </div>
+          </div>
+
+          <div class="btn-rowset">
+            <div class="btn-rowset__label">Secondary · outlined</div>
+            <div class="btn-row">
+              <button class="btn btn--secondary btn--sm">View Details</button>
+              <button class="btn btn--secondary btn--md">View Details</button>
+              <button class="btn btn--secondary btn--lg">View Details</button>
+              <button class="btn btn--secondary btn--md" disabled>Disabled</button>
+            </div>
+          </div>
+
+          <div class="btn-rowset">
+            <div class="btn-rowset__label">Tertiary · hairline border</div>
+            <div class="btn-row">
+              <button class="btn btn--tertiary btn--sm">Filter</button>
+              <button class="btn btn--tertiary btn--md">Sort By</button>
+              <button class="btn btn--tertiary btn--md">Size Guide</button>
+            </div>
+          </div>
+
+          <div class="btn-rowset">
+            <div class="btn-rowset__label">Ghost · text only</div>
+            <div class="btn-row">
+              <button class="btn btn--ghost btn--sm">Cancel</button>
+              <button class="btn btn--ghost btn--md">Clear Filters</button>
+              <button class="btn btn--ghost btn--lg">Continue Shopping</button>
+            </div>
+          </div>
+
+          <div class="btn-rowset">
+            <div class="btn-rowset__label">Editorial link · arrow</div>
+            <div class="btn-row">
+              <a href="#" class="btn btn--link btn--sm"><span class="btn__text">Read the story</span><span class="btn__arrow">→</span></a>
+              <a href="#" class="btn btn--link btn--md"><span class="btn__text">Shop the collection</span><span class="btn__arrow">→</span></a>
+              <a href="#" class="btn btn--link btn--lg"><span class="btn__text">Explore the archive</span><span class="btn__arrow">→</span></a>
+            </div>
+          </div>
+
+          <div class="btn-rowset">
+            <div class="btn-rowset__label">Block · full width</div>
+            <div class="btn-block-demo">
+              <button class="btn btn--primary btn--lg btn--block">Add to Cart — 95.00 USD</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 06 / FOOTER ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">06</div>
+        <h2 class="component__name">Footer</h2>
+        <div class="component__byline">Minimal · site close</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Component — Footer</span>
+          <span>Desktop</span>
+        </div>
+
+        <footer class="site-footer">
+          <div class="site-footer__inner">
+
+            <div class="site-footer__top">
+              <span class="site-footer__logo">NVLCRK</span>
+              <div class="site-footer__columns">
+                <div class="site-footer__col">
+                  <span class="site-footer__col-label">Shop</span>
+                  <a href="#" class="site-footer__link">West Ham United</a>
+                  <a href="#" class="site-footer__link">Club America</a>
+                  <a href="#" class="site-footer__link">Fresh Patterns</a>
+                  <a href="#" class="site-footer__link">Classic Shirts</a>
+                </div>
+                <div class="site-footer__col">
+                  <span class="site-footer__col-label">Info</span>
+                  <a href="#" class="site-footer__link">About</a>
+                  <a href="#" class="site-footer__link">Cafe NivelCrack</a>
+                  <a href="#" class="site-footer__link">Stockists</a>
+                  <a href="#" class="site-footer__link">Contact</a>
+                </div>
+                <div class="site-footer__col">
+                  <span class="site-footer__col-label">Support</span>
+                  <a href="#" class="site-footer__link">Shipping</a>
+                  <a href="#" class="site-footer__link">Returns</a>
+                  <a href="#" class="site-footer__link">Size Guide</a>
+                  <a href="#" class="site-footer__link">FAQ</a>
+                </div>
+                <div class="site-footer__col">
+                  <span class="site-footer__col-label">Follow</span>
+                  <a href="#" class="site-footer__link">Instagram</a>
+                  <a href="#" class="site-footer__link">Newsletter</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="site-footer__bottom">
+              <span class="site-footer__copy">&copy; NivelCrack 2025. All rights reserved.</span>
+              <div class="site-footer__legal">
+                <a href="#" class="site-footer__legal-link">Privacy Policy</a>
+                <a href="#" class="site-footer__legal-link">Terms of Service</a>
+              </div>
+            </div>
+
+          </div>
+        </footer>
+
+      </div>
+    </section>
+
+    <!-- ===================== 07 / EDITORIAL ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">07</div>
+        <h2 class="component__name">Editorial</h2>
+        <div class="component__byline">Drop cap · pull quote · byline · section marker</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Component — Editorial Devices</span>
+          <span>All variants</span>
+        </div>
+        <div class="stage__body">
+
+          <!-- Section marker -->
+          <div class="editorial-marker">
+            <span class="editorial-marker__num">01</span>
+            <span class="editorial-marker__title">Collection</span>
+          </div>
+
+          <!-- Byline / Dateline -->
+          <div class="editorial-byline">
+            <span>Issue 01</span>
+            <span>SS25</span>
+            <span>Seoul</span>
+            <span>Words by NivelCrack</span>
+          </div>
+
+          <!-- Drop cap paragraph -->
+          <div class="editorial-body dropcap">
+            <p>Seoul in 1998 didn't look like a soccer city. But behind the neon and the concrete, a generation was raised on scratchy satellite broadcasts of Serie A, photocopied fanzines, and hand-painted kits from the Itaewon market. NivelCrack is a love letter to that version of the game — the one you had to work to see, the one that bled into street style before it was a category.</p>
+          </div>
+
+          <!-- Pull quote -->
+          <figure class="editorial-pullquote">
+            <blockquote class="editorial-pullquote__text">"A brand is just a feeling you can fold into a shirt."</blockquote>
+            <figcaption class="editorial-pullquote__attr">NivelCrack — Founder's note</figcaption>
+          </figure>
+
+          <!-- Figure with caption -->
+          <figure class="editorial-figure">
+            <div class="editorial-figure__frame">
+              <img src="Assets/WestHam.jpg" alt="West Ham United matchday" />
+            </div>
+            <figcaption class="editorial-figure__caption">West Ham United, Boleyn Ground, 2024. Photography by NivelCrack.</figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 08 / SEARCH ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">08</div>
+        <h2 class="component__name">Search</h2>
+        <div class="component__byline">Overlay · minimal input</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Component — Search Overlay</span>
+          <span>Desktop</span>
+        </div>
+
+        <div class="search-overlay">
+          <div class="search-overlay__inner">
+            <div class="search-overlay__header">
+              <span class="search-overlay__title">Search</span>
+              <button type="button" class="search-overlay__close">Close</button>
+            </div>
+            <div class="search-overlay__field">
+              <input type="text" class="search-overlay__input" placeholder="Search products, collections..." aria-label="Search" />
+            </div>
+            <div class="search-overlay__results">
+              <span class="search-overlay__results-label">Suggestions</span>
+              <a href="#" class="search-overlay__result">West Ham United</a>
+              <a href="#" class="search-overlay__result">Work Jacket</a>
+              <a href="#" class="search-overlay__result">Classic Football Shirts</a>
+              <a href="#" class="search-overlay__result">Stadium Cap</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 09 / ACCOUNT ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">09</div>
+        <h2 class="component__name">Account</h2>
+        <div class="component__byline">Login · register · minimal forms</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Component — Account Forms</span>
+          <span>Desktop</span>
+        </div>
+
+        <div class="account-forms">
+
+          <div class="account-form">
+            <span class="account-form__title">Login</span>
+            <form class="account-form__fields">
+              <div class="account-form__group">
+                <label class="account-form__label" for="login-email">Email</label>
+                <input type="email" id="login-email" class="account-form__input" placeholder="your@email.com" />
+              </div>
+              <div class="account-form__group">
+                <label class="account-form__label" for="login-password">Password</label>
+                <input type="password" id="login-password" class="account-form__input" placeholder="Password" />
+              </div>
+              <button type="submit" class="btn btn--primary btn--md btn--block">Sign In</button>
+              <a href="#" class="account-form__link">Forgot password?</a>
+            </form>
+          </div>
+
+          <div class="account-form">
+            <span class="account-form__title">Create Account</span>
+            <form class="account-form__fields">
+              <div class="account-form__group">
+                <label class="account-form__label" for="reg-name">Name</label>
+                <input type="text" id="reg-name" class="account-form__input" placeholder="Full name" />
+              </div>
+              <div class="account-form__group">
+                <label class="account-form__label" for="reg-email">Email</label>
+                <input type="email" id="reg-email" class="account-form__input" placeholder="your@email.com" />
+              </div>
+              <div class="account-form__group">
+                <label class="account-form__label" for="reg-password">Password</label>
+                <input type="password" id="reg-password" class="account-form__input" placeholder="Password" />
+              </div>
+              <button type="submit" class="btn btn--primary btn--md btn--block">Create Account</button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    (function () {
+      var dateEl = document.getElementById("nav-clock-date");
+      var timeEl = document.getElementById("nav-clock-time");
+      if (!dateEl || !timeEl) return;
+
+      var dateFmt = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Seoul",
+        weekday: "short",
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+      var timeFmt = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Seoul",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      });
+
+      function tick() {
+        var now = new Date();
+        dateEl.textContent = dateFmt.format(now);
+        timeEl.textContent = timeFmt.format(now) + " KST";
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    (function () {
+      // Product catalogue. Each product: collection, category, name, price, img.
+      var products = [
+        { collection: "westham", category: "tops",        name: "Home Kit 25/26",     price: "95.00 USD",  img: "Assets/WestHam.jpg", sizes: ["S","M","L","XL"] },
+        { collection: "westham", category: "tops",        name: "Away Kit 25/26",     price: "95.00 USD",  img: "Assets/WestHam.jpg", sizes: ["M","L","XL"] },
+        { collection: "westham", category: "tops",        name: "Third Kit 25/26",    price: "95.00 USD",  img: "Assets/WestHam.jpg", sizes: ["S","M","L"] },
+        { collection: "westham", category: "outerwear",   name: "Warmup Jacket",      price: "145.00 USD", img: "Assets/WestHam.jpg", sizes: ["M","L","XL"] },
+        { collection: "westham", category: "bottoms",     name: "Training Pant",      price: "75.00 USD",  img: "Assets/WestHam.jpg", sizes: ["S","M","L","XL"] },
+        { collection: "westham", category: "headwear",    name: "Stadium Cap",        price: "45.00 USD",  img: "Assets/WestHam.jpg", sizes: ["One Size"] },
+        { collection: "westham", category: "accessories", name: "Supporter Scarf",    price: "35.00 USD",  img: "Assets/WestHam.jpg", sizes: ["One Size"] },
+
+        { collection: "america", category: "tops",        name: "Home Kit 25/26",     price: "95.00 USD",  img: "", sizes: ["S","M","L","XL"] },
+        { collection: "america", category: "tops",        name: "Away Kit 25/26",     price: "95.00 USD",  img: "", sizes: ["M","L","XL"] },
+        { collection: "america", category: "tops",        name: "Centenario Retro",   price: "120.00 USD", img: "", sizes: ["S","M","L"] },
+        { collection: "america", category: "outerwear",   name: "Tracksuit Jacket",   price: "155.00 USD", img: "", sizes: ["M","L","XL"] },
+        { collection: "america", category: "bottoms",     name: "Tracksuit Pant",     price: "95.00 USD",  img: "", sizes: ["S","M","L","XL"] },
+        { collection: "america", category: "headwear",    name: "Aguilas Cap",        price: "42.00 USD",  img: "", sizes: ["One Size"] },
+
+        { collection: "fresh",   category: "tops",        name: "Pattern Tee 01",     price: "58.00 USD",  img: "", sizes: ["S","M","L","XL"] },
+        { collection: "fresh",   category: "tops",        name: "Pattern Tee 02",     price: "58.00 USD",  img: "", sizes: ["M","L"] },
+        { collection: "fresh",   category: "bottoms",     name: "Tailored Short",     price: "82.00 USD",  img: "", sizes: ["S","M","L"] },
+        { collection: "fresh",   category: "headwear",    name: "Workshop Cap",       price: "48.00 USD",  img: "", sizes: ["One Size"] },
+        { collection: "fresh",   category: "accessories", name: "Tote Bag",           price: "38.00 USD",  img: "", sizes: ["One Size"] },
+
+        { collection: "classic", category: "tops",        name: "Boca Juniors '81",   price: "110.00 USD", img: "", sizes: ["M","L"] },
+        { collection: "classic", category: "tops",        name: "Napoli '87",         price: "125.00 USD", img: "", sizes: ["S","M","L"] },
+        { collection: "classic", category: "tops",        name: "Milan '94",          price: "115.00 USD", img: "", sizes: ["M","L","XL"] },
+        { collection: "classic", category: "outerwear",   name: "Rain Cagoule",       price: "165.00 USD", img: "", sizes: ["S","M","L","XL"] },
+        { collection: "classic", category: "headwear",    name: "Bucket Hat",         price: "52.00 USD",  img: "", sizes: ["One Size"] },
+        { collection: "classic", category: "accessories", name: "Pennant",            price: "28.00 USD",  img: "", sizes: ["One Size"] },
+        { collection: "classic", category: "accessories", name: "Program Book",       price: "18.00 USD",  img: "", sizes: ["One Size"] }
+      ];
+
+      var titleEl = document.getElementById("collection-title");
+      var countEl = document.getElementById("product-count");
+      var itemsEl = document.getElementById("product-grid-items");
+      var dropdown = document.querySelector(".collection-dropdown");
+      if (!dropdown) return;
+      var trigger = dropdown.querySelector(".collection-dropdown__trigger");
+      var menu = dropdown.querySelector(".collection-dropdown__menu");
+      var collectionOpts = menu.querySelectorAll("[data-collection]");
+      var filterBtns = document.querySelectorAll(".product-grid__filter");
+
+      var collectionLabels = {
+        all:     "All",
+        westham: "West Ham",
+        america: "Club América",
+        fresh:   "Fresh Patterns",
+        classic: "Classic Shirts"
+      };
+
+      var state = { collection: "all", category: "all" };
+
+      function buildGrid() {
+        itemsEl.innerHTML = products.map(function (p) {
+          var media = p.img
+            ? '<img src="' + p.img + '" alt="" />'
+            : '<span class="product-card__placeholder">NVLCRK</span>';
+          var sizeList = p.sizes.map(function (s) {
+            return '<span class="product-card__size">' + s + '</span>';
+          }).join("");
+          var priceClean = p.price;
+          return '' +
+            '<li class="product-card" data-cat="' + p.category + '" data-col="' + p.collection + '">' +
+              '<div class="product-card__media">' + media + '</div>' +
+              '<span class="product-card__name">' + p.name + '</span>' +
+              '<span class="product-card__price">' + priceClean + '</span>' +
+              '<div class="product-card__overlay">' +
+                '<div class="product-card__sizes">' + sizeList + '</div>' +
+              '</div>' +
+            '</li>';
+        }).join("");
+      }
+
+      function applyFilters() {
+        var cards = itemsEl.querySelectorAll(".product-card");
+        var matchCount = 0;
+        cards.forEach(function (card) {
+          var cMatch = state.collection === "all" || card.getAttribute("data-col") === state.collection;
+          var catMatch = state.category === "all" || card.getAttribute("data-cat") === state.category;
+          card.hidden = !cMatch;
+          card.classList.toggle("is-dimmed", cMatch && !catMatch);
+          if (cMatch && catMatch) matchCount++;
+        });
+
+        titleEl.textContent = collectionLabels[state.collection] || "All";
+        countEl.textContent = "(" + matchCount + ")";
+
+        collectionOpts.forEach(function (o) {
+          o.setAttribute("aria-selected", o.getAttribute("data-collection") === state.collection ? "true" : "false");
+        });
+        filterBtns.forEach(function (b) {
+          b.classList.toggle("is-active", b.getAttribute("data-category") === state.category);
+        });
+      }
+
+      function setOpen(open) {
+        dropdown.setAttribute("data-open", open ? "true" : "false");
+        trigger.setAttribute("aria-expanded", open ? "true" : "false");
+        menu.hidden = !open;
+      }
+
+      trigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        setOpen(dropdown.getAttribute("data-open") !== "true");
+      });
+
+      collectionOpts.forEach(function (opt) {
+        opt.addEventListener("click", function () {
+          var newCollection = opt.getAttribute("data-collection");
+          if (newCollection === state.collection) { setOpen(false); return; }
+          setOpen(false);
+
+          // Stagger exit on currently visible cards
+          var visibleCards = Array.from(itemsEl.querySelectorAll(".product-card:not([hidden])"));
+          visibleCards.forEach(function (card, i) {
+            setTimeout(function () { card.classList.add("is-exiting"); }, i * 50);
+          });
+
+          var exitDuration = visibleCards.length * 50 + 400;
+          setTimeout(function () {
+            // Clear exit classes from all cards
+            itemsEl.querySelectorAll(".product-card").forEach(function (card) {
+              card.classList.remove("is-exiting");
+            });
+
+            state.collection = newCollection;
+            applyFilters();
+
+            // Prep entering cards then stagger reveal
+            var newCards = Array.from(itemsEl.querySelectorAll(".product-card:not([hidden])"));
+            newCards.forEach(function (card) { card.classList.add("is-entering"); });
+
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                newCards.forEach(function (card, i) {
+                  setTimeout(function () { card.classList.remove("is-entering"); }, i * 50);
+                });
+              });
+            });
+          }, exitDuration);
+        });
+      });
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          state.category = btn.getAttribute("data-category");
+          applyFilters();
+        });
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!dropdown.contains(e.target)) setOpen(false);
+      });
+
+      buildGrid();
+      applyFilters();
+    })();
+
+    (function () {
+      var sizeOptions = document.querySelectorAll(".pdp__size-option");
+      var atcBtn = document.querySelector(".pdp__atc");
+      if (!sizeOptions.length || !atcBtn) return;
+
+      sizeOptions.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          sizeOptions.forEach(function (b) { b.classList.remove("is-selected"); });
+          btn.classList.add("is-selected");
+          atcBtn.hidden = false;
+        });
+      });
+    })();
+
+    (function () {
+      var subtotalEl = document.querySelector(".cart-drawer__subtotal-value");
+      if (!subtotalEl) return;
+
+      function updateSubtotal() {
+        var total = 0;
+        document.querySelectorAll(".cart-item").forEach(function (item) {
+          var unit = parseFloat(item.getAttribute("data-unit-price"));
+          var qty = parseInt(item.querySelector(".cart-item__qty-value").textContent);
+          total += unit * qty;
+        });
+        subtotalEl.textContent = total.toFixed(2) + " USD";
+      }
+
+      document.querySelectorAll(".cart-item__qty-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var item = btn.closest(".cart-item");
+          var qtyEl = item.querySelector(".cart-item__qty-value");
+          var priceEl = item.querySelector(".cart-item__price");
+          var unitPrice = parseFloat(item.getAttribute("data-unit-price"));
+          var qty = parseInt(qtyEl.textContent);
+
+          if (btn.getAttribute("data-dir") === "up") {
+            qty++;
+          } else {
+            if (qty > 1) qty--;
+          }
+
+          qtyEl.textContent = qty;
+          priceEl.textContent = (unitPrice * qty).toFixed(2) + " USD";
+          updateSubtotal();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

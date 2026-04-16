@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop — NVLCRK</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    .page-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .page-layout__nav {
+      width: 25%;
+      flex-shrink: 0;
+      border-right: var(--border-hairline);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .page-layout__main {
+      flex: 1;
+      min-width: 0;
+      margin-left: 25%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-layout">
+
+    <div class="page-layout__nav">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="site-nav__inner">
+          <div class="site-nav__top">
+            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><span>N</span><span>V</span><span>L</span><span>C</span><span>R</span><span>K</span></a>
+            <ul class="site-nav__sections" role="list">
+              <li class="nav-section"><a href="shop.html" class="nav-section__header"><span class="nav-section__num">01</span><span class="nav-section__label">Shop</span></a></li>
+              <li class="nav-section"><a href="about.html" class="nav-section__header"><span class="nav-section__num">02</span><span class="nav-section__label">About</span></a></li>
+              <li class="nav-section"><a href="archive.html" class="nav-section__header"><span class="nav-section__num">03</span><span class="nav-section__label">Archive</span></a></li>
+              <li class="nav-section"><a href="about.html#cafe" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
+              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Contact</span></a></li>
+            </ul>
+          </div>
+          <div class="site-nav__bottom">
+            <a href="#" class="site-nav__link">Account</a>
+            <a href="#" class="site-nav__link">Cart (0)</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <main class="page-layout__main">
+
+      <div class="product-grid">
+
+        <header class="product-grid__bar">
+          <div class="product-grid__heading">
+            <div class="collection-dropdown" data-open="false">
+              <button type="button" class="collection-dropdown__trigger" aria-haspopup="listbox" aria-expanded="false">
+                <span class="collection-dropdown__label" id="collection-title">All</span>
+                <span class="collection-dropdown__caret" aria-hidden="true">▾</span>
+              </button>
+              <ul class="collection-dropdown__menu" role="listbox" hidden>
+                <li role="option" data-collection="all" aria-selected="true">All Collections</li>
+                <li role="option" data-collection="westham">West Ham United</li>
+                <li role="option" data-collection="america">Club América</li>
+                <li role="option" data-collection="fresh">Fresh Patterns</li>
+                <li role="option" data-collection="classic">Classic Football Shirts</li>
+              </ul>
+            </div>
+          </div>
+
+          <nav class="product-grid__filters" aria-label="Filter by category">
+            <button type="button" class="product-grid__filter is-active" data-category="all">All</button>
+            <button type="button" class="product-grid__filter" data-category="outerwear">Outerwear</button>
+            <button type="button" class="product-grid__filter" data-category="tops">Tops</button>
+            <button type="button" class="product-grid__filter" data-category="bottoms">Bottoms</button>
+            <button type="button" class="product-grid__filter" data-category="headwear">Headwear</button>
+            <button type="button" class="product-grid__filter" data-category="accessories">Accessories</button>
+          </nav>
+
+          <span class="product-grid__count" id="product-count">(25)</span>
+        </header>
+
+        <ul class="product-grid__items" role="list" id="product-grid-items"></ul>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <span class="site-footer__logo">NVLCRK</span>
+        <div class="site-footer__columns">
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Shop</span>
+            <a href="#" class="site-footer__link">West Ham United</a>
+            <a href="#" class="site-footer__link">Club America</a>
+            <a href="#" class="site-footer__link">Fresh Patterns</a>
+            <a href="#" class="site-footer__link">Classic Shirts</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Info</span>
+            <a href="about.html" class="site-footer__link">About</a>
+            <a href="about.html" class="site-footer__link">Cafe NivelCrack</a>
+            <a href="#" class="site-footer__link">Stockists</a>
+            <a href="contact.html" class="site-footer__link">Contact</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Support</span>
+            <a href="#" class="site-footer__link">Shipping</a>
+            <a href="#" class="site-footer__link">Returns</a>
+            <a href="#" class="site-footer__link">Size Guide</a>
+            <a href="#" class="site-footer__link">FAQ</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Follow</span>
+            <a href="#" class="site-footer__link">Instagram</a>
+            <a href="#" class="site-footer__link">Newsletter</a>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span class="site-footer__copy">&copy; NivelCrack 2025. All rights reserved.</span>
+        <div class="site-footer__legal">
+          <a href="#" class="site-footer__legal-link">Privacy Policy</a>
+          <a href="#" class="site-footer__legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var logo = document.querySelector('.nav-brand__logo');
+      if (!logo) return;
+      function fit() {
+        logo.style.fontSize = (logo.offsetWidth * 0.16) + 'px';
+      }
+      document.fonts.ready.then(function () { fit(); window.addEventListener('resize', fit); });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var products = [
+        { collection: "westham", category: "tops",        name: "Home Kit 25/26",     price: "95.00 USD",  img: "Assets/WestHam.jpg", sizes: ["S","M","L","XL"] },
+        { collection: "westham", category: "tops",        name: "Away Kit 25/26",     price: "95.00 USD",  img: "Assets/WestHam.jpg", sizes: ["M","L","XL"] },
+        { collection: "westham", category: "tops",        name: "Third Kit 25/26",    price: "95.00 USD",  img: "Assets/WestHam.jpg", sizes: ["S","M","L"] },
+        { collection: "westham", category: "outerwear",   name: "Warmup Jacket",      price: "145.00 USD", img: "Assets/WestHam.jpg", sizes: ["M","L","XL"] },
+        { collection: "westham", category: "bottoms",     name: "Training Pant",      price: "75.00 USD",  img: "Assets/WestHam.jpg", sizes: ["S","M","L","XL"] },
+        { collection: "westham", category: "headwear",    name: "Stadium Cap",        price: "45.00 USD",  img: "Assets/WestHam.jpg", sizes: ["One Size"] },
+        { collection: "westham", category: "accessories", name: "Supporter Scarf",    price: "35.00 USD",  img: "Assets/WestHam.jpg", sizes: ["One Size"] },
+        { collection: "america", category: "tops",        name: "Home Kit 25/26",     price: "95.00 USD",  img: "", sizes: ["S","M","L","XL"] },
+        { collection: "america", category: "tops",        name: "Away Kit 25/26",     price: "95.00 USD",  img: "", sizes: ["M","L","XL"] },
+        { collection: "america", category: "tops",        name: "Centenario Retro",   price: "120.00 USD", img: "", sizes: ["S","M","L"] },
+        { collection: "america", category: "outerwear",   name: "Tracksuit Jacket",   price: "155.00 USD", img: "", sizes: ["M","L","XL"] },
+        { collection: "america", category: "bottoms",     name: "Tracksuit Pant",     price: "95.00 USD",  img: "", sizes: ["S","M","L","XL"] },
+        { collection: "america", category: "headwear",    name: "Aguilas Cap",        price: "42.00 USD",  img: "", sizes: ["One Size"] },
+        { collection: "fresh",   category: "tops",        name: "Pattern Tee 01",     price: "58.00 USD",  img: "", sizes: ["S","M","L","XL"] },
+        { collection: "fresh",   category: "tops",        name: "Pattern Tee 02",     price: "58.00 USD",  img: "", sizes: ["M","L"] },
+        { collection: "fresh",   category: "bottoms",     name: "Tailored Short",     price: "82.00 USD",  img: "", sizes: ["S","M","L"] },
+        { collection: "fresh",   category: "headwear",    name: "Workshop Cap",       price: "48.00 USD",  img: "", sizes: ["One Size"] },
+        { collection: "fresh",   category: "accessories", name: "Tote Bag",           price: "38.00 USD",  img: "", sizes: ["One Size"] },
+        { collection: "classic", category: "tops",        name: "Boca Juniors '81",   price: "110.00 USD", img: "", sizes: ["M","L"] },
+        { collection: "classic", category: "tops",        name: "Napoli '87",         price: "125.00 USD", img: "", sizes: ["S","M","L"] },
+        { collection: "classic", category: "tops",        name: "Milan '94",          price: "115.00 USD", img: "", sizes: ["M","L","XL"] },
+        { collection: "classic", category: "outerwear",   name: "Rain Cagoule",       price: "165.00 USD", img: "", sizes: ["S","M","L","XL"] },
+        { collection: "classic", category: "headwear",    name: "Bucket Hat",         price: "52.00 USD",  img: "", sizes: ["One Size"] },
+        { collection: "classic", category: "accessories", name: "Pennant",            price: "28.00 USD",  img: "", sizes: ["One Size"] },
+        { collection: "classic", category: "accessories", name: "Program Book",       price: "18.00 USD",  img: "", sizes: ["One Size"] }
+      ];
+
+      var titleEl = document.getElementById("collection-title");
+      var countEl = document.getElementById("product-count");
+      var itemsEl = document.getElementById("product-grid-items");
+      var dropdown = document.querySelector(".collection-dropdown");
+      if (!dropdown) return;
+      var trigger = dropdown.querySelector(".collection-dropdown__trigger");
+      var menu = dropdown.querySelector(".collection-dropdown__menu");
+      var collectionOpts = menu.querySelectorAll("[data-collection]");
+      var filterBtns = document.querySelectorAll(".product-grid__filter");
+
+      var collectionLabels = {
+        all: "All", westham: "West Ham", america: "Club América",
+        fresh: "Fresh Patterns", classic: "Classic Shirts"
+      };
+
+      var state = { collection: "all", category: "all" };
+
+      function buildGrid() {
+        itemsEl.innerHTML = products.map(function (p) {
+          var media = p.img
+            ? '<img src="' + p.img + '" alt="" />'
+            : '<span class="product-card__placeholder">NVLCRK</span>';
+          var sizeList = p.sizes.map(function (s) {
+            return '<span class="product-card__size">' + s + '</span>';
+          }).join("");
+          return '' +
+            '<li class="product-card" data-cat="' + p.category + '" data-col="' + p.collection + '">' +
+              '<a href="product.html" class="product-card__link">' +
+                '<div class="product-card__media">' + media + '</div>' +
+                '<span class="product-card__name">' + p.name + '</span>' +
+                '<span class="product-card__price">' + p.price + '</span>' +
+                '<div class="product-card__overlay">' +
+                  '<div class="product-card__sizes">' + sizeList + '</div>' +
+                '</div>' +
+              '</a>' +
+            '</li>';
+        }).join("");
+      }
+
+      function applyFilters() {
+        var cards = itemsEl.querySelectorAll(".product-card");
+        var matchCount = 0;
+        cards.forEach(function (card) {
+          var cMatch = state.collection === "all" || card.getAttribute("data-col") === state.collection;
+          var catMatch = state.category === "all" || card.getAttribute("data-cat") === state.category;
+          card.hidden = !cMatch;
+          card.classList.toggle("is-dimmed", cMatch && !catMatch);
+          if (cMatch && catMatch) matchCount++;
+        });
+        titleEl.textContent = collectionLabels[state.collection] || "All";
+        countEl.textContent = "(" + matchCount + ")";
+        collectionOpts.forEach(function (o) {
+          o.setAttribute("aria-selected", o.getAttribute("data-collection") === state.collection ? "true" : "false");
+        });
+        filterBtns.forEach(function (b) {
+          b.classList.toggle("is-active", b.getAttribute("data-category") === state.category);
+        });
+      }
+
+      function setOpen(open) {
+        dropdown.setAttribute("data-open", open ? "true" : "false");
+        trigger.setAttribute("aria-expanded", open ? "true" : "false");
+        menu.hidden = !open;
+      }
+
+      trigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        setOpen(dropdown.getAttribute("data-open") !== "true");
+      });
+
+      collectionOpts.forEach(function (opt) {
+        opt.addEventListener("click", function () {
+          var newCollection = opt.getAttribute("data-collection");
+          if (newCollection === state.collection) { setOpen(false); return; }
+          setOpen(false);
+          var visibleCards = Array.from(itemsEl.querySelectorAll(".product-card:not([hidden])"));
+          visibleCards.forEach(function (card, i) {
+            setTimeout(function () { card.classList.add("is-exiting"); }, i * 50);
+          });
+          var exitDuration = visibleCards.length * 50 + 400;
+          setTimeout(function () {
+            itemsEl.querySelectorAll(".product-card").forEach(function (card) {
+              card.classList.remove("is-exiting");
+            });
+            state.collection = newCollection;
+            applyFilters();
+            var newCards = Array.from(itemsEl.querySelectorAll(".product-card:not([hidden])"));
+            newCards.forEach(function (card) { card.classList.add("is-entering"); });
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                newCards.forEach(function (card, i) {
+                  setTimeout(function () { card.classList.remove("is-entering"); }, i * 50);
+                });
+              });
+            });
+          }, exitDuration);
+        });
+      });
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          state.category = btn.getAttribute("data-category");
+          applyFilters();
+        });
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!dropdown.contains(e.target)) setOpen(false);
+      });
+
+      buildGrid();
+      applyFilters();
+    })();
+  </script>
+
+</body>
+</html>

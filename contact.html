@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — NVLCRK</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    .page-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .page-layout__nav {
+      width: 25%;
+      flex-shrink: 0;
+      border-right: var(--border-hairline);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .page-layout__main {
+      flex: 1;
+      min-width: 0;
+      margin-left: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact {
+      width: 100%;
+      max-width: 640px;
+      padding: var(--space-6) var(--page-margin) var(--space-8);
+    }
+
+    .contact__title {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-section);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-title);
+      line-height: var(--lh-heading);
+      margin: 0 0 var(--space-1) 0;
+    }
+    .contact__subtitle {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-6);
+    }
+
+    /* Contact sections — same format as PDP/nav */
+    .contact__sections {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-bottom: var(--space-7);
+    }
+    .contact__section {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .contact__section-label {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+    .contact__section-body {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+    }
+    .contact__section-body a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--dur-fast) var(--ease);
+    }
+    .contact__section-body a:hover {
+      color: var(--color-text);
+    }
+
+    /* Contact form */
+    .contact__form-header {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-2);
+      padding-bottom: var(--space-2);
+      border-bottom: var(--border-hairline);
+      margin-bottom: var(--space-4);
+    }
+    .contact__form-num {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+    }
+    .contact__form-title {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+
+    .contact__form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .contact__field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .contact__label {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+    .contact__input,
+    .contact__textarea {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+      background: transparent;
+      border: none;
+      border-bottom: var(--border-hairline);
+      padding: var(--space-1) 0;
+      outline: none;
+      transition: border-color var(--dur-fast) var(--ease);
+    }
+    .contact__input:focus,
+    .contact__textarea:focus {
+      border-bottom-color: var(--color-text);
+    }
+    .contact__textarea {
+      resize: vertical;
+      min-height: 100px;
+      font-family: var(--font-body);
+    }
+
+    /* Stockists */
+    .contact__stockists {
+      margin-top: var(--space-7);
+    }
+    .contact__stockist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    .contact__stockist {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .contact__stockist-name {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+    .contact__stockist-location {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .page-layout { flex-direction: column; }
+      .page-layout__nav { width: 100%; border-right: none; border-bottom: var(--border-hairline); }
+      .page-layout__main { align-items: flex-start; }
+      .contact__stockist-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-layout">
+
+    <div class="page-layout__nav">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="site-nav__inner">
+          <div class="site-nav__top">
+            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><span>N</span><span>V</span><span>L</span><span>C</span><span>R</span><span>K</span></a>
+            <ul class="site-nav__sections" role="list">
+              <li class="nav-section"><a href="shop.html" class="nav-section__header"><span class="nav-section__num">01</span><span class="nav-section__label">Shop</span></a></li>
+              <li class="nav-section"><a href="about.html" class="nav-section__header"><span class="nav-section__num">02</span><span class="nav-section__label">About</span></a></li>
+              <li class="nav-section"><a href="archive.html" class="nav-section__header"><span class="nav-section__num">03</span><span class="nav-section__label">Archive</span></a></li>
+              <li class="nav-section"><a href="about.html#cafe" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
+              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Contact</span></a></li>
+            </ul>
+          </div>
+          <div class="site-nav__bottom">
+            <a href="#" class="site-nav__link">Account</a>
+            <a href="#" class="site-nav__link">Cart (0)</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <main class="page-layout__main">
+      <div class="contact">
+
+        <h1 class="contact__title">Contact</h1>
+        <p class="contact__subtitle">Issue 01 · Get in Touch</p>
+
+        <div class="contact__sections">
+          <div class="contact__section">
+            <span class="contact__section-label">Email</span>
+            <span class="contact__section-body"><a href="mailto:hello@nivelcrack.com">hello@nivelcrack.com</a></span>
+          </div>
+          <div class="contact__section">
+            <span class="contact__section-label">Instagram</span>
+            <span class="contact__section-body"><a href="https://instagram.com/nivelcrack" target="_blank" rel="noopener">@nivelcrack</a></span>
+          </div>
+          <div class="contact__section">
+            <span class="contact__section-label">Cafe NivelCrack</span>
+            <span class="contact__section-body">Itaewon, Seoul</span>
+            <span class="contact__section-body">Mon — Sat, 10:00 — 19:00</span>
+          </div>
+          <div class="contact__section">
+            <span class="contact__section-label">Wholesale Inquiries</span>
+            <span class="contact__section-body"><a href="mailto:wholesale@nivelcrack.com">wholesale@nivelcrack.com</a></span>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <header class="contact__form-header">
+          <span class="contact__form-num">01</span>
+          <span class="contact__form-title">Send a Message</span>
+        </header>
+
+        <form class="contact__form">
+          <div class="contact__field">
+            <label class="contact__label" for="contact-name">Name</label>
+            <input type="text" id="contact-name" class="contact__input" placeholder="Full name" />
+          </div>
+          <div class="contact__field">
+            <label class="contact__label" for="contact-email">Email</label>
+            <input type="email" id="contact-email" class="contact__input" placeholder="your@email.com" />
+          </div>
+          <div class="contact__field">
+            <label class="contact__label" for="contact-subject">Subject</label>
+            <input type="text" id="contact-subject" class="contact__input" placeholder="What is this about?" />
+          </div>
+          <div class="contact__field">
+            <label class="contact__label" for="contact-message">Message</label>
+            <textarea id="contact-message" class="contact__textarea" placeholder="Your message..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--md" style="align-self: flex-start;">Send Message</button>
+        </form>
+
+        <!-- Stockists -->
+        <div class="contact__stockists">
+          <header class="contact__form-header">
+            <span class="contact__form-num">02</span>
+            <span class="contact__form-title">Stockists</span>
+          </header>
+          <div class="contact__stockist-grid">
+            <div class="contact__stockist">
+              <span class="contact__stockist-name">Cafe NivelCrack</span>
+              <span class="contact__stockist-location">Seoul, South Korea</span>
+            </div>
+            <div class="contact__stockist">
+              <span class="contact__stockist-name">Hipanda</span>
+              <span class="contact__stockist-location">Tokyo, Japan</span>
+            </div>
+            <div class="contact__stockist">
+              <span class="contact__stockist-name">Classic Football Shirts</span>
+              <span class="contact__stockist-location">Manchester, UK</span>
+            </div>
+            <div class="contact__stockist">
+              <span class="contact__stockist-name">Oi Polloi</span>
+              <span class="contact__stockist-location">Manchester, UK</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <span class="site-footer__logo">NVLCRK</span>
+        <div class="site-footer__columns">
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Shop</span>
+            <a href="shop.html" class="site-footer__link">West Ham United</a>
+            <a href="shop.html" class="site-footer__link">Club America</a>
+            <a href="shop.html" class="site-footer__link">Fresh Patterns</a>
+            <a href="shop.html" class="site-footer__link">Classic Shirts</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Info</span>
+            <a href="about.html" class="site-footer__link">About</a>
+            <a href="about.html" class="site-footer__link">Cafe NivelCrack</a>
+            <a href="#" class="site-footer__link">Stockists</a>
+            <a href="contact.html" class="site-footer__link">Contact</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Support</span>
+            <a href="#" class="site-footer__link">Shipping</a>
+            <a href="#" class="site-footer__link">Returns</a>
+            <a href="#" class="site-footer__link">Size Guide</a>
+            <a href="#" class="site-footer__link">FAQ</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Follow</span>
+            <a href="#" class="site-footer__link">Instagram</a>
+            <a href="#" class="site-footer__link">Newsletter</a>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span class="site-footer__copy">&copy; NivelCrack 2025. All rights reserved.</span>
+        <div class="site-footer__legal">
+          <a href="#" class="site-footer__legal-link">Privacy Policy</a>
+          <a href="#" class="site-footer__legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var logo = document.querySelector('.nav-brand__logo');
+      if (!logo) return;
+      function fit() {
+        logo.style.fontSize = (logo.offsetWidth * 0.16) + 'px';
+      }
+      document.fonts.ready.then(function () { fit(); window.addEventListener('resize', fit); });
+    })();
+  </script>
+
+</body>
+</html>

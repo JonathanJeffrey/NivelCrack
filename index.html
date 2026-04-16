@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NVLCRK — NivelCrack</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    .landing {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .landing__image {
+      width: 50%;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .landing__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .landing__content {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: var(--space-4) var(--space-5);
+      min-height: 100vh;
+    }
+
+    .landing__top {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      width: 90%;
+    }
+
+    .landing__logo {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--color-text);
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .landing__nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      width: 100%;
+    }
+
+    .landing__nav-item {
+      display: flex;
+      align-items: baseline;
+      width: 100%;
+      gap: 0;
+      padding: 6px 0;
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      line-height: 1.25;
+      text-decoration: none;
+      color: var(--color-text);
+      transition: color 200ms var(--ease);
+      position: relative;
+    }
+    .landing__nav-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 8px;
+      height: 3px;
+      background-image: radial-gradient(circle closest-side, currentColor 1px, transparent 1px);
+      background-size: 16px 3px;
+      background-repeat: repeat-x;
+      background-position: right center;
+    }
+    .landing__nav-item:hover {
+      color: var(--color-text-secondary);
+    }
+
+    .landing__nav-item span {
+      position: relative;
+      z-index: 1;
+    }
+    .landing__nav-item span:first-child {
+      background: var(--color-bg);
+      padding-right: 8px;
+    }
+
+    .landing__num {
+      flex-shrink: 0;
+      margin-left: auto;
+      background: var(--color-bg);
+      padding-left: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+
+@media (max-width: 768px) {
+      .landing {
+        flex-direction: column;
+      }
+      .landing__image {
+        width: 100%;
+        height: 60vh;
+      }
+      .landing__content {
+        width: 100%;
+        min-height: auto;
+        padding: var(--space-4) var(--space-3);
+        gap: var(--space-6);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="landing">
+
+    <div class="landing__image">
+      <img src="Assets/MagazineCover.jpg" alt="NivelCrack Magazine Cover" />
+    </div>
+
+    <div class="landing__content">
+
+      <div class="landing__top">
+        <div class="landing__logo" aria-label="NVLCRK">
+          <span>N</span><span>V</span><span>L</span><span>C</span><span>R</span><span>K</span>
+        </div>
+
+        <nav class="landing__nav">
+          <a href="shop.html" class="landing__nav-item"><span>Shop</span><span class="landing__num">01</span></a>
+          <a href="archive.html" class="landing__nav-item"><span>Archive</span><span class="landing__num">02</span></a>
+          <a href="about.html" class="landing__nav-item"><span>About</span><span class="landing__num">03</span></a>
+          <a href="contact.html" class="landing__nav-item"><span>Contact</span><span class="landing__num">04</span></a>
+        </nav>
+      </div>
+
+
+    </div>
+
+  </main>
+
+  <script>
+    (function () {
+      var logo = document.querySelector('.landing__logo');
+      function fit() {
+        // Use container width to set a proportional font size
+        // The letters are spaced by flexbox, font-size just controls height
+        logo.style.fontSize = (logo.offsetWidth * 0.16) + 'px';
+      }
+      document.fonts.ready.then(function () {
+        fit();
+        window.addEventListener('resize', fit);
+      });
+    })();
+  </script>
+
+</body>
+</html>

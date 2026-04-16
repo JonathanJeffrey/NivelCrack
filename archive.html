@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Archive — NVLCRK</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    .page-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .page-layout__nav {
+      width: 25%;
+      flex-shrink: 0;
+      border-right: var(--border-hairline);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .page-layout__main {
+      flex: 1;
+      min-width: 0;
+      margin-left: 25%;
+    }
+
+    .archive {
+      padding: var(--space-6) var(--page-margin) var(--space-8);
+      max-width: var(--max-content);
+    }
+
+    .archive__header {
+      margin-bottom: var(--space-6);
+    }
+    .archive__title {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-section);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-title);
+      line-height: var(--lh-heading);
+      margin: 0 0 var(--space-2) 0;
+    }
+    .archive__subtitle {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+    }
+
+    .archive__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    .archive-card {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .archive-card__media {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--color-hover);
+      margin-bottom: var(--space-2);
+    }
+    .archive-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--dur-med) var(--ease);
+    }
+    .archive-card:hover .archive-card__media img {
+      transform: scale(1.03);
+    }
+    .archive-card__label {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+    .archive-card__meta {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+    }
+
+    .archive__section {
+      margin-bottom: var(--space-7);
+    }
+    .archive__section-header {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-2);
+      padding-bottom: var(--space-2);
+      border-bottom: var(--border-hairline);
+      margin-bottom: var(--space-4);
+    }
+    .archive__section-num {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+    }
+    .archive__section-title {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+
+    @media (max-width: 768px) {
+      .page-layout { flex-direction: column; }
+      .page-layout__nav { width: 100%; border-right: none; border-bottom: var(--border-hairline); }
+      .archive__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-layout">
+
+    <div class="page-layout__nav">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="site-nav__inner">
+          <div class="site-nav__top">
+            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><span>N</span><span>V</span><span>L</span><span>C</span><span>R</span><span>K</span></a>
+            <ul class="site-nav__sections" role="list">
+              <li class="nav-section"><a href="shop.html" class="nav-section__header"><span class="nav-section__num">01</span><span class="nav-section__label">Shop</span></a></li>
+              <li class="nav-section"><a href="about.html" class="nav-section__header"><span class="nav-section__num">02</span><span class="nav-section__label">About</span></a></li>
+              <li class="nav-section"><a href="archive.html" class="nav-section__header"><span class="nav-section__num">03</span><span class="nav-section__label">Archive</span></a></li>
+              <li class="nav-section"><a href="about.html#cafe" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
+              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Contact</span></a></li>
+            </ul>
+          </div>
+          <div class="site-nav__bottom">
+            <a href="#" class="site-nav__link">Account</a>
+            <a href="#" class="site-nav__link">Cart (0)</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <main class="page-layout__main">
+      <div class="archive">
+
+        <header class="archive__header">
+          <h1 class="archive__title">Archive</h1>
+          <span class="archive__subtitle">Issue 01 · Past Collections & Collaborations</span>
+        </header>
+
+        <!-- Collaborations -->
+        <section class="archive__section">
+          <header class="archive__section-header">
+            <span class="archive__section-num">01</span>
+            <span class="archive__section-title">Collaborations</span>
+          </header>
+          <div class="archive__grid">
+            <article class="archive-card">
+              <div class="archive-card__media">
+                <img src="Assets/WestHam.jpg" alt="West Ham United collaboration" />
+              </div>
+              <span class="archive-card__label">West Ham United</span>
+              <span class="archive-card__meta">SS25 · Official Licensed</span>
+            </article>
+            <article class="archive-card">
+              <div class="archive-card__media"></div>
+              <span class="archive-card__label">Club America</span>
+              <span class="archive-card__meta">SS25 · Official Licensed</span>
+            </article>
+            <article class="archive-card">
+              <div class="archive-card__media"></div>
+              <span class="archive-card__label">Fresh Patterns Collective</span>
+              <span class="archive-card__meta">FW24 · Capsule Collection</span>
+            </article>
+            <article class="archive-card">
+              <div class="archive-card__media"></div>
+              <span class="archive-card__label">Classic Football Shirts</span>
+              <span class="archive-card__meta">FW24 · Vintage Edit</span>
+            </article>
+            <article class="archive-card">
+              <div class="archive-card__media"></div>
+              <span class="archive-card__label">K-League All Stars</span>
+              <span class="archive-card__meta">SS24 · Limited Edition</span>
+            </article>
+            <article class="archive-card">
+              <div class="archive-card__media"></div>
+              <span class="archive-card__label">Boleyn Ground</span>
+              <span class="archive-card__meta">FW23 · Tribute Collection</span>
+            </article>
+          </div>
+        </section>
+
+        <!-- Popups -->
+        <section class="archive__section">
+          <header class="archive__section-header">
+            <span class="archive__section-num">02</span>
+            <span class="archive__section-title">Popups</span>
+          </header>
+          <div class="archive__grid">
+            <article class="archive-card">
+              <div class="archive-card__media">
+                <img src="Assets/WestHam.jpg" alt="Seoul popup" />
+              </div>
+              <span class="archive-card__label">Seoul — Itaewon</span>
+              <span class="archive-card__meta">Mar 2025 · 3-Day Popup</span>
+            </article>
+            <article class="archive-card">
+              <div class="archive-card__media"></div>
+              <span class="archive-card__label">London — Brick Lane</span>
+              <span class="archive-card__meta">Nov 2024 · Match Day Popup</span>
+            </article>
+            <article class="archive-card">
+              <div class="archive-card__media"></div>
+              <span class="archive-card__label">Mexico City — Roma Norte</span>
+              <span class="archive-card__meta">Sep 2024 · 5-Day Popup</span>
+            </article>
+          </div>
+        </section>
+
+        <!-- Editorials -->
+        <section class="archive__section">
+          <header class="archive__section-header">
+            <span class="archive__section-num">03</span>
+            <span class="archive__section-title">Editorials</span>
+          </header>
+          <div class="archive__grid">
+            <article class="archive-card">
+              <div class="archive-card__media">
+                <img src="Assets/WestHam.jpg" alt="East London editorial" />
+              </div>
+              <span class="archive-card__label">East London, Match Day</span>
+              <span class="archive-card__meta">Photography · SS25</span>
+            </article>
+            <article class="archive-card">
+              <div class="archive-card__media"></div>
+              <span class="archive-card__label">Seoul After Dark</span>
+              <span class="archive-card__meta">Photography · FW24</span>
+            </article>
+            <article class="archive-card">
+              <div class="archive-card__media"></div>
+              <span class="archive-card__label">The Beautiful Game</span>
+              <span class="archive-card__meta">Essay · SS24</span>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <span class="site-footer__logo">NVLCRK</span>
+        <div class="site-footer__columns">
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Shop</span>
+            <a href="shop.html" class="site-footer__link">West Ham United</a>
+            <a href="shop.html" class="site-footer__link">Club America</a>
+            <a href="shop.html" class="site-footer__link">Fresh Patterns</a>
+            <a href="shop.html" class="site-footer__link">Classic Shirts</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Info</span>
+            <a href="about.html" class="site-footer__link">About</a>
+            <a href="about.html" class="site-footer__link">Cafe NivelCrack</a>
+            <a href="#" class="site-footer__link">Stockists</a>
+            <a href="contact.html" class="site-footer__link">Contact</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Support</span>
+            <a href="#" class="site-footer__link">Shipping</a>
+            <a href="#" class="site-footer__link">Returns</a>
+            <a href="#" class="site-footer__link">Size Guide</a>
+            <a href="#" class="site-footer__link">FAQ</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Follow</span>
+            <a href="#" class="site-footer__link">Instagram</a>
+            <a href="#" class="site-footer__link">Newsletter</a>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span class="site-footer__copy">&copy; NivelCrack 2025. All rights reserved.</span>
+        <div class="site-footer__legal">
+          <a href="#" class="site-footer__legal-link">Privacy Policy</a>
+          <a href="#" class="site-footer__legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var logo = document.querySelector('.nav-brand__logo');
+      if (!logo) return;
+      function fit() {
+        logo.style.fontSize = (logo.offsetWidth * 0.16) + 'px';
+      }
+      document.fonts.ready.then(function () { fit(); window.addEventListener('resize', fit); });
+    })();
+  </script>
+
+</body>
+</html>
