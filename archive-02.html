@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="components.css" />
   <style>
-    .page-layout { display: flex; min-height: 100vh; }
+    .page-layout { display: flex; min-height: 100dvh; }
     .page-layout__nav {
       width: 240px;
       flex-shrink: 0;
       position: sticky;
       top: 0;
       align-self: flex-start;
-      height: 100vh;
+      height: 100dvh;
       overflow-y: auto;
     }
     .page-layout__main { flex: 1; min-width: 0; }
@@ -27,7 +27,7 @@
     .archive-detail__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: calc((100vh - 2 * var(--space-3) - 12px) / 4);
+      grid-auto-rows: calc((100dvh - 2 * var(--space-3) - 12px) / 4);
       gap: 4px;
       width: 100%;
     }
@@ -50,11 +50,12 @@
       gap: 4px;
     }
     .archive-detail__name {
-      font-family: var(--font-body);
-      font-size: var(--text-micro);
-      font-weight: var(--weight-medium);
+      font-family: var(--font-display);
+      font-size: var(--text-title);
+      font-weight: var(--weight-bold);
       text-transform: uppercase;
-      letter-spacing: var(--tracking-label);
+      letter-spacing: var(--tracking-title);
+      line-height: var(--lh-heading);
       color: var(--color-text);
     }
     .archive-detail__date {
@@ -112,17 +113,21 @@
       <div class="archive-detail">
         <div class="archive-detail__grid">
           <div class="archive-detail__text text-1-2">
-            <span class="archive-detail__name">Seoul — Itaewon</span>
-            <span class="archive-detail__date">Popup — March 2025</span>
+            <span class="archive-detail__name">Stone Island x New Balance</span>
+            <span class="archive-detail__date">Editorial — December 2025</span>
           </div>
-          <div class="archive-detail__photo pos-2-1"><img src="Assets/cafe.jpg" alt="" /></div>
-          <div class="archive-detail__photo pos-3-1"><img src="Assets/MagazineCover.jpg" alt="" /></div>
-          <div class="archive-detail__photo pos-2-3"><img src="Assets/WestHam.jpg" alt="" /></div>
-          <div class="archive-detail__photo pos-3-3"><img src="Assets/cafe.jpg" alt="" /></div>
-          <div class="archive-detail__photo pos-2-4"><img src="Assets/MagazineCover.jpg" alt="" /></div>
-          <div class="archive-detail__photo pos-3-4"><img src="Assets/WestHam.jpg" alt="" /></div>
+          <div class="archive-detail__photo pos-2-1"><img src="Assets/archive/si_nb/cover.jpg" alt="" /></div>
+          <div class="archive-detail__photo pos-3-1"><img src="Assets/archive/si_nb/image_1766020498745_1000.jpg" alt="" /></div>
+          <div class="archive-detail__photo pos-2-3"><img src="Assets/archive/si_nb/image_1766020498959_1000.jpg" alt="" /></div>
+          <div class="archive-detail__photo pos-3-3"><img src="Assets/archive/si_nb/image_1766020499195_1000.jpg" alt="" /></div>
+          <div class="archive-detail__photo pos-2-4"><img src="Assets/archive/si_nb/image_1766020499439_1000.jpg" alt="" /></div>
+          <div class="archive-detail__photo pos-3-4"><img src="Assets/archive/si_nb/image_1766020499647_1000.jpg" alt="" /></div>
         </div>
       </div>
+      <nav class="archive-nav" aria-label="Archive navigation">
+        <a href="archive-01.html" class="archive-nav__link archive-nav__link--prev">← West Ham United</a>
+        <a href="archive-03.html" class="archive-nav__link archive-nav__link--next">East London, Match Day →</a>
+      </nav>
     </main>
 
   </div>

@@ -7,41 +7,131 @@
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="components.css" />
   <style>
-    .landing {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: var(--space-5) 0;
-      gap: var(--space-5);
+    body { overflow: hidden; }
+
+    .spread {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100dvh;
+      width: 100vw;
     }
-    .landing__logo {
-      width: 120px;
-      display: block;
-    }
-    .landing__logo img {
+
+    .spread__photo {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
+    }
+
+    .spread__contents {
+      position: relative;
+      padding: clamp(32px, 4vw, 56px);
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+    }
+
+    .spread__logo {
+      position: absolute;
+      top: clamp(64px, 8vw, 112px);
+      right: clamp(32px, 4vw, 56px);
+      margin: 0;
+    }
+
+    .toc {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 60%;
+      margin-left: 35%;
+    }
+
+    .toc__item {
+      display: inline-grid;
+      grid-template-columns: 32px auto;
+      align-items: baseline;
+      column-gap: var(--space-2);
+      padding: 6px 8px;
+      margin: -6px -8px;
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: var(--weight-regular);
+      line-height: 1.5;
+      color: var(--color-text);
+      transition: color var(--dur-fast) var(--ease);
+    }
+
+    .toc__item:hover {
+      color: var(--color-text-secondary);
+    }
+
+    .toc__page {
+      font-variant-numeric: tabular-nums;
+      text-align: left;
+    }
+
+    .toc__label {
+      font-weight: var(--weight-semibold);
+    }
+
+    @media (max-width: 768px) {
+      body { overflow: auto; }
+      .spread {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100dvh;
+      }
+      .spread__photo {
+        height: 50vh;
+      }
+      .toc {
+        width: 80%;
+        margin-left: 10%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <main class="landing" id="landing">
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="NivelCrack" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
-    <a href="#" class="landing__logo"><img src="Assets/NC_Logo_Monogram.png" alt="" /></a>
+  <main class="spread">
+    <img class="spread__photo" src="Assets/MagazineCover.jpg" alt="" />
+
+    <section class="spread__contents">
+      <a href="#" class="spread__logo t-title" aria-label="NivelCrack">NVLCRK</a>
+
+      <ol class="toc">
+        <li>
+          <a href="shop.html" class="toc__item">
+            <span class="toc__page">01</span>
+            <span class="toc__label">Shop</span>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="toc__item">
+            <span class="toc__page">02</span>
+            <span class="toc__label">About</span>
+          </a>
+        </li>
+        <li>
+          <a href="archive.html" class="toc__item">
+            <span class="toc__page">03</span>
+            <span class="toc__label">Archive</span>
+          </a>
+        </li>
+        <li>
+          <a href="cafe.html" class="toc__item">
+            <span class="toc__page">04</span>
+            <span class="toc__label">Cafe Nivelcrack</span>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="toc__item">
+            <span class="toc__page">05</span>
+            <span class="toc__label">Stockists</span>
+          </a>
+        </li>
+      </ol>
+    </section>
   </main>
 
 </body>
