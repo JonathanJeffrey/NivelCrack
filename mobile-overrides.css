@@ -172,17 +172,13 @@
     grid-auto-rows: auto !important;
     gap: 4px;
   }
-  /* Unpin desktop grid-column/row helpers so photos flow in source order */
-  .archive-detail__grid > .pos-2-1,
-  .archive-detail__grid > .pos-3-1,
-  .archive-detail__grid > .pos-2-2,
-  .archive-detail__grid > .pos-3-2 {
+  /* Unpin ALL desktop grid-column/row helpers so items flow in source order */
+  .archive-detail__grid > [class*="pos-"] {
     grid-column: auto !important;
     grid-row: auto !important;
   }
-  /* Text row: full width, top — selector bumped to beat .archive-detail__grid > .text-1-1 */
-  .archive-detail__grid > .archive-detail__text.text-1-1,
-  .archive-detail__grid > .archive-detail__text {
+  /* Text row: full width, top */
+  .archive-detail__grid > [class*="text-"] {
     grid-column: 1 / -1 !important;
     grid-row: auto !important;
     padding: 0 0 var(--space-2) 0;
