@@ -26,22 +26,29 @@
     }
 
     .cafe {
-      padding: var(--space-6) var(--space-3) var(--space-8) var(--page-margin);
+      padding: clamp(24px, 4vw, var(--space-6)) var(--space-3) clamp(24px, 4vw, var(--space-5)) var(--page-margin);
+      min-height: 100dvh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .cafe__catalog {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      gap: clamp(16px, 2vw, var(--space-4));
     }
 
     .cafe__photo {
       width: 100%;
       max-width: 980px;
+      max-height: 55dvh;
       aspect-ratio: 4 / 3;
       background: var(--color-hover);
       overflow: hidden;
-      margin: 0 0 var(--space-4) 0;
+      margin: 0;
     }
     .cafe__photo img {
       width: 100%;
@@ -55,7 +62,7 @@
       max-width: 980px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--space-5);
+      gap: clamp(16px, 3vw, var(--space-5));
       align-items: start;
     }
 
@@ -88,7 +95,7 @@
     .cafe__right {
       display: flex;
       flex-direction: column;
-      gap: var(--space-8);
+      gap: clamp(20px, 3vw, var(--space-6));
     }
 
     .cafe__title-block {

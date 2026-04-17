@@ -398,6 +398,7 @@
         cards.forEach(function (card) {
           var match = state.value === "all" || card.getAttribute(state.attr) === state.value;
           card.classList.toggle("is-dimmed", !match);
+          card.style.order = match ? "0" : "1";
           if (match) matchCount++;
         });
         countEl.textContent = "(" + matchCount + ")";
