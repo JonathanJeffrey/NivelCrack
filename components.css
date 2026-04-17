@@ -1528,6 +1528,82 @@
 
 
 /* ============================================================
+   10 / ACCOUNT MODAL OVERLAY
+   Centered modal for sign-in. Backdrop click or Escape to close.
+   Built by account-modal.js at runtime.
+   ============================================================ */
+
+.account-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.account-overlay__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease);
+}
+.account-overlay.is-open .account-overlay__backdrop {
+  opacity: 1;
+}
+.account-overlay__panel {
+  position: relative;
+  width: 360px;
+  max-width: calc(100vw - var(--space-4));
+  background: var(--color-bg);
+  border: var(--border-hairline);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform var(--dur-med) var(--ease), opacity var(--dur-med) var(--ease);
+  overscroll-behavior: contain;
+}
+.account-overlay.is-open .account-overlay__panel {
+  transform: translateY(0);
+  opacity: 1;
+}
+.account-overlay__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.account-overlay__title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-text);
+  line-height: 1;
+}
+.account-overlay__close {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease);
+}
+.account-overlay__close:hover {
+  color: var(--color-text);
+}
+.account-overlay__links {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* ============================================================
    XX / ARCHIVE PREV/NEXT NAV
    Minimal bottom navigation for archive detail pages.
    ============================================================ */

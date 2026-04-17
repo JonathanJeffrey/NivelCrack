@@ -4,17 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#FFFFFF" />
-  <title>Cafe NivelCrack — NVLCRK</title>
+  <title>Cart — NVLCRK</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="components.css" />
   <style>
-    .page-layout {
-      display: flex;
-      min-height: 100dvh;
-    }
+    .page-layout { display: flex; min-height: 100dvh; }
     .page-layout__nav {
       width: 240px;
       flex-shrink: 0;
@@ -24,139 +21,188 @@
       height: 100dvh;
       overflow-y: auto;
     }
-    .page-layout__main {
-      flex: 1;
-      min-width: 0;
-    }
+    .page-layout__main { flex: 1; min-width: 0; }
 
-    .cafe {
-      padding: clamp(24px, 4vw, var(--space-6)) var(--space-3) clamp(24px, 4vw, var(--space-5)) var(--page-margin);
+    .cart-page {
+      padding: var(--space-5) var(--space-5);
       min-height: 100dvh;
-      box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
 
-    .cafe__catalog {
+    .cart-page__header {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: clamp(16px, 2vw, var(--space-4));
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: var(--space-3);
+      border-bottom: var(--border-hairline);
+      margin-bottom: var(--space-4);
     }
-
-    .cafe__photo {
-      width: min(100%, 980px, calc(55dvh * 4 / 3));
-      min-width: 480px;
-      min-height: 360px;
-      aspect-ratio: 4 / 3;
-      background: var(--color-hover);
-      overflow: hidden;
-      margin: 0;
-    }
-    .cafe__photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .cafe__info {
-      width: min(100%, 980px, calc(55dvh * 4 / 3));
-      min-width: 480px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(16px, 3vw, var(--space-5));
-      align-items: start;
-    }
-
-    .cafe__specs {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+    .cart-page__title {
       font-family: var(--font-body);
-      font-size: var(--text-micro);
+      font-size: 11px;
       font-weight: var(--weight-medium);
       text-transform: uppercase;
       letter-spacing: var(--tracking-label);
-    }
-    .cafe__spec {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--space-3);
-      max-width: 180px;
-    }
-    .cafe__spec-key {
-      color: var(--color-text-secondary);
-    }
-    .cafe__spec-val {
       color: var(--color-text);
+      line-height: 1;
+      margin: 0;
+    }
+    .cart-page__count {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+      line-height: 1;
     }
 
-    .cafe__right {
+    .cart-page__items {
       display: flex;
       flex-direction: column;
-      gap: clamp(20px, 3vw, var(--space-6));
+      gap: var(--space-4);
+      flex: 1;
     }
 
-    .cafe__title-block {
+    .cart-page__empty {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-5) 0;
+    }
+    .cart-page__empty-text {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: var(--weight-regular);
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+    }
+
+    .cart-page__footer {
+      padding-top: var(--space-4);
+      border-top: var(--border-hairline);
+      margin-top: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      max-width: 360px;
+      margin-left: auto;
+    }
+
+    .cart-page__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .cart-page__row-label,
+    .cart-page__row-value {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+      line-height: 1;
+    }
+
+    .cart-page__note {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    /* Cart item with remove button */
+    .cart-page__item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: var(--space-3);
+    }
+    .cart-page__item-image {
+      width: 100px;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--color-hover);
+    }
+    .cart-page__item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cart-page__item-details {
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
-    .cafe__title {
+    .cart-page__item-name {
       font-family: var(--font-body);
-      font-size: var(--text-small);
-      font-weight: var(--weight-semibold);
+      font-size: 11px;
+      font-weight: var(--weight-medium);
       text-transform: uppercase;
       letter-spacing: var(--tracking-label);
       color: var(--color-text);
-      margin: 0 0 4px 0;
+      line-height: 1.25;
     }
-    .cafe__title-meta {
+    .cart-page__item-variant {
       font-family: var(--font-body);
-      font-size: var(--text-micro);
-      font-weight: var(--weight-regular);
+      font-size: 11px;
+      font-weight: var(--weight-medium);
       text-transform: uppercase;
       letter-spacing: var(--tracking-label);
       color: var(--color-text-secondary);
-      line-height: 1.6;
-      margin: 0;
+      line-height: 1.25;
     }
-
-    .cafe__essay {
+    .cart-page__item-qty {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
+      align-items: center;
+      margin-top: var(--space-2);
     }
-    .cafe__essay-title {
+    .cart-page__item-qty-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .cart-page__item-qty-btn {
       font-family: var(--font-body);
-      font-size: var(--text-small);
-      font-weight: var(--weight-semibold);
-      text-transform: uppercase;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      padding: 8px;
+      cursor: pointer;
+      transition: color var(--dur-fast) var(--ease);
+      line-height: 1;
+    }
+    .cart-page__item-qty-btn:hover { color: var(--color-text); }
+    .cart-page__item-qty-value {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: var(--weight-medium);
       letter-spacing: var(--tracking-label);
       color: var(--color-text);
-      margin: 0;
+      line-height: 1;
     }
-    .cafe__essay-body {
+    .cart-page__item-price {
       font-family: var(--font-body);
-      font-size: var(--text-small);
-      font-weight: var(--weight-regular);
-      color: var(--color-text);
-      line-height: var(--lh-body);
-      margin: 0;
+      font-size: 11px;
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+      line-height: 1;
+      margin-left: auto;
     }
 
     @media (max-width: 768px) {
       .page-layout { flex-direction: column; }
-      .page-layout__nav { width: 100%; position: static; height: auto; border-right: none; border-bottom: var(--border-hairline); margin-left: 0; }
-      .page-layout__main { margin-left: 0; }
-      .cafe__photo { min-width: 0; min-height: 0; }
-      .cafe__info { grid-template-columns: 1fr; gap: var(--space-4); min-width: 0; width: 100%; }
-      .cafe__spec { max-width: none; }
+      .page-layout__nav { width: 100%; position: relative; height: auto; border-right: none; border-bottom: var(--border-hairline); }
+      .cart-page { padding: var(--space-3); }
+      .cart-page__footer { max-width: none; }
     }
   </style>
   <link rel="stylesheet" href="mobile-overrides.css" />
@@ -188,37 +234,29 @@
     </div>
 
     <main id="main-content" class="page-layout__main">
-      <div class="cafe">
+      <div class="cart-page">
 
-        <div class="cafe__catalog">
+        <header class="cart-page__header">
+          <h1 class="cart-page__title">Your Cart</h1>
+          <span class="cart-page__count" id="cart-page-count">0 Items</span>
+        </header>
 
-          <figure class="cafe__photo">
-            <img src="Assets/cafe.jpg" alt="Cafe NivelCrack — Mapo-gu, Seoul" width="1000" height="666" />
-          </figure>
-
-          <div class="cafe__info">
-
-            <ul class="cafe__specs" role="list">
-              <li class="cafe__spec"><span class="cafe__spec-key">M–F</span><span class="cafe__spec-val">09–19</span></li>
-              <li class="cafe__spec"><span class="cafe__spec-key">Sat</span><span class="cafe__spec-val">11–19</span></li>
-              <li class="cafe__spec"><span class="cafe__spec-key">Sun</span><span class="cafe__spec-val">Closed</span></li>
-            </ul>
-
-            <div class="cafe__right">
-              <div class="cafe__title-block">
-                <h1 class="cafe__title">Cafe NivelCrack</h1>
-                <p class="cafe__title-meta">31, Donggyo-ro 18-gil, Mapo-gu, Seoul, Korea</p>
-                <p class="cafe__title-meta">@cafe_nivelcrack</p>
-              </div>
-              <div class="cafe__essay">
-                <h2 class="cafe__essay-title">Més que un café</h2>
-                <p class="cafe__essay-body">Café NivelCrack offers great coffee, music and merchandise inspired by football culture. Established under the same principles as NIVELCRACK, a brand that inspires through football, we provide our community with the energy just as coffee and football bring into everyday lives.</p>
-              </div>
-            </div>
-
+        <div class="cart-page__items" id="cart-page-items">
+          <div class="cart-page__empty" id="cart-empty">
+            <span class="cart-page__empty-text">Your cart is empty</span>
+            <a href="shop.html" class="btn btn--secondary btn--sm">Continue Shopping</a>
           </div>
-
         </div>
+
+        <footer class="cart-page__footer" id="cart-page-footer" hidden>
+          <p class="cart-page__note">Exchange or refund due to size is not acceptable so please check the size chart carefully before ordering.</p>
+          <p class="cart-page__note">The customs duties and VAT are not included so please check the conditions of your country before purchasing.</p>
+          <div class="cart-page__row">
+            <span class="cart-page__row-label">Subtotal</span>
+            <span class="cart-page__row-value" id="cart-page-subtotal">0.00 USD</span>
+          </div>
+          <button type="button" class="btn btn--primary btn--lg btn--block">Check Out</button>
+        </footer>
 
       </div>
     </main>
