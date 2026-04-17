@@ -20,7 +20,7 @@
 
 :root {
   /* Color — neutrals only. Accent is per-collection (override --color-accent). */
-  --color-bg:             #FAFAFA;  /* warm off-white */
+  --color-bg:             #FFFFFF;  /* pure white — matches product photo bg */
   --color-surface:        #FFFFFF;
   --color-text:           #1A1A1A;  /* near-black */
   --color-text-secondary: #6B6B6B;

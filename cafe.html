@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cafe NivelCrack — NVLCRK</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    .page-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .page-layout__nav {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .page-layout__main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cafe {
+      padding: var(--space-6) var(--space-3) var(--space-8) var(--page-margin);
+    }
+
+    .cafe__catalog {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .cafe__photo {
+      width: 100%;
+      max-width: 980px;
+      aspect-ratio: 4 / 3;
+      background: var(--color-hover);
+      overflow: hidden;
+      margin: 0 0 var(--space-4) 0;
+    }
+    .cafe__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cafe__info {
+      width: 100%;
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+      align-items: start;
+    }
+
+    .cafe__specs {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+    }
+    .cafe__spec {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      max-width: 180px;
+    }
+    .cafe__spec-key {
+      color: var(--color-text-secondary);
+    }
+    .cafe__spec-val {
+      color: var(--color-text);
+    }
+
+    .cafe__right {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    .cafe__title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .cafe__title {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+      margin: 0 0 4px 0;
+    }
+    .cafe__title-meta {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-regular);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .cafe__essay {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cafe__essay-title {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+      margin: 0;
+    }
+    .cafe__essay-body {
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: var(--weight-regular);
+      color: var(--color-text);
+      line-height: var(--lh-body);
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .page-layout { flex-direction: column; }
+      .page-layout__nav { width: 100%; position: static; height: auto; border-right: none; border-bottom: var(--border-hairline); margin-left: 0; }
+      .page-layout__main { margin-left: 0; }
+      .cafe__info { grid-template-columns: 1fr; gap: var(--space-4); }
+      .cafe__spec { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-layout">
+
+    <div class="page-layout__nav">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="site-nav__inner">
+          <div class="site-nav__top">
+            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><img src="Assets/NC_Logo_Monogram.png" alt="NivelCrack" /></a>
+            <ul class="site-nav__sections" role="list">
+              <li class="nav-section"><a href="shop.html" class="nav-section__header"><span class="nav-section__num">01</span><span class="nav-section__label">Shop</span></a></li>
+              <li class="nav-section"><a href="about.html" class="nav-section__header"><span class="nav-section__num">02</span><span class="nav-section__label">About</span></a></li>
+              <li class="nav-section"><a href="archive.html" class="nav-section__header"><span class="nav-section__num">03</span><span class="nav-section__label">Archive</span></a></li>
+              <li class="nav-section"><a href="cafe.html" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
+              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Stockists</span></a></li>
+            </ul>
+          </div>
+          <div class="site-nav__bottom">
+            <a href="#" class="site-nav__link">Account</a>
+            <a href="#" class="site-nav__link">Cart (0)</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <main class="page-layout__main">
+      <div class="cafe">
+
+        <div class="cafe__catalog">
+
+          <figure class="cafe__photo">
+            <img src="Assets/cafe.jpg" alt="Cafe NivelCrack — Mapo-gu, Seoul" />
+          </figure>
+
+          <div class="cafe__info">
+
+            <ul class="cafe__specs" role="list">
+              <li class="cafe__spec"><span class="cafe__spec-key">M–F</span><span class="cafe__spec-val">09–19</span></li>
+              <li class="cafe__spec"><span class="cafe__spec-key">Sat</span><span class="cafe__spec-val">11–19</span></li>
+              <li class="cafe__spec"><span class="cafe__spec-key">Sun</span><span class="cafe__spec-val">Closed</span></li>
+            </ul>
+
+            <div class="cafe__right">
+              <div class="cafe__title-block">
+                <h1 class="cafe__title">Cafe NivelCrack</h1>
+                <p class="cafe__title-meta">31, Donggyo-ro 18-gil, Mapo-gu, Seoul, Korea</p>
+                <p class="cafe__title-meta">@cafe_nivelcrack</p>
+              </div>
+              <div class="cafe__essay">
+                <h2 class="cafe__essay-title">Més que un café</h2>
+                <p class="cafe__essay-body">Café NivelCrack offers great coffee, music and merchandise inspired by football culture. Established under the same principles as NIVELCRACK, a brand that inspires through football, we provide our community with the energy just as coffee and football bring into everyday lives.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <span class="site-footer__logo">NVLCRK</span>
+        <div class="site-footer__columns">
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Shop</span>
+            <a href="shop.html" class="site-footer__link">West Ham United</a>
+            <a href="shop.html" class="site-footer__link">Club America</a>
+            <a href="shop.html" class="site-footer__link">Fresh Patterns</a>
+            <a href="shop.html" class="site-footer__link">Classic Shirts</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Info</span>
+            <a href="about.html" class="site-footer__link">About</a>
+            <a href="cafe.html" class="site-footer__link">Cafe NivelCrack</a>
+            <a href="archive.html" class="site-footer__link">Archive</a>
+            <a href="contact.html" class="site-footer__link">Stockists</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Contact</span>
+            <a href="mailto:hello@nivelcrack.com" class="site-footer__link">hello@nivelcrack.com</a>
+            <a href="mailto:wholesale@nivelcrack.com" class="site-footer__link">Wholesale</a>
+            <a href="https://instagram.com/nivelcrack" class="site-footer__link">Instagram</a>
+            <a href="#" class="site-footer__link">Newsletter</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Support</span>
+            <a href="#" class="site-footer__link">Shipping</a>
+            <a href="#" class="site-footer__link">Returns</a>
+            <a href="#" class="site-footer__link">Size Guide</a>
+            <a href="#" class="site-footer__link">FAQ</a>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span class="site-footer__copy">&copy; NivelCrack 2025. All rights reserved.</span>
+        <div class="site-footer__legal">
+          <a href="#" class="site-footer__legal-link">Privacy Policy</a>
+          <a href="#" class="site-footer__legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

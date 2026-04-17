@@ -7,24 +7,178 @@
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="components.css" />
   <style>
-    .page-layout {
-      display: flex;
-      min-height: 100vh;
-    }
+    .page-layout { display: flex; min-height: 100vh; }
     .page-layout__nav {
-      width: 25%;
+      width: 240px;
       flex-shrink: 0;
-      border-right: var(--border-hairline);
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
+      align-self: flex-start;
       height: 100vh;
       overflow-y: auto;
     }
-    .page-layout__main {
-      flex: 1;
-      min-width: 0;
-      margin-left: 25%;
+    .page-layout__main { flex: 1; min-width: 0; }
+
+    /* Specimen-book product grid */
+    .specimen-shop {
+      padding: var(--space-3);
+    }
+    .specimen-shop__bar {
+      padding: var(--space-4) var(--space-3) var(--space-3);
+      text-align: left;
+    }
+    .specimen-shop__headline {
+      font-family: var(--font-display);
+      font-weight: var(--weight-bold);
+      font-size: clamp(24px, 2.6vw, 34px);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-title);
+      line-height: 1.15;
+      color: var(--color-text);
+      margin: 0;
+      width: 100%;
+    }
+    .specimen-shop__headline .specimen-shop__lede {
+      color: var(--color-text);
+    }
+    .specimen-shop__filter {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font: inherit;
+      color: var(--color-text-muted);
+      transition: color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .specimen-shop__filter:hover {
+      color: var(--color-text);
+    }
+    .specimen-shop__filter.is-active {
+      color: var(--color-text);
+    }
+    .specimen-shop__filter::after {
+      content: ",";
+      color: var(--color-text-muted);
+      margin-right: 0.15em;
+      transition: color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .specimen-shop__filter:hover::after,
+    .specimen-shop__filter.is-active::after {
+      color: var(--color-text);
+    }
+    .specimen-shop__filter:last-of-type::after {
+      content: "";
+      margin-right: 0;
+    }
+    .specimen-shop__count {
+      font: inherit;
+      color: inherit;
+    }
+
+    .specimen-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--color-border);
+      border: var(--border-hairline);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .specimen-card {
+      background: var(--color-bg);
+      position: relative;
+      transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .specimen-card.is-dimmed {
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .specimen-card__link {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      height: 100%;
+      width: 100%;
+    }
+    .specimen-card__media {
+      aspect-ratio: 1 / 1;
+      position: relative;
+      padding: var(--space-4);
+      box-sizing: border-box;
+    }
+    .specimen-card__media img {
+      position: absolute;
+      inset: var(--space-4);
+      width: calc(100% - 2 * var(--space-4));
+      height: calc(100% - 2 * var(--space-4));
+      object-fit: contain;
+      display: block;
+    }
+    .specimen-card__media img.is-primary {
+      z-index: 1;
+      transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .specimen-card__link:hover .specimen-card__media img.is-primary {
+      opacity: 0;
+    }
+    .specimen-card__placeholder {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+    }
+    .specimen-card__num {
+      position: absolute;
+      top: var(--space-1);
+      left: var(--space-1);
+      font-family: var(--font-body);
+      font-size: 9px;
+      font-weight: var(--weight-regular);
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+    .specimen-card__label {
+      position: relative;
+      padding: 0 var(--space-2) var(--space-2);
+      text-align: center;
+      min-height: calc(var(--text-micro) * 1.4 + var(--space-2));
+    }
+    .specimen-card__name,
+    .specimen-card__price {
+      display: block;
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      line-height: 1.3;
+      transition: opacity var(--dur-fast) var(--ease);
+    }
+    .specimen-card__name {
+      font-weight: var(--weight-medium);
+      color: var(--color-text);
+    }
+    .specimen-card__price {
+      font-weight: var(--weight-regular);
+      color: var(--color-text);
+      position: absolute;
+      inset: 0 var(--space-2) var(--space-2);
+      opacity: 0;
+    }
+    .specimen-card__link:hover .specimen-card__name { opacity: 0; }
+    .specimen-card__link:hover .specimen-card__price { opacity: 1; }
+
+    @media (max-width: 1024px) {
+      .specimen-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .page-layout { flex-direction: column; }
+      .page-layout__nav { width: 100%; height: auto; position: relative; border-right: none; border-bottom: var(--border-hairline); }
+      .specimen-grid { grid-template-columns: repeat(2, 1fr); }
+      .specimen-card__media { padding: var(--space-3); }
     }
   </style>
 </head>
@@ -36,13 +190,13 @@
       <nav class="site-nav" aria-label="Primary">
         <div class="site-nav__inner">
           <div class="site-nav__top">
-            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><span>N</span><span>V</span><span>L</span><span>C</span><span>R</span><span>K</span></a>
+            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><img src="Assets/NC_Logo_Monogram.png" alt="NivelCrack" /></a>
             <ul class="site-nav__sections" role="list">
               <li class="nav-section"><a href="shop.html" class="nav-section__header"><span class="nav-section__num">01</span><span class="nav-section__label">Shop</span></a></li>
               <li class="nav-section"><a href="about.html" class="nav-section__header"><span class="nav-section__num">02</span><span class="nav-section__label">About</span></a></li>
               <li class="nav-section"><a href="archive.html" class="nav-section__header"><span class="nav-section__num">03</span><span class="nav-section__label">Archive</span></a></li>
-              <li class="nav-section"><a href="about.html#cafe" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
-              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Contact</span></a></li>
+              <li class="nav-section"><a href="cafe.html" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
+              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Stockists</span></a></li>
             </ul>
           </div>
           <div class="site-nav__bottom">
@@ -55,38 +209,24 @@
 
     <main class="page-layout__main">
 
-      <div class="product-grid">
+      <div class="specimen-shop">
 
-        <header class="product-grid__bar">
-          <div class="product-grid__heading">
-            <div class="collection-dropdown" data-open="false">
-              <button type="button" class="collection-dropdown__trigger" aria-haspopup="listbox" aria-expanded="false">
-                <span class="collection-dropdown__label" id="collection-title">All</span>
-                <span class="collection-dropdown__caret" aria-hidden="true">▾</span>
-              </button>
-              <ul class="collection-dropdown__menu" role="listbox" hidden>
-                <li role="option" data-collection="all" aria-selected="true">All Collections</li>
-                <li role="option" data-collection="westham">West Ham United</li>
-                <li role="option" data-collection="america">Club América</li>
-                <li role="option" data-collection="fresh">Fresh Patterns</li>
-                <li role="option" data-collection="classic">Classic Football Shirts</li>
-              </ul>
-            </div>
-          </div>
-
-          <nav class="product-grid__filters" aria-label="Filter by category">
-            <button type="button" class="product-grid__filter is-active" data-category="all">All</button>
-            <button type="button" class="product-grid__filter" data-category="outerwear">Outerwear</button>
-            <button type="button" class="product-grid__filter" data-category="tops">Tops</button>
-            <button type="button" class="product-grid__filter" data-category="bottoms">Bottoms</button>
-            <button type="button" class="product-grid__filter" data-category="headwear">Headwear</button>
-            <button type="button" class="product-grid__filter" data-category="accessories">Accessories</button>
-          </nav>
-
-          <span class="product-grid__count" id="product-count">(25)</span>
+        <header class="specimen-shop__bar">
+          <h2 class="specimen-shop__headline" aria-label="Filter by category or collection">
+            <button type="button" class="specimen-shop__filter is-active" data-category="all">All</button>
+            <button type="button" class="specimen-shop__filter" data-category="outerwear">Outerwear</button>
+            <button type="button" class="specimen-shop__filter" data-category="tops">Tops</button>
+            <button type="button" class="specimen-shop__filter" data-category="bottoms">Bottoms</button>
+            <button type="button" class="specimen-shop__filter" data-category="headwear">Headwear</button>
+            <button type="button" class="specimen-shop__filter" data-category="footwear">Footwear</button>
+            <button type="button" class="specimen-shop__filter" data-category="accessories">Accessories</button>
+            <button type="button" class="specimen-shop__filter" data-collection="whu">NVLCRK X WHU</button>
+            <button type="button" class="specimen-shop__filter" data-collection="ca">NVLCRK X CA</button>
+            <span class="specimen-shop__count" id="product-count">(25)</span>
+          </h2>
         </header>
 
-        <ul class="product-grid__items" role="list" id="product-grid-items"></ul>
+        <ul class="specimen-grid" role="list" id="product-grid-items"></ul>
 
       </div>
 
@@ -109,9 +249,16 @@
           <div class="site-footer__col">
             <span class="site-footer__col-label">Info</span>
             <a href="about.html" class="site-footer__link">About</a>
-            <a href="about.html" class="site-footer__link">Cafe NivelCrack</a>
-            <a href="#" class="site-footer__link">Stockists</a>
-            <a href="contact.html" class="site-footer__link">Contact</a>
+            <a href="cafe.html" class="site-footer__link">Cafe NivelCrack</a>
+            <a href="archive.html" class="site-footer__link">Archive</a>
+            <a href="contact.html" class="site-footer__link">Stockists</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Contact</span>
+            <a href="mailto:hello@nivelcrack.com" class="site-footer__link">hello@nivelcrack.com</a>
+            <a href="mailto:wholesale@nivelcrack.com" class="site-footer__link">Wholesale</a>
+            <a href="https://instagram.com/nivelcrack" class="site-footer__link">Instagram</a>
+            <a href="#" class="site-footer__link">Newsletter</a>
           </div>
           <div class="site-footer__col">
             <span class="site-footer__col-label">Support</span>
@@ -119,11 +266,6 @@
             <a href="#" class="site-footer__link">Returns</a>
             <a href="#" class="site-footer__link">Size Guide</a>
             <a href="#" class="site-footer__link">FAQ</a>
-          </div>
-          <div class="site-footer__col">
-            <span class="site-footer__col-label">Follow</span>
-            <a href="#" class="site-footer__link">Instagram</a>
-            <a href="#" class="site-footer__link">Newsletter</a>
           </div>
         </div>
       </div>
@@ -139,78 +281,111 @@
 
   <script>
     (function () {
-      var logo = document.querySelector('.nav-brand__logo');
-      if (!logo) return;
-      function fit() {
-        logo.style.fontSize = (logo.offsetWidth * 0.16) + 'px';
-      }
-      document.fonts.ready.then(function () { fit(); window.addEventListener('resize', fit); });
-    })();
-  </script>
-
-  <script>
-    (function () {
       var products = [
-        { collection: "westham", category: "tops",        name: "Home Kit 25/26",     price: "95.00 USD",  img: "Assets/WestHam.jpg", sizes: ["S","M","L","XL"] },
-        { collection: "westham", category: "tops",        name: "Away Kit 25/26",     price: "95.00 USD",  img: "Assets/WestHam.jpg", sizes: ["M","L","XL"] },
-        { collection: "westham", category: "tops",        name: "Third Kit 25/26",    price: "95.00 USD",  img: "Assets/WestHam.jpg", sizes: ["S","M","L"] },
-        { collection: "westham", category: "outerwear",   name: "Warmup Jacket",      price: "145.00 USD", img: "Assets/WestHam.jpg", sizes: ["M","L","XL"] },
-        { collection: "westham", category: "bottoms",     name: "Training Pant",      price: "75.00 USD",  img: "Assets/WestHam.jpg", sizes: ["S","M","L","XL"] },
-        { collection: "westham", category: "headwear",    name: "Stadium Cap",        price: "45.00 USD",  img: "Assets/WestHam.jpg", sizes: ["One Size"] },
-        { collection: "westham", category: "accessories", name: "Supporter Scarf",    price: "35.00 USD",  img: "Assets/WestHam.jpg", sizes: ["One Size"] },
-        { collection: "america", category: "tops",        name: "Home Kit 25/26",     price: "95.00 USD",  img: "", sizes: ["S","M","L","XL"] },
-        { collection: "america", category: "tops",        name: "Away Kit 25/26",     price: "95.00 USD",  img: "", sizes: ["M","L","XL"] },
-        { collection: "america", category: "tops",        name: "Centenario Retro",   price: "120.00 USD", img: "", sizes: ["S","M","L"] },
-        { collection: "america", category: "outerwear",   name: "Tracksuit Jacket",   price: "155.00 USD", img: "", sizes: ["M","L","XL"] },
-        { collection: "america", category: "bottoms",     name: "Tracksuit Pant",     price: "95.00 USD",  img: "", sizes: ["S","M","L","XL"] },
-        { collection: "america", category: "headwear",    name: "Aguilas Cap",        price: "42.00 USD",  img: "", sizes: ["One Size"] },
-        { collection: "fresh",   category: "tops",        name: "Pattern Tee 01",     price: "58.00 USD",  img: "", sizes: ["S","M","L","XL"] },
-        { collection: "fresh",   category: "tops",        name: "Pattern Tee 02",     price: "58.00 USD",  img: "", sizes: ["M","L"] },
-        { collection: "fresh",   category: "bottoms",     name: "Tailored Short",     price: "82.00 USD",  img: "", sizes: ["S","M","L"] },
-        { collection: "fresh",   category: "headwear",    name: "Workshop Cap",       price: "48.00 USD",  img: "", sizes: ["One Size"] },
-        { collection: "fresh",   category: "accessories", name: "Tote Bag",           price: "38.00 USD",  img: "", sizes: ["One Size"] },
-        { collection: "classic", category: "tops",        name: "Boca Juniors '81",   price: "110.00 USD", img: "", sizes: ["M","L"] },
-        { collection: "classic", category: "tops",        name: "Napoli '87",         price: "125.00 USD", img: "", sizes: ["S","M","L"] },
-        { collection: "classic", category: "tops",        name: "Milan '94",          price: "115.00 USD", img: "", sizes: ["M","L","XL"] },
-        { collection: "classic", category: "outerwear",   name: "Rain Cagoule",       price: "165.00 USD", img: "", sizes: ["S","M","L","XL"] },
-        { collection: "classic", category: "headwear",    name: "Bucket Hat",         price: "52.00 USD",  img: "", sizes: ["One Size"] },
-        { collection: "classic", category: "accessories", name: "Pennant",            price: "28.00 USD",  img: "", sizes: ["One Size"] },
-        { collection: "classic", category: "accessories", name: "Program Book",       price: "18.00 USD",  img: "", sizes: ["One Size"] }
+        { category: "outerwear",   name: "NIVELCRACK X WEST HAM UNITED - WORK JACKET",       price: "135.00 USD", img: "Assets/products/image_1773731847731_1000.jpg", imgHover: "Assets/products/image_1773731847883_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X WEST HAM UNITED - SWEATSHIRT",        price: "115.00 USD", img: "Assets/products/image_1773731925142_1000.jpg", imgHover: "Assets/products/image_1773731925276_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X WEST HAM UNITED - TEE WHITE",         price: "50.00 USD",  img: "Assets/products/image_1773731980306_1000.jpg", imgHover: "Assets/products/image_1773731980466_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X WEST HAM UNITED - TEE BLACK",         price: "50.00 USD",  img: "Assets/products/image_1773732027250_1000.jpg", imgHover: "Assets/products/image_1773732027375_1000.jpg" },
+        { category: "headwear",    name: "NIVELCRACK X WEST HAM UNITED - CAP",               price: "40.00 USD",  img: "Assets/products/image_1773732059100_1000.jpg", imgHover: "Assets/products/image_1773732059239_1000.jpg" },
+        { category: "accessories", name: "NIVELCRACK X WEST HAM UNITED - BOWLING BAG",       price: "125.00 USD", img: "Assets/products/image_1773732136443_1000.jpg", imgHover: "Assets/products/image_1773732136620_1000.jpg" },
+        { category: "accessories", name: "NIVELCRACK X WEST HAM UNITED - SCARF",             price: "45.00 USD",  img: "Assets/products/image_1773732217819_1000.jpg", imgHover: "Assets/products/image_1773732218291_1000.jpg" },
+        { category: "accessories", name: "NIVELCRACK X WEST HAM UNITED - SOCKS",             price: "10.00 USD",  img: "Assets/products/image_1773732250635_1000.jpg", imgHover: "Assets/products/image_1773732250813_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - JERSEY",  price: "100.00 USD", img: "Assets/products/image_1757990567571_1000.jpg", imgHover: "Assets/products/image_1758001984070_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - SINGLET", price: "80.00 USD",  img: "Assets/products/image_1757990657340_1000.jpg", imgHover: "Assets/products/image_1757990657571_1000.jpg" },
+        { category: "outerwear",   name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - JACKET",  price: "135.00 USD", img: "Assets/products/image_1757990536494_1000.jpg", imgHover: "Assets/products/image_1757990536687_1000.jpg" },
+        { category: "bottoms",     name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - SHORTS",  price: "55.00 USD",  img: "Assets/products/image_1757990806131_1000.jpg", imgHover: "Assets/products/image_1757990806343_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - TEE BLACK", price: "45.00 USD", img: "Assets/products/image_1757990692746_1000.jpg", imgHover: "Assets/products/image_1757990692956_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - TEE WHITE", price: "45.00 USD", img: "Assets/products/image_1757990763211_1000.jpg", imgHover: "Assets/products/image_1757990763376_1000.jpg" },
+        { category: "headwear",    name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - CAP BLACK", price: "45.00 USD", img: "Assets/products/image_1757990829867_1000.jpg", imgHover: "Assets/products/image_1757990830085_1000.jpg" },
+        { category: "headwear",    name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - CAP BEIGE", price: "45.00 USD", img: "Assets/products/image_1757990862585_1000.jpg", imgHover: "Assets/products/image_1757990862782_1000.jpg" },
+        { category: "accessories", name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - SCARF TOWEL", price: "30.00 USD", img: "Assets/products/image_1757990938351_1000.jpg", imgHover: "Assets/products/image_1757990938526_1000.jpg" },
+        { category: "accessories", name: "NIVELCRACK X FRESH PATTERNS COLLECTIVE - SOCKS",   price: "15.00 USD",  img: "Assets/products/image_1757990955605_1000.jpg", imgHover: "Assets/products/image_1757990955771_1000.jpg" },
+        { category: "footwear",    name: "NIVELCRACK X PUMA KING INDOOR",                    price: "160.00 USD", img: "Assets/products/image_1758506304322_1000.jpg", imgHover: "Assets/products/image_1758506304693_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X CLUB AMÉRICA - TRAINING TOP",         price: "120.00 USD", img: "Assets/products/image_1748999884782_1000.jpg", imgHover: "Assets/products/image_1748999885073_1000.jpg" },
+        { category: "bottoms",     name: "NIVELCRACK X CLUB AMÉRICA - TRACK PANTS",          price: "90.00 USD",  img: "Assets/products/image_1749000349959_1000.jpg", imgHover: "Assets/products/image_1749000354089_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X CLUB AMÉRICA - SHIRT OFF WHITE",      price: "115.00 USD", img: "Assets/products/image_1749017743126_1000.jpg", imgHover: "Assets/products/image_1749017743330_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X CLUB AMÉRICA - SHIRT BLACK",          price: "115.00 USD", img: "Assets/products/image_1749017646745_1000.jpg", imgHover: "Assets/products/image_1749017646947_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X CLUB AMÉRICA - TEE WHITE",            price: "50.00 USD",  img: "Assets/products/image_1749018839102_1000.jpg", imgHover: "Assets/products/image_1749018839371_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X CLUB AMÉRICA - TEE BLACK",            price: "50.00 USD",  img: "Assets/products/image_1749018860343_1000.jpg", imgHover: "Assets/products/image_1749018860595_1000.jpg" },
+        { category: "headwear",    name: "NIVELCRACK X CLUB AMÉRICA - CAP OFF WHITE",        price: "40.00 USD",  img: "Assets/products/image_1749016279869_1000.jpg", imgHover: "Assets/products/image_1749016280033_1000.jpg" },
+        { category: "headwear",    name: "NIVELCRACK X CLUB AMÉRICA - CAP BLACK",            price: "40.00 USD",  img: "Assets/products/image_1749016183977_1000.jpg", imgHover: "Assets/products/image_1749016184172_1000.jpg" },
+        { category: "accessories", name: "NIVELCRACK X CLUB AMÉRICA - SOCKS",                price: "15.00 USD",  img: "Assets/products/image_1749000665720_1000.jpg", imgHover: "Assets/products/image_1749000665969_1000.jpg" },
+        { category: "tops",        name: "CAFE NIVELCRACK - LEMONALDO JERSEY",               price: "90.00 USD",  img: "Assets/products/image_1744089768575_1000.jpg", imgHover: "Assets/products/image_1744089768812_1000.jpg" },
+        { category: "tops",        name: "CAFE NIVELCRACK - LEMONALDO TEE WHITE",            price: "45.00 USD",  img: "Assets/products/image_1744090854175_1000.jpg", imgHover: "Assets/products/image_1744090854400_1000.jpg" },
+        { category: "tops",        name: "CAFE NIVELCRACK - LEMONALDO TEE BLACK",            price: "45.00 USD",  img: "Assets/products/image_1744090870159_1000.jpg", imgHover: "Assets/products/image_1744090870362_1000.jpg" },
+        { category: "headwear",    name: "CAFE NIVELCRACK - LEMONALDO CAP WHITE",            price: "40.00 USD",  img: "Assets/products/image_1744091467485_1000.png", imgHover: "Assets/products/image_1744091467749_1000.jpg" },
+        { category: "headwear",    name: "CAFE NIVELCRACK - LEMONALDO CAP BLUE",             price: "40.00 USD",  img: "Assets/products/image_1744091224628_1000.jpg", imgHover: "Assets/products/image_1744091224826_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X SOCCERBEE - JERSEY",                  price: "90.00 USD",  img: "Assets/products/image_1741823782581_1000.png", imgHover: "Assets/products/image_1741748728074_1000.png" },
+        { category: "tops",        name: "NIVELCRACK X SEVMID - JERSEY",                     price: "100.00 USD", img: "Assets/products/image_1732803787706_1000.png", imgHover: "Assets/products/image_1732803787378_1000.png" },
+        { category: "tops",        name: "NIVELCRACK X SEVMID - LONG SLEEVE JERSEY",         price: "70.00 USD",  img: "Assets/products/image_1732804691882_1000.jpg", imgHover: "Assets/products/image_1732804692432_1000.jpg" },
+        { category: "outerwear",   name: "NIVELCRACK X SEVMID - JACKET",                     price: "110.00 USD", img: "Assets/products/image_1732805675915_1000.jpg", imgHover: "Assets/products/image_1732805675661_1000.jpg" },
+        { category: "bottoms",     name: "NIVELCRACK X SEVMID - SHORT",                      price: "55.00 USD",  img: "Assets/products/image_1732840046632_1000.jpg", imgHover: "Assets/products/image_1732840046806_1000.jpg" },
+        { category: "headwear",    name: "NIVELCRACK X SEVMID - CAP",                        price: "45.00 USD",  img: "Assets/products/image_1732841347643_1000.jpg", imgHover: "Assets/products/image_1732841347264_1000.jpg" },
+        { category: "outerwear",   name: "NIVELCRACK - FENOMENO TRACK JACKET",               price: "155.00 USD", img: "Assets/products/image_1727271777808_1000.jpg", imgHover: "Assets/products/image_1727271778008_1000.jpg" },
+        { category: "bottoms",     name: "NIVELCRACK - FENOMENO TRACK PANTS",                price: "130.00 USD", img: "Assets/products/image_1727271997551_1000.jpg", imgHover: "Assets/products/image_1727271997735_1000.jpg" },
+        { category: "accessories", name: "NIVELCRACK X PROGRESS - EDGAR GLASSES BLACK",      price: "125.00 USD", img: "Assets/products/image_1722422908298_1000.jpg", imgHover: "Assets/products/image_1722422908493_1000.jpg" },
+        { category: "accessories", name: "NIVELCRACK X PROGRESS - EDGAR GLASSES GREY",       price: "125.00 USD", img: "Assets/products/image_1722423640556_1000.jpg", imgHover: "Assets/products/image_1722423640675_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X PROGRESS - EDGAR JERSEY",             price: "105.00 USD", img: "Assets/products/image_1722420973805_1000.jpg", imgHover: "Assets/products/image_1722420973951_1000.jpg" },
+        { category: "tops",        name: "CAFE NIVELCRACK - LATTE JERSEY",                   price: "100.00 USD", img: "Assets/products/image_1721024877972_1000.jpg", imgHover: "Assets/products/image_1721024878129_1000.jpg" },
+        { category: "tops",        name: "CAFE NIVELCRACK - LEO MIAMI TEE PINK",             price: "40.00 USD",  img: "Assets/products/image_1721006572964_1000.jpg", imgHover: "Assets/products/image_1721006573208_1000.jpg" },
+        { category: "tops",        name: "NIVELCRACK X NSS SPORTS JERSEY BLUE",              price: "70.00 USD",  img: "Assets/products/image_1719969370678_1000.png", imgHover: "Assets/products/image_1719969370446_1000.png" },
+        { category: "tops",        name: "CAFE NIVELCRACK - CHAMPIONSHIP TEE CREAM",         price: "40.00 USD",  img: "Assets/products/image_1718855776135_1000.jpg", imgHover: "Assets/products/image_1718855776135_1000.jpg" },
+        { category: "tops",        name: "CAFE NIVELCRACK - CHAMPIONSHIP TEE BLACK",         price: "40.00 USD",  img: "Assets/products/image_1718855872585_1000.jpg", imgHover: "Assets/products/image_1718855872585_1000.jpg" },
+        { category: "outerwear",   name: "CAFE NIVELCRACK - MATE TRACK JACKET",              price: "135.00 USD", img: "Assets/products/image_1715823156384_1000.jpg", imgHover: "Assets/products/image_1715823156642_1000.jpg" },
+        { category: "bottoms",     name: "CAFE NIVELCRACK - MATE SHORTS",                    price: "70.00 USD",  img: "Assets/products/image_1715825989791_1000.jpg", imgHover: "Assets/products/image_1715825990017_1000.jpg" },
+        { category: "tops",        name: "CAFE NIVELCRACK - MATE TEE WHITE",                 price: "45.00 USD",  img: "Assets/products/image_1715825753368_1000.jpg", imgHover: "Assets/products/image_1716162550036_1000.jpg" },
+        { category: "tops",        name: "CAFE NIVELCRACK - MATE TEE BLACK",                 price: "45.00 USD",  img: "Assets/products/image_1715825694966_1000.jpg", imgHover: "Assets/products/image_1716162533577_1000.jpg" },
+        { category: "accessories", name: "CAFE NIVELCRACK - MATE CUP WHITE",                 price: "30.00 USD",  img: "Assets/products/image_1715826779970_1000.jpg", imgHover: "Assets/products/image_1715826784149_1000.jpg" },
+        { category: "accessories", name: "CAFE NIVELCRACK - MATE CUPS BLACK",                price: "30.00 USD",  img: "Assets/products/image_1715826666716_1000.jpg", imgHover: "Assets/products/image_1715826670823_1000.jpg" },
+        { category: "accessories", name: "OG CREST SPORTS BOTTLE ORANGE",                    price: "35.00 USD",  img: "Assets/products/image_1633007966555_1000.jpg", imgHover: "Assets/products/image_1633007966727_1000.jpg" },
+        { category: "accessories", name: "OG CREST SPORTS BOTTLE BLACK",                     price: "30.00 USD",  img: "Assets/products/image_1617093727081_1000.jpg", imgHover: "Assets/products/image_1617093727270_1000.jpg" },
+        { category: "accessories", name: "OG CREST SPORTS BOTTLE BLUE",                      price: "30.00 USD",  img: "Assets/products/image_1617092435675_1000.jpg", imgHover: "Assets/products/image_1617092435870_1000.jpg" },
+        { category: "accessories", name: "OG CREST SPORTS BOTTLE GREEN",                     price: "30.00 USD",  img: "Assets/products/image_1617092293994_1000.jpg", imgHover: "Assets/products/image_1617092293994_1000.jpg" }
       ];
 
-      var titleEl = document.getElementById("collection-title");
       var countEl = document.getElementById("product-count");
       var itemsEl = document.getElementById("product-grid-items");
-      var dropdown = document.querySelector(".collection-dropdown");
-      if (!dropdown) return;
-      var trigger = dropdown.querySelector(".collection-dropdown__trigger");
-      var menu = dropdown.querySelector(".collection-dropdown__menu");
-      var collectionOpts = menu.querySelectorAll("[data-collection]");
-      var filterBtns = document.querySelectorAll(".product-grid__filter");
+      var filterBtns = document.querySelectorAll(".specimen-shop__filter");
+      if (!itemsEl) return;
 
-      var collectionLabels = {
-        all: "All", westham: "West Ham", america: "Club América",
-        fresh: "Fresh Patterns", classic: "Classic Shirts"
-      };
+      var state = { attr: "data-cat", value: "all" };
 
-      var state = { collection: "all", category: "all" };
+      function pad(n) { return n < 10 ? "0" + n : "" + n; }
+
+      function getCollection(name) {
+        if (name.indexOf("WEST HAM") >= 0) return "whu";
+        if (name.indexOf("FRESH PATTERNS") >= 0) return "fpc";
+        if (name.indexOf("CLUB AMÉRICA") >= 0) return "ca";
+        if (name.indexOf("CAFE NIVELCRACK") >= 0) return "cafe";
+        if (name.indexOf("PUMA") >= 0) return "puma";
+        if (name.indexOf("SEVMID") >= 0) return "sevmid";
+        if (name.indexOf("PROGRESS") >= 0) return "progress";
+        if (name.indexOf("SOCCERBEE") >= 0) return "soccerbee";
+        if (name.indexOf("NSS") >= 0) return "nss";
+        if (name.indexOf("FENOMENO") >= 0) return "fenomeno";
+        if (name.indexOf("OG CREST") >= 0) return "classic";
+        return "";
+      }
 
       function buildGrid() {
-        itemsEl.innerHTML = products.map(function (p) {
-          var media = p.img
-            ? '<img src="' + p.img + '" alt="" />'
-            : '<span class="product-card__placeholder">NVLCRK</span>';
-          var sizeList = p.sizes.map(function (s) {
-            return '<span class="product-card__size">' + s + '</span>';
-          }).join("");
+        itemsEl.innerHTML = products.map(function (p, i) {
+          var media;
+          if (p.img) {
+            media = '<img class="is-primary" src="' + p.img + '" alt="" />';
+            if (p.imgHover) {
+              media += '<img class="is-hover" src="' + p.imgHover + '" alt="" />';
+            }
+          } else {
+            media = '<span class="specimen-card__placeholder">NVLCRK</span>';
+          }
           return '' +
-            '<li class="product-card" data-cat="' + p.category + '" data-col="' + p.collection + '">' +
-              '<a href="product.html" class="product-card__link">' +
-                '<div class="product-card__media">' + media + '</div>' +
-                '<span class="product-card__name">' + p.name + '</span>' +
-                '<span class="product-card__price">' + p.price + '</span>' +
-                '<div class="product-card__overlay">' +
-                  '<div class="product-card__sizes">' + sizeList + '</div>' +
+            '<li class="specimen-card" data-cat="' + p.category + '" data-col="' + getCollection(p.name) + '">' +
+              '<a href="product.html" class="specimen-card__link">' +
+                '<span class="specimen-card__num">' + pad(i + 1) + '</span>' +
+                '<div class="specimen-card__media">' + media + '</div>' +
+                '<div class="specimen-card__label">' +
+                  '<span class="specimen-card__name">' + p.name + '</span>' +
+                  '<span class="specimen-card__price">' + p.price + '</span>' +
                 '</div>' +
               '</a>' +
             '</li>';
@@ -218,74 +393,29 @@
       }
 
       function applyFilters() {
-        var cards = itemsEl.querySelectorAll(".product-card");
+        var cards = itemsEl.querySelectorAll(".specimen-card");
         var matchCount = 0;
         cards.forEach(function (card) {
-          var cMatch = state.collection === "all" || card.getAttribute("data-col") === state.collection;
-          var catMatch = state.category === "all" || card.getAttribute("data-cat") === state.category;
-          card.hidden = !cMatch;
-          card.classList.toggle("is-dimmed", cMatch && !catMatch);
-          if (cMatch && catMatch) matchCount++;
+          var match = state.value === "all" || card.getAttribute(state.attr) === state.value;
+          card.classList.toggle("is-dimmed", !match);
+          if (match) matchCount++;
         });
-        titleEl.textContent = collectionLabels[state.collection] || "All";
         countEl.textContent = "(" + matchCount + ")";
-        collectionOpts.forEach(function (o) {
-          o.setAttribute("aria-selected", o.getAttribute("data-collection") === state.collection ? "true" : "false");
-        });
         filterBtns.forEach(function (b) {
-          b.classList.toggle("is-active", b.getAttribute("data-category") === state.category);
+          var btnVal = b.getAttribute("data-category") || b.getAttribute("data-collection");
+          b.classList.toggle("is-active", btnVal === state.value);
         });
       }
-
-      function setOpen(open) {
-        dropdown.setAttribute("data-open", open ? "true" : "false");
-        trigger.setAttribute("aria-expanded", open ? "true" : "false");
-        menu.hidden = !open;
-      }
-
-      trigger.addEventListener("click", function (e) {
-        e.stopPropagation();
-        setOpen(dropdown.getAttribute("data-open") !== "true");
-      });
-
-      collectionOpts.forEach(function (opt) {
-        opt.addEventListener("click", function () {
-          var newCollection = opt.getAttribute("data-collection");
-          if (newCollection === state.collection) { setOpen(false); return; }
-          setOpen(false);
-          var visibleCards = Array.from(itemsEl.querySelectorAll(".product-card:not([hidden])"));
-          visibleCards.forEach(function (card, i) {
-            setTimeout(function () { card.classList.add("is-exiting"); }, i * 50);
-          });
-          var exitDuration = visibleCards.length * 50 + 400;
-          setTimeout(function () {
-            itemsEl.querySelectorAll(".product-card").forEach(function (card) {
-              card.classList.remove("is-exiting");
-            });
-            state.collection = newCollection;
-            applyFilters();
-            var newCards = Array.from(itemsEl.querySelectorAll(".product-card:not([hidden])"));
-            newCards.forEach(function (card) { card.classList.add("is-entering"); });
-            requestAnimationFrame(function () {
-              requestAnimationFrame(function () {
-                newCards.forEach(function (card, i) {
-                  setTimeout(function () { card.classList.remove("is-entering"); }, i * 50);
-                });
-              });
-            });
-          }, exitDuration);
-        });
-      });
 
       filterBtns.forEach(function (btn) {
         btn.addEventListener("click", function () {
-          state.category = btn.getAttribute("data-category");
+          if (btn.hasAttribute("data-category")) {
+            state = { attr: "data-cat", value: btn.getAttribute("data-category") };
+          } else {
+            state = { attr: "data-col", value: btn.getAttribute("data-collection") };
+          }
           applyFilters();
         });
-      });
-
-      document.addEventListener("click", function (e) {
-        if (!dropdown.contains(e.target)) setOpen(false);
       });
 
       buildGrid();

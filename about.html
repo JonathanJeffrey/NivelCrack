@@ -12,185 +12,77 @@
       min-height: 100vh;
     }
     .page-layout__nav {
-      width: 25%;
+      width: 240px;
       flex-shrink: 0;
-      border-right: var(--border-hairline);
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
+      align-self: flex-start;
       height: 100vh;
       overflow-y: auto;
     }
     .page-layout__main {
       flex: 1;
       min-width: 0;
-      margin-left: 25%;
     }
 
     .about {
-      max-width: var(--max-content);
+      padding: var(--space-6) var(--space-2) var(--space-2);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .about__gallery {
+      margin-top: auto;
     }
 
-    /* Hero — full-width editorial image */
-    .about__hero {
-      width: 100%;
-      aspect-ratio: 21 / 9;
-      overflow: hidden;
-    }
-    .about__hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Content area */
-    .about__content {
-      padding: var(--space-6) var(--page-margin) var(--space-8);
-    }
-
-    /* Masthead / dateline */
-    .about__masthead {
+    /* Intro row — text constrained to width of 3rd gallery column */
+    .about__intro {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
       margin-bottom: var(--space-5);
     }
-    .about__title {
-      font-family: var(--font-display);
-      font-weight: var(--weight-bold);
-      font-size: var(--text-section);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-title);
-      line-height: var(--lh-heading);
-      margin: 0 0 var(--space-1) 0;
-    }
-
-    /* Editorial byline */
-    .about__byline {
+    .about__intro-text {
+      grid-column: 3 / 4;
       display: flex;
-      gap: var(--space-2);
-      font-family: var(--font-body);
-      font-size: var(--text-micro);
-      font-weight: var(--weight-medium);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-label);
-      color: var(--color-text-secondary);
-    }
-    .about__byline span + span::before {
-      content: "·";
-      margin-right: var(--space-2);
-    }
-
-    /* Two-column editorial layout */
-    .about__editorial {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-5);
-      margin-bottom: var(--space-7);
-    }
-    .about__editorial--full {
-      grid-template-columns: 1fr;
-      max-width: var(--max-measure);
-    }
-
-    .about__body {
+      flex-direction: column;
+      gap: var(--space-3);
       font-family: var(--font-body);
       font-size: var(--text-body);
       font-weight: var(--weight-regular);
       line-height: var(--lh-body);
       color: var(--color-text);
     }
-    .about__body p {
-      margin: 0 0 var(--space-3) 0;
+    .about__intro-text p {
+      margin: 0;
     }
 
-    /* Section markers */
-    .about__section-marker {
-      display: flex;
-      align-items: baseline;
-      gap: var(--space-2);
-      padding-bottom: var(--space-2);
-      border-bottom: var(--border-hairline);
-      margin-bottom: var(--space-4);
-    }
-    .about__section-num {
-      font-family: var(--font-body);
-      font-size: var(--text-micro);
-      font-weight: var(--weight-medium);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-label);
-      color: var(--color-text-secondary);
-    }
-    .about__section-title {
-      font-family: var(--font-body);
-      font-size: var(--text-micro);
-      font-weight: var(--weight-medium);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-label);
-      color: var(--color-text);
-    }
-
-    /* Inline figure */
-    .about__figure {
-      margin: var(--space-6) 0;
-    }
-    .about__figure img {
-      width: 100%;
-      display: block;
-    }
-    .about__figure-caption {
-      font-family: var(--font-body);
-      font-size: var(--text-micro);
-      font-weight: var(--weight-medium);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-label);
-      color: var(--color-text-secondary);
-      margin-top: var(--space-1);
-    }
-
-    /* Cafe section — asymmetric grid */
-    .about__cafe-grid {
+    /* Gallery — 4 image row */
+    .about__gallery {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: var(--space-4);
-      margin-bottom: var(--space-6);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
     }
-    .about__cafe-image {
-      aspect-ratio: 4 / 5;
+    .about__gallery-item {
+      aspect-ratio: 3 / 5;
       overflow: hidden;
-      background: var(--color-hover);
+      background: var(--color-surface);
     }
-    .about__cafe-image img {
+    .about__gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
-    .about__cafe-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      gap: 2px;
-    }
-    .about__cafe-label {
-      font-family: var(--font-body);
-      font-size: var(--text-micro);
-      font-weight: var(--weight-medium);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-label);
-      color: var(--color-text);
-    }
-    .about__cafe-detail {
-      font-family: var(--font-body);
-      font-size: var(--text-micro);
-      font-weight: var(--weight-medium);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-label);
-      color: var(--color-text-secondary);
+
+    @media (max-width: 1024px) {
+      .about__intro { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
       .page-layout { flex-direction: column; }
       .page-layout__nav { width: 100%; border-right: none; border-bottom: var(--border-hairline); }
-      .about__editorial { grid-template-columns: 1fr; }
-      .about__cafe-grid { grid-template-columns: 1fr; }
+      .about__gallery { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -202,13 +94,13 @@
       <nav class="site-nav" aria-label="Primary">
         <div class="site-nav__inner">
           <div class="site-nav__top">
-            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><span>N</span><span>V</span><span>L</span><span>C</span><span>R</span><span>K</span></a>
+            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><img src="Assets/NC_Logo_Monogram.png" alt="NivelCrack" /></a>
             <ul class="site-nav__sections" role="list">
               <li class="nav-section"><a href="shop.html" class="nav-section__header"><span class="nav-section__num">01</span><span class="nav-section__label">Shop</span></a></li>
               <li class="nav-section"><a href="about.html" class="nav-section__header"><span class="nav-section__num">02</span><span class="nav-section__label">About</span></a></li>
               <li class="nav-section"><a href="archive.html" class="nav-section__header"><span class="nav-section__num">03</span><span class="nav-section__label">Archive</span></a></li>
-              <li class="nav-section"><a href="about.html#cafe" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
-              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Contact</span></a></li>
+              <li class="nav-section"><a href="cafe.html" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
+              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Stockists</span></a></li>
             </ul>
           </div>
           <div class="site-nav__bottom">
@@ -220,70 +112,23 @@
     </div>
 
     <main class="page-layout__main">
+      <div class="about">
 
-      <div class="about__hero">
-        <img src="Assets/MagazineCover.jpg" alt="NivelCrack editorial" />
-      </div>
-
-      <div class="about__content">
-
-        <header class="about__masthead">
-          <h1 class="about__title">NivelCrack</h1>
-          <div class="about__byline">
-            <span>Issue 01</span>
-            <span>Est. Seoul</span>
-            <span>Soccer Culture & Fashion</span>
-          </div>
-        </header>
-
-        <!-- 01 / The Brand -->
-        <div class="about__section-marker">
-          <span class="about__section-num">01</span>
-          <span class="about__section-title">The Brand</span>
-        </div>
-
-        <div class="about__editorial">
-          <div class="about__body dropcap">
-            <p>Seoul in 1998 didn't look like a soccer city. But behind the neon and the concrete, a generation was raised on scratchy satellite broadcasts of Serie A, photocopied fanzines, and hand-painted kits from the Itaewon market. NivelCrack is a love letter to that version of the game — the one you had to work to see, the one that bled into street style before it was a category.</p>
-            <p>Founded as a bridge between football culture and fashion, NivelCrack operates at the intersection of matchday rituals and everyday wardrobe. Every piece starts with a story — a club, a city, a moment in the game's history — and translates it into clothing you'd wear whether or not you're watching the match.</p>
-          </div>
-          <div class="about__body">
-            <p>The name itself is a nod to the craft: "Nivel" for level, "Crack" for the untranslatable South American term for a player who makes the impossible look effortless. That's the standard — clothing that performs without trying too hard.</p>
-            <p>From official club collaborations to limited-run capsules with independent makers, NivelCrack treats each release as an issue — numbered, seasonal, collectible. The brand doesn't chase trends. It documents a culture that's been running for decades, and makes it wearable.</p>
+        <div class="about__intro">
+          <div class="about__intro-text">
+            <p>NIVELCRACK, meaning "top-level footballer" in Spanish, is a Seoul-based brand and creative studio specializing in the intersection of football and fashion.</p>
+            <p>Drawing inspiration from football culture and interpreting it through our own unique lens, we create high-quality products and content. Our mission is to inspire both on and off the pitch through the collections and projects we bring to life.</p>
           </div>
         </div>
 
-        <figure class="about__figure">
-          <img src="Assets/WestHam.jpg" alt="NivelCrack x West Ham United" />
-          <figcaption class="about__figure-caption">NivelCrack x West Ham United — East London, 2024</figcaption>
-        </figure>
-
-        <!-- Pull quote -->
-        <figure class="editorial-pullquote" style="margin: var(--space-6) 0;">
-          <blockquote class="editorial-pullquote__text">"A brand is just a feeling you can fold into a shirt."</blockquote>
-          <figcaption class="editorial-pullquote__attr">NivelCrack — Founder's note</figcaption>
-        </figure>
-
-        <!-- 02 / Cafe NivelCrack -->
-        <div class="about__section-marker">
-          <span class="about__section-num">02</span>
-          <span class="about__section-title">Cafe NivelCrack</span>
-        </div>
-
-        <div class="about__cafe-grid">
-          <div class="about__cafe-image">
-            <img src="Assets/WestHam.jpg" alt="Cafe NivelCrack interior" />
-          </div>
-          <div class="about__cafe-info">
-            <span class="about__cafe-label">Cafe NivelCrack</span>
-            <span class="about__cafe-detail">Itaewon, Seoul</span>
-            <span class="about__cafe-detail">Mon — Sat, 10:00 — 19:00</span>
-            <span class="about__cafe-detail" style="margin-top: var(--space-3);">A space where soccer culture, coffee, and community meet. Part retail, part cafe, part clubhouse — Cafe NivelCrack is the physical home of the brand. Browse the latest drops, watch the match, and grab an espresso.</span>
-          </div>
+        <div class="about__gallery">
+          <div class="about__gallery-item"><img src="Assets/WestHam.jpg" alt="" /></div>
+          <div class="about__gallery-item"><img src="Assets/cafe.jpg" alt="" /></div>
+          <div class="about__gallery-item"><img src="Assets/MagazineCover.jpg" alt="" /></div>
+          <div class="about__gallery-item"><img src="Assets/WestHam.jpg" alt="" /></div>
         </div>
 
       </div>
-
     </main>
 
   </div>
@@ -303,9 +148,16 @@
           <div class="site-footer__col">
             <span class="site-footer__col-label">Info</span>
             <a href="about.html" class="site-footer__link">About</a>
-            <a href="about.html" class="site-footer__link">Cafe NivelCrack</a>
-            <a href="#" class="site-footer__link">Stockists</a>
-            <a href="contact.html" class="site-footer__link">Contact</a>
+            <a href="cafe.html" class="site-footer__link">Cafe NivelCrack</a>
+            <a href="archive.html" class="site-footer__link">Archive</a>
+            <a href="contact.html" class="site-footer__link">Stockists</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Contact</span>
+            <a href="mailto:hello@nivelcrack.com" class="site-footer__link">hello@nivelcrack.com</a>
+            <a href="mailto:wholesale@nivelcrack.com" class="site-footer__link">Wholesale</a>
+            <a href="https://instagram.com/nivelcrack" class="site-footer__link">Instagram</a>
+            <a href="#" class="site-footer__link">Newsletter</a>
           </div>
           <div class="site-footer__col">
             <span class="site-footer__col-label">Support</span>
@@ -313,11 +165,6 @@
             <a href="#" class="site-footer__link">Returns</a>
             <a href="#" class="site-footer__link">Size Guide</a>
             <a href="#" class="site-footer__link">FAQ</a>
-          </div>
-          <div class="site-footer__col">
-            <span class="site-footer__col-label">Follow</span>
-            <a href="#" class="site-footer__link">Instagram</a>
-            <a href="#" class="site-footer__link">Newsletter</a>
           </div>
         </div>
       </div>
@@ -330,17 +177,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      var logo = document.querySelector('.nav-brand__logo');
-      if (!logo) return;
-      function fit() {
-        logo.style.fontSize = (logo.offsetWidth * 0.16) + 'px';
-      }
-      document.fonts.ready.then(function () { fit(); window.addEventListener('resize', fit); });
-    })();
-  </script>
 
 </body>
 </html>

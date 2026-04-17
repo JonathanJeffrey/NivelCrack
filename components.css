@@ -33,16 +33,16 @@
 }
 
 .nav-brand__logo {
-  font-family: var(--font-display);
-  font-weight: var(--weight-bold);
-  text-transform: uppercase;
-  line-height: 1;
-  color: var(--color-text);
-  white-space: nowrap;
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-  font-size: 40px;
+  display: block;
+  width: 78px;
+  max-width: 100%;
+  line-height: 0;
+  margin-left: -18px;
+}
+.nav-brand__logo img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ---------- Section list ---------- */
@@ -330,6 +330,7 @@
   color: inherit;
   position: relative;
   cursor: pointer;
+  width: 100%;
 }
 
 .product-card {

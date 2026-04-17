@@ -114,6 +114,117 @@
     .btn-block-demo {
       max-width: 320px;
     }
+
+    /* ---------- Foundations ---------- */
+    .foundations {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+    .found-block__label {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+      padding-bottom: var(--space-1);
+      margin-bottom: var(--space-3);
+      border-bottom: var(--border-hairline);
+    }
+
+    /* Type specimens */
+    .type-row {
+      display: grid;
+      grid-template-columns: 140px 80px 1fr;
+      align-items: baseline;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      border-bottom: var(--border-hairline);
+    }
+    .type-row__token {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+    .type-row__meta {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      color: var(--color-text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+    .type-row__sample {
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    /* Color swatches */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-3);
+    }
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .swatch__chip {
+      height: 80px;
+      border: var(--border-hairline);
+    }
+    .swatch__name {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+    }
+    .swatch__value {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      color: var(--color-text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Spacing bars */
+    .space-row {
+      display: grid;
+      grid-template-columns: 120px 80px 1fr;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-1) 0;
+    }
+    .space-row__token {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+    }
+    .space-row__val {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      color: var(--color-text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+    .space-bar {
+      height: 12px;
+      background: var(--color-text);
+    }
+
+    /* Weight specimens */
+    .weight-row {
+      display: grid;
+      grid-template-columns: 140px 80px 1fr;
+      align-items: baseline;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      border-bottom: var(--border-hairline);
+    }
   </style>
 </head>
 <body>
@@ -123,6 +234,242 @@
       <h1 class="showcase__title">Components</h1>
       <div class="showcase__meta">Issue 01 · Component Library</div>
     </header>
+
+    <!-- ===================== 00 / FOUNDATIONS ===================== -->
+    <section class="component">
+      <header class="component__header">
+        <div class="component__num">00</div>
+        <h2 class="component__name">Foundations</h2>
+        <div class="component__byline">Type · Color · Space · Weight</div>
+      </header>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span>Design Tokens — visible reference</span>
+          <span>tokens.css</span>
+        </div>
+        <div class="stage__body">
+
+          <div class="foundations">
+
+            <!-- Font families -->
+            <div class="found-block">
+              <div class="found-block__label">Font families</div>
+              <div class="type-row">
+                <span class="type-row__token">--font-display</span>
+                <span class="type-row__meta">Eurostile LT Std</span>
+                <span class="type-row__sample" style="font-family: var(--font-display); font-weight: var(--weight-bold); font-size: var(--text-title); text-transform: uppercase; letter-spacing: var(--tracking-title);">NIVELCRACK Display</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">--font-body</span>
+                <span class="type-row__meta">Inter</span>
+                <span class="type-row__sample" style="font-family: var(--font-body); font-weight: var(--weight-regular); font-size: var(--text-body);">The quick brown fox jumps over the lazy dog.</span>
+              </div>
+            </div>
+
+            <!-- Type scale -->
+            <div class="found-block">
+              <div class="found-block__label">Type scale · canonical classes</div>
+
+              <div class="type-row">
+                <span class="type-row__token">.t-hero</span>
+                <span class="type-row__meta">clamp 3–7rem</span>
+                <span class="type-row__sample t-hero">Hero</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">.t-section-title</span>
+                <span class="type-row__meta">48px</span>
+                <span class="type-row__sample t-section-title">Section Title</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">.t-title</span>
+                <span class="type-row__meta">32px</span>
+                <span class="type-row__sample t-title">Title</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">.t-subhead</span>
+                <span class="type-row__meta">24px</span>
+                <span class="type-row__sample t-subhead">Subhead for sections</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">.t-lede</span>
+                <span class="type-row__meta">20px</span>
+                <span class="type-row__sample t-lede">Lede paragraph — opens an editorial.</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">.t-body</span>
+                <span class="type-row__meta">16px</span>
+                <span class="type-row__sample t-body">Body copy. The quick brown fox jumps over the lazy dog. 0123456789.</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">.t-small</span>
+                <span class="type-row__meta">13px</span>
+                <span class="type-row__sample t-small">Small supporting text — captions, meta.</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">.t-label</span>
+                <span class="type-row__meta">12px / caps</span>
+                <span class="type-row__sample t-label">Label · Section Marker</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">.t-micro</span>
+                <span class="type-row__meta">11px / caps</span>
+                <span class="type-row__sample t-micro">Micro · Nav Meta · Footer</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">.t-pullquote</span>
+                <span class="type-row__meta">32px</span>
+                <span class="type-row__sample t-pullquote">"A brand is just a feeling you can fold into a shirt."</span>
+              </div>
+            </div>
+
+            <!-- Font weights -->
+            <div class="found-block">
+              <div class="found-block__label">Font weights · Inter</div>
+              <div class="weight-row">
+                <span class="type-row__token">--weight-regular</span>
+                <span class="type-row__meta">400</span>
+                <span class="type-row__sample" style="font-weight: 400; font-size: var(--text-body-lg);">The quick brown fox 400</span>
+              </div>
+              <div class="weight-row">
+                <span class="type-row__token">--weight-medium</span>
+                <span class="type-row__meta">500</span>
+                <span class="type-row__sample" style="font-weight: 500; font-size: var(--text-body-lg);">The quick brown fox 500</span>
+              </div>
+              <div class="weight-row">
+                <span class="type-row__token">--weight-semibold</span>
+                <span class="type-row__meta">600</span>
+                <span class="type-row__sample" style="font-weight: 600; font-size: var(--text-body-lg);">The quick brown fox 600</span>
+              </div>
+              <div class="weight-row">
+                <span class="type-row__token">--weight-bold</span>
+                <span class="type-row__meta">700</span>
+                <span class="type-row__sample" style="font-weight: 700; font-size: var(--text-body-lg);">The quick brown fox 700</span>
+              </div>
+            </div>
+
+            <!-- Colors -->
+            <div class="found-block">
+              <div class="found-block__label">Color · neutrals + accent</div>
+              <div class="color-grid">
+                <div class="swatch">
+                  <div class="swatch__chip" style="background: var(--color-bg);"></div>
+                  <span class="swatch__name">--color-bg</span>
+                  <span class="swatch__value">#FFFFFF</span>
+                </div>
+                <div class="swatch">
+                  <div class="swatch__chip" style="background: var(--color-surface);"></div>
+                  <span class="swatch__name">--color-surface</span>
+                  <span class="swatch__value">#FFFFFF</span>
+                </div>
+                <div class="swatch">
+                  <div class="swatch__chip" style="background: var(--color-text);"></div>
+                  <span class="swatch__name">--color-text</span>
+                  <span class="swatch__value">#1A1A1A</span>
+                </div>
+                <div class="swatch">
+                  <div class="swatch__chip" style="background: var(--color-text-secondary);"></div>
+                  <span class="swatch__name">--color-text-secondary</span>
+                  <span class="swatch__value">#6B6B6B</span>
+                </div>
+                <div class="swatch">
+                  <div class="swatch__chip" style="background: var(--color-text-muted);"></div>
+                  <span class="swatch__name">--color-text-muted</span>
+                  <span class="swatch__value">#9A9A9A</span>
+                </div>
+                <div class="swatch">
+                  <div class="swatch__chip" style="background: var(--color-border);"></div>
+                  <span class="swatch__name">--color-border</span>
+                  <span class="swatch__value">#E5E5E5</span>
+                </div>
+                <div class="swatch">
+                  <div class="swatch__chip" style="background: var(--color-hover);"></div>
+                  <span class="swatch__name">--color-hover</span>
+                  <span class="swatch__value">#F0F0F0</span>
+                </div>
+                <div class="swatch">
+                  <div class="swatch__chip" style="background: var(--color-accent);"></div>
+                  <span class="swatch__name">--color-accent</span>
+                  <span class="swatch__value">#1A1A1A · overridable</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spacing -->
+            <div class="found-block">
+              <div class="found-block__label">Spacing scale · 8px base</div>
+              <div class="space-row">
+                <span class="space-row__token">--space-1</span>
+                <span class="space-row__val">8px</span>
+                <span class="space-bar" style="width: 8px;"></span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__token">--space-2</span>
+                <span class="space-row__val">16px</span>
+                <span class="space-bar" style="width: 16px;"></span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__token">--space-3</span>
+                <span class="space-row__val">24px</span>
+                <span class="space-bar" style="width: 24px;"></span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__token">--space-4</span>
+                <span class="space-row__val">32px</span>
+                <span class="space-bar" style="width: 32px;"></span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__token">--space-5</span>
+                <span class="space-row__val">48px</span>
+                <span class="space-bar" style="width: 48px;"></span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__token">--space-6</span>
+                <span class="space-row__val">64px</span>
+                <span class="space-bar" style="width: 64px;"></span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__token">--space-7</span>
+                <span class="space-row__val">96px</span>
+                <span class="space-bar" style="width: 96px;"></span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__token">--space-8</span>
+                <span class="space-row__val">128px</span>
+                <span class="space-bar" style="width: 128px;"></span>
+              </div>
+            </div>
+
+            <!-- Tracking -->
+            <div class="found-block">
+              <div class="found-block__label">Letter-spacing (tracking)</div>
+              <div class="type-row">
+                <span class="type-row__token">--tracking-display</span>
+                <span class="type-row__meta">-0.01em</span>
+                <span class="type-row__sample" style="font-family: var(--font-display); font-weight: var(--weight-bold); font-size: var(--text-subhead); text-transform: uppercase; letter-spacing: -0.01em;">NIVELCRACK</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">--tracking-title</span>
+                <span class="type-row__meta">0.02em</span>
+                <span class="type-row__sample" style="font-family: var(--font-display); font-weight: var(--weight-bold); font-size: var(--text-subhead); text-transform: uppercase; letter-spacing: 0.02em;">NIVELCRACK</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">--tracking-label</span>
+                <span class="type-row__meta">0.05em</span>
+                <span class="type-row__sample" style="font-family: var(--font-body); font-weight: var(--weight-medium); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: 0.05em;">Label Caps</span>
+              </div>
+              <div class="type-row">
+                <span class="type-row__token">--tracking-body</span>
+                <span class="type-row__meta">0</span>
+                <span class="type-row__sample" style="font-family: var(--font-body); font-size: var(--text-body); letter-spacing: 0;">Body running text.</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- ===================== 01 / SITE NAV ===================== -->
     <section class="component">
