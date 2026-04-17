@@ -424,14 +424,22 @@
         var moves = cards.map(function (c) {
           var a = first.get(c);
           var b = c.getBoundingClientRect();
-          return { card: c, last: b, dx: a.left - b.left, dy: a.top - b.top };
+          return { card: c, first: a, last: b, dx: a.left - b.left, dy: a.top - b.top };
         });
 
-        // Sort by final position — top row first, then left-to-right within each row.
-        moves.sort(function (a, b) {
-          if (Math.abs(a.last.top - b.last.top) > 1) return a.last.top - b.last.top;
-          return a.last.left - b.last.left;
-        });
+        // Assign a slot-index per origin and destination, top→bottom, left→right.
+        function slotIndex(rectFn) {
+          var indexed = moves.map(function (m, i) { return { m: m, r: rectFn(m) }; });
+          indexed.sort(function (a, b) {
+            if (Math.abs(a.r.top - b.r.top) > 1) return a.r.top - b.r.top;
+            return a.r.left - b.r.left;
+          });
+          var map = new Map();
+          indexed.forEach(function (x, i) { map.set(x.m.card, i); });
+          return map;
+        }
+        var originIdx = slotIndex(function (m) { return m.first; });
+        var destIdx   = slotIndex(function (m) { return m.last; });
 
         moves.forEach(function (m) {
           m.card.style.transition = "none";
@@ -439,8 +447,11 @@
         });
 
         requestAnimationFrame(function () {
-          moves.forEach(function (m, i) {
-            var d = i * STAGGER_MS;
+          moves.forEach(function (m) {
+            // Use the earlier of origin/destination slot so a card leaving a
+            // position and a card arriving at that position move together.
+            var slot = Math.min(originIdx.get(m.card), destIdx.get(m.card));
+            var d = slot * STAGGER_MS;
             m.card.style.transition =
               "opacity " + OPACITY_MS + "ms cubic-bezier(0.22, 1, 0.36, 1) " + d + "ms, " +
               "transform " + TRANSFORM_MS + "ms cubic-bezier(0.2, 0.8, 0.2, 1) " + d + "ms";
