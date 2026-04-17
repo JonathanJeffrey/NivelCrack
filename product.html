@@ -304,6 +304,41 @@
     })();
   </script>
 
+  <script>
+    /* Mobile PDP image gallery — only runs at ≤768px */
+    (function () {
+      if (window.innerWidth > 768) return;
+      var container = document.querySelector(".pdp__image");
+      var imgs = container.querySelectorAll(".pdp__hero-img");
+      if (!imgs.length) return;
+
+      /* Activate the first image */
+      imgs[0].classList.add("is-active");
+
+      /* Build thumbnail grid */
+      var thumbs = document.createElement("div");
+      thumbs.className = "pdp__thumbs";
+      imgs.forEach(function (img, i) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.setAttribute("aria-label", "View image " + (i + 1));
+        if (i === 0) btn.classList.add("is-active");
+        var thumb = document.createElement("img");
+        thumb.src = img.src;
+        thumb.alt = "";
+        btn.appendChild(thumb);
+        btn.addEventListener("click", function () {
+          imgs.forEach(function (im) { im.classList.remove("is-active"); });
+          thumbs.querySelectorAll("button").forEach(function (b) { b.classList.remove("is-active"); });
+          img.classList.add("is-active");
+          btn.classList.add("is-active");
+        });
+        thumbs.appendChild(btn);
+      });
+      container.after(thumbs);
+    })();
+  </script>
+
   <script src="nav.js" defer></script>
 </body>
 </html>
