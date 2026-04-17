@@ -422,13 +422,16 @@
           if (match) matchCount++;
         });
         countEl.textContent = "(" + matchCount + ")";
-        /* Renumber visible cards sequentially */
+        /* Renumber visible cards sequentially — only when filtered */
+        var isFiltered = state.value !== "all";
         var visibleIdx = 0;
         cards.forEach(function (card) {
           var numEl = card.querySelector(".specimen-card__num");
-          if (!card.classList.contains("is-dimmed")) {
+          if (!card.classList.contains("is-dimmed") && isFiltered) {
             visibleIdx++;
             numEl.textContent = pad(visibleIdx);
+          } else {
+            numEl.textContent = "";
           }
         });
         filterBtns.forEach(function (b) {
