@@ -422,6 +422,15 @@
           if (match) matchCount++;
         });
         countEl.textContent = "(" + matchCount + ")";
+        /* Renumber visible cards sequentially */
+        var visibleIdx = 0;
+        cards.forEach(function (card) {
+          var numEl = card.querySelector(".specimen-card__num");
+          if (!card.classList.contains("is-dimmed")) {
+            visibleIdx++;
+            numEl.textContent = pad(visibleIdx);
+          }
+        });
         filterBtns.forEach(function (b) {
           var btnVal = b.getAttribute("data-category") || b.getAttribute("data-collection");
           b.classList.toggle("is-active", btnVal === state.value);
