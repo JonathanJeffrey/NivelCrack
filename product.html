@@ -116,9 +116,9 @@
           <div class="pdp__section">
             <span class="pdp__section-label">Select Size:</span>
             <div class="pdp__section-body pdp__size-list">
-              <button type="button" class="pdp__size-option" data-size="Medium"><span class="pdp__size-name">Medium</span><span class="pdp__size-count"></span></button>
-              <button type="button" class="pdp__size-option" data-size="Large"><span class="pdp__size-name">Large</span><span class="pdp__size-count"></span></button>
-              <button type="button" class="pdp__size-option" data-size="Extra Large"><span class="pdp__size-name">Extra Large</span><span class="pdp__size-count"></span></button>
+              <button type="button" class="pdp__size-option" data-size="Medium"><span class="pdp__size-name">Medium</span></button>
+              <button type="button" class="pdp__size-option" data-size="Large"><span class="pdp__size-name">Large</span></button>
+              <button type="button" class="pdp__size-option" data-size="Extra Large"><span class="pdp__size-name">Extra Large</span></button>
             </div>
           </div>
 
@@ -201,32 +201,21 @@
       if (!sizeOptions.length || !atcBtn) return;
 
       var UNIT_PRICE = 135;
-      var counts = {};
-      sizeOptions.forEach(function (btn) { counts[btn.getAttribute("data-size")] = 0; });
-
-      function totalCount() {
-        return Object.keys(counts).reduce(function (n, k) { return n + counts[k]; }, 0);
-      }
+      var selectedSize = null;
 
       var atcLabel = atcBtn.querySelector(".btn__text");
 
       function refreshSizes() {
         sizeOptions.forEach(function (btn) {
-          var size = btn.getAttribute("data-size");
-          var n = counts[size];
-          var countEl = btn.querySelector(".pdp__size-count");
-          countEl.textContent = n > 0 ? " (" + n + ")" : "";
-          btn.classList.toggle("is-selected", n > 0);
+          btn.classList.toggle("is-selected", btn.getAttribute("data-size") === selectedSize);
         });
-        var total = totalCount();
-        atcBtn.disabled = total === 0;
-        atcLabel.textContent = total > 0 ? "Add " + total + " to Cart" : "Add to Cart";
+        atcBtn.disabled = !selectedSize;
+        atcLabel.textContent = "Add to Cart";
       }
 
       sizeOptions.forEach(function (btn) {
         btn.addEventListener("click", function () {
-          var size = btn.getAttribute("data-size");
-          counts[size]++;
+          selectedSize = btn.getAttribute("data-size");
           refreshSizes();
         });
       });
@@ -282,11 +271,9 @@
       }
 
       atcBtn.addEventListener("click", function () {
-        if (atcBtn.disabled) return;
-        Object.keys(counts).forEach(function (size) {
-          if (counts[size] > 0) addCartLine(size, counts[size]);
-          counts[size] = 0;
-        });
+        if (atcBtn.disabled || !selectedSize) return;
+        addCartLine(selectedSize, 1);
+        selectedSize = null;
         refreshSizes();
         updateSubtotal();
         openCart();
