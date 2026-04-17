@@ -114,6 +114,7 @@
     height: auto;
     overflow: visible;
   }
+  .pdp > .pdp__name { padding: var(--space-3) var(--space-3) var(--space-2); }
   .pdp__name { font-size: var(--text-title); }
   .pdp__atc { align-self: flex-start; width: auto; }
   .cart-drawer--slide { width: 80vw !important; max-width: 80vw !important; }

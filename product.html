@@ -313,6 +313,12 @@
     /* Mobile PDP image gallery — only runs at ≤768px */
     (function () {
       if (window.innerWidth > 768) return;
+
+      /* Move product name above the image */
+      var pdp = document.querySelector(".pdp");
+      var name = document.querySelector(".pdp__name");
+      if (pdp && name) pdp.insertBefore(name, pdp.firstChild);
+
       var container = document.querySelector(".pdp__image");
       var imgs = container.querySelectorAll(".pdp__hero-img");
       if (!imgs.length) return;
