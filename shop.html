@@ -85,10 +85,6 @@
       margin: 0;
       padding: 0;
       isolation: isolate;
-      transition: background-color 600ms cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .specimen-grid.is-filtering {
-      background-color: var(--color-bg);
     }
 
     .specimen-card {
@@ -457,7 +453,6 @@
         var originIdx = slotIndex(function (m) { return m.first; });
         var destIdx   = slotIndex(function (m) { return m.last; });
 
-        itemsEl.classList.add("is-filtering");
         moves.forEach(function (m) {
           m.card.classList.add("is-animating");
           m.card.style.transition = "none";
@@ -480,7 +475,6 @@
               m.card.style.transition = "";
               m.card.classList.remove("is-animating");
             });
-            itemsEl.classList.remove("is-filtering");
           }, total);
         });
       }
