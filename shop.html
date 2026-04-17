@@ -487,7 +487,8 @@
           } else {
             state = { attr: "data-col", value: btn.getAttribute("data-collection") };
           }
-          runFilter(applyFilters);
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) applyFilters();
+          else runFilter(applyFilters);
         });
       });
 
