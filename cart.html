@@ -308,6 +308,72 @@
     </div>
   </footer>
 
+  <script src="cart-store.js"></script>
+  <script>
+    (function () {
+      var itemsEl = document.getElementById("cart-page-items");
+      var countEl = document.getElementById("cart-page-count");
+      var subtotalEl = document.getElementById("cart-page-subtotal");
+      var footerEl = document.getElementById("cart-page-footer");
+      var emptyEl = document.getElementById("cart-empty");
+
+      function render() {
+        var items = CartStore.getItems();
+        var total = CartStore.totalQty();
+
+        countEl.textContent = total + (total === 1 ? " Item" : " Items");
+
+        /* Remove old item elements (keep empty state div) */
+        var oldItems = itemsEl.querySelectorAll(".cart-page__item");
+        oldItems.forEach(function (el) { el.remove(); });
+
+        if (!items.length) {
+          emptyEl.hidden = false;
+          footerEl.hidden = true;
+          return;
+        }
+
+        emptyEl.hidden = true;
+        footerEl.hidden = false;
+
+        items.forEach(function (ci, idx) {
+          var el = document.createElement("article");
+          el.className = "cart-page__item";
+          el.innerHTML = '' +
+            '<div class="cart-page__item-image"><img src="' + ci.img + '" alt="' + ci.name + '" width="1000" height="1000" /></div>' +
+            '<div class="cart-page__item-details">' +
+              '<span class="cart-page__item-name">' + ci.name + '</span>' +
+              '<span class="cart-page__item-variant">Size: ' + ci.size + '</span>' +
+              '<div class="cart-page__item-qty">' +
+                '<div class="cart-page__item-qty-controls">' +
+                  '<button type="button" class="cart-page__item-qty-btn" data-dir="down" aria-label="Decrease quantity">\u2013</button>' +
+                  '<span class="cart-page__item-qty-value">' + ci.qty + '</span>' +
+                  '<button type="button" class="cart-page__item-qty-btn" data-dir="up" aria-label="Increase quantity">+</button>' +
+                '</div>' +
+                '<span class="cart-page__item-price">' + (ci.price * ci.qty).toFixed(2) + ' USD</span>' +
+              '</div>' +
+            '</div>';
+          itemsEl.appendChild(el);
+
+          el.querySelectorAll(".cart-page__item-qty-btn").forEach(function (qBtn) {
+            qBtn.addEventListener("click", function () {
+              var current = CartStore.getItems();
+              var q = current[idx].qty;
+              if (qBtn.getAttribute("data-dir") === "up") q++;
+              else if (q > 1) q--;
+              else { CartStore.removeItem(idx); render(); return; }
+              CartStore.updateItem(idx, q);
+              render();
+            });
+          });
+        });
+
+        subtotalEl.textContent = CartStore.subtotal().toFixed(2) + " USD";
+      }
+
+      render();
+    })();
+  </script>
   <script src="account-modal.js" defer></script>
   <script src="nav.js" defer></script>
 </body>

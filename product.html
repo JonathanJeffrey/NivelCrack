@@ -188,6 +188,7 @@
   </style>
   <link rel="stylesheet" href="mobile-overrides.css" />
 
+  <script src="cart-store.js"></script>
   <script>
     (function () {
       var sizeOptions = document.querySelectorAll(".pdp__size-option");
@@ -234,65 +235,66 @@
         setTimeout(function () { overlay.hidden = true; }, 250);
       }
 
-      function addCartLine(size, qty) {
-        var item = document.createElement("article");
-        item.className = "cart-item";
-        item.setAttribute("data-unit-price", String(UNIT_PRICE));
-        item.innerHTML = '' +
-          '<div class="cart-item__image"><img src="Assets/products/image_1773731847731_1000.jpg" alt="Work Jacket" width="1000" height="1000" /></div>' +
-          '<div class="cart-item__details">' +
-            '<span class="cart-item__name">Nivelcrack x West Ham United — Work Jacket</span>' +
-            '<span class="cart-item__variant">Size: ' + size + '</span>' +
-            '<div class="cart-item__qty">' +
-              '<div class="cart-item__qty-controls">' +
-                '<button type="button" class="cart-item__qty-btn" data-dir="down" aria-label="Decrease quantity">–</button>' +
-                '<span class="cart-item__qty-value">' + qty + '</span>' +
-                '<button type="button" class="cart-item__qty-btn" data-dir="up" aria-label="Increase quantity">+</button>' +
-              '</div>' +
-              '<span class="cart-item__price">' + (UNIT_PRICE * qty).toFixed(2) + ' USD</span>' +
-            '</div>' +
-          '</div>';
-        cartItems.appendChild(item);
+      var PRODUCT_NAME = "Nivelcrack x West Ham United — Work Jacket";
+      var PRODUCT_IMG = "Assets/products/image_1773731847731_1000.jpg";
 
-        item.querySelectorAll(".cart-item__qty-btn").forEach(function (qBtn) {
-          qBtn.addEventListener("click", function () {
-            var valEl = item.querySelector(".cart-item__qty-value");
-            var priceEl = item.querySelector(".cart-item__price");
-            var unitPrice = parseFloat(item.getAttribute("data-unit-price"));
-            var q = parseInt(valEl.textContent);
-            if (qBtn.getAttribute("data-dir") === "up") q++;
-            else if (q > 1) q--;
-            else { item.remove(); updateSubtotal(); return; }
-            valEl.textContent = q;
-            priceEl.textContent = (unitPrice * q).toFixed(2) + " USD";
-            updateSubtotal();
+      function renderDrawer() {
+        var items = CartStore.getItems();
+        cartItems.innerHTML = "";
+        items.forEach(function (ci, idx) {
+          var el = document.createElement("article");
+          el.className = "cart-item";
+          el.innerHTML = '' +
+            '<div class="cart-item__image"><img src="' + ci.img + '" alt="' + ci.name + '" width="1000" height="1000" /></div>' +
+            '<div class="cart-item__details">' +
+              '<span class="cart-item__name">' + ci.name + '</span>' +
+              '<span class="cart-item__variant">Size: ' + ci.size + '</span>' +
+              '<div class="cart-item__qty">' +
+                '<div class="cart-item__qty-controls">' +
+                  '<button type="button" class="cart-item__qty-btn" data-dir="down" aria-label="Decrease quantity">\u2013</button>' +
+                  '<span class="cart-item__qty-value">' + ci.qty + '</span>' +
+                  '<button type="button" class="cart-item__qty-btn" data-dir="up" aria-label="Increase quantity">+</button>' +
+                '</div>' +
+                '<span class="cart-item__price">' + (ci.price * ci.qty).toFixed(2) + ' USD</span>' +
+              '</div>' +
+            '</div>';
+          cartItems.appendChild(el);
+
+          el.querySelectorAll(".cart-item__qty-btn").forEach(function (qBtn) {
+            qBtn.addEventListener("click", function () {
+              var items2 = CartStore.getItems();
+              var q = items2[idx].qty;
+              if (qBtn.getAttribute("data-dir") === "up") q++;
+              else if (q > 1) q--;
+              else { CartStore.removeItem(idx); renderDrawer(); return; }
+              CartStore.updateItem(idx, q);
+              renderDrawer();
+            });
           });
         });
+        cartSubtotal.textContent = CartStore.subtotal().toFixed(2) + " USD";
       }
 
       atcBtn.addEventListener("click", function () {
         if (atcBtn.disabled || !selectedSize) return;
-        addCartLine(selectedSize, 1);
+        CartStore.addItem({
+          name: PRODUCT_NAME,
+          size: selectedSize,
+          price: UNIT_PRICE,
+          qty: 1,
+          img: PRODUCT_IMG
+        });
         selectedSize = null;
         refreshSizes();
-        updateSubtotal();
+        renderDrawer();
         openCart();
       });
-
-      function updateSubtotal() {
-        var total = 0;
-        cartItems.querySelectorAll(".cart-item").forEach(function (ci) {
-          var unitPrice = parseFloat(ci.getAttribute("data-unit-price"));
-          var qty = parseInt(ci.querySelector(".cart-item__qty-value").textContent);
-          total += unitPrice * qty;
-        });
-        cartSubtotal.textContent = total.toFixed(2) + " USD";
-      }
 
       closeBtn.addEventListener("click", closeCart);
       backdrop.addEventListener("click", closeCart);
 
       refreshSizes();
+      renderDrawer();
     })();
   </script>
 
