@@ -218,7 +218,7 @@
   }
   .stockists__grid { grid-template-columns: 1fr; gap: var(--space-4); }
   .stockists__item { gap: var(--space-2); }
-  .stockists__item-image img { max-height: 120px; }
+  .stockists__item-image img { max-height: none; width: 100%; height: auto; }
   /* Down one step — micro is already floor; nothing smaller, but tighten to 10px */
   .stockists__item-name { font-size: 10px; letter-spacing: 0.04em; }
   .stockists__item-address { font-size: 10px; letter-spacing: 0.04em; }
