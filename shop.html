@@ -89,7 +89,9 @@
     .specimen-card {
       background: var(--color-bg);
       position: relative;
-      transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition:
+        opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .specimen-card.is-dimmed {
       opacity: 0.2;
@@ -408,6 +410,32 @@
         });
       }
 
+      function runFilter(fn) {
+        var cards = Array.prototype.slice.call(itemsEl.children);
+        var first = new Map();
+        cards.forEach(function (c) { first.set(c, c.getBoundingClientRect()); });
+
+        fn();
+
+        cards.forEach(function (c) {
+          var a = first.get(c);
+          var b = c.getBoundingClientRect();
+          var dx = a.left - b.left;
+          var dy = a.top - b.top;
+          if (dx || dy) {
+            c.style.transition = "none";
+            c.style.transform = "translate(" + dx + "px, " + dy + "px)";
+          }
+        });
+
+        requestAnimationFrame(function () {
+          cards.forEach(function (c) {
+            c.style.transition = "";
+            c.style.transform = "";
+          });
+        });
+      }
+
       filterBtns.forEach(function (btn) {
         btn.addEventListener("click", function () {
           if (btn.hasAttribute("data-category")) {
@@ -415,7 +443,7 @@
           } else {
             state = { attr: "data-col", value: btn.getAttribute("data-collection") };
           }
-          applyFilters();
+          runFilter(applyFilters);
         });
       });
 
