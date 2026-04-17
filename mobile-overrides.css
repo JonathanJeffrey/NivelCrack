@@ -1,0 +1,241 @@
+/* ============================================================
+   MOBILE OVERRIDES — applied in addition to tokens + components.
+   Loaded after every page's page-specific <style> block so these
+   rules win without needing !important (they do win via order +
+   specificity where both the original and this rule have equal
+   specificity; I add a small nudge where needed).
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* ---------- Global: force nav out of its desktop sticky column on every page ---------- */
+  .page-layout { flex-direction: column; }
+  .page-layout__nav {
+    width: 100%;
+    position: static;
+    height: auto;
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+
+  /* ---------- index.html (TOC spread) ---------- */
+  body.is-index { overflow: auto; }
+  .spread { grid-template-columns: 1fr; height: auto; min-height: 100dvh; }
+  .spread__photo { height: 50vh; }
+  .spread__contents {
+    padding: var(--space-3);
+    padding-top: var(--space-6);
+    align-items: start;
+  }
+  .spread__logo {
+    top: var(--space-3);
+    right: var(--space-3);
+  }
+  .toc {
+    width: 100%;
+    margin-left: 0;
+    padding: var(--space-3) 0 0 0;
+  }
+  .toc__item {
+    font-size: var(--text-small);
+    grid-template-columns: 28px auto;
+    column-gap: var(--space-2);
+    padding: var(--space-1) 0;
+    margin: 0;
+    line-height: var(--lh-body);
+  }
+
+  /* ---------- shop.html ---------- */
+  .specimen-shop { padding: var(--space-2); }
+  .specimen-shop__bar { padding: var(--space-3) var(--space-2) var(--space-2); }
+  .specimen-shop__headline {
+    font-size: clamp(18px, 5vw, 22px);
+    line-height: 1.25;
+  }
+  .specimen-card__num { font-size: var(--text-micro); }
+  .specimen-card__name,
+  .specimen-card__price {
+    font-size: var(--text-micro);
+    line-height: 1.3;
+  }
+  /* no-hover swap on touch: always show name, never swap to price */
+  .specimen-card__price { display: none; }
+  .specimen-card__link:hover .specimen-card__name { opacity: 1; }
+
+  /* ---------- product.html (pdp) ---------- */
+  .pdp { grid-template-columns: 1fr; display: block; }
+  .pdp__image {
+    height: auto;            /* override the component's 70vh */
+    overflow: visible;
+    position: relative;
+  }
+  /* Hero image box: fixed square aspect ratio, image cover-fits it */
+  .pdp__image {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--color-surface);
+  }
+  .pdp__image .pdp__hero-img {
+    display: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .pdp__image { position: relative; }
+  .pdp__image .pdp__hero-img.is-active { display: block; }
+  /* Thumbnail grid injected by JS — wraps, never scrolls */
+  .pdp__thumbs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: 4px;
+    padding: var(--space-2);
+    background: var(--color-bg);
+  }
+  .pdp__thumbs button {
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border: 1px solid transparent;
+    background: var(--color-surface);
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .pdp__thumbs button.is-active { border-color: var(--color-text); }
+  .pdp__thumbs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .pdp__content {
+    padding: var(--space-3);
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+  .pdp__name { font-size: var(--text-title); }
+  .pdp__atc { align-self: flex-start; width: auto; }
+  .cart-drawer--slide { width: 80vw !important; max-width: 80vw !important; }
+
+  /* ---------- Global: shrink the monogram logo in the top nav ---------- */
+  .nav-brand__logo { width: 48px; margin-left: 0; }
+
+  /* ---------- about.html ---------- */
+  .about {
+    padding: var(--space-3);
+    min-height: auto;
+    display: block;          /* drop flex column + margin-top:auto squeeze */
+  }
+  .about__intro {
+    grid-template-columns: 1fr;
+    margin: 0 0 var(--space-3) 0;
+    display: block;
+  }
+  .about__intro-text {
+    grid-column: auto;
+    font-size: var(--text-small);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .about__gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    margin-top: 0;
+  }
+
+  /* ---------- archive.html ---------- */
+  .archive { padding: var(--space-3) var(--space-3) var(--space-5); }
+  .archive__list li { padding: var(--space-2) 0; }
+  .archive-row {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    min-height: 56px;
+  }
+  .archive-row__label { position: static; padding: var(--space-1) 0; opacity: 1 !important; transition: none; }
+  /* No hover on touch — keep labels visible and kill media swap entirely */
+  .archive-row__media { display: none !important; }
+  .archive-row:hover .archive-row__label { opacity: 1; }
+  .archive-row:hover .archive-row__media { opacity: 0; }
+  /* Down two steps from desktop: body→small→caption, caption→micro→(floor) */
+  .archive-row__name { font-size: var(--text-caption) !important; }
+  .archive-row__type { font-size: var(--text-micro); }
+
+  /* ---------- archive-01..08 (archive detail) ---------- */
+  .archive-detail { padding: var(--space-3) var(--space-2) var(--space-2); }
+  .archive-detail__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-rows: auto !important;
+    gap: 4px;
+  }
+  /* Unpin desktop grid-column/row helpers so photos flow in source order */
+  .archive-detail__grid > .pos-2-1,
+  .archive-detail__grid > .pos-3-1,
+  .archive-detail__grid > .pos-2-2,
+  .archive-detail__grid > .pos-3-2 {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  /* Text row: full width, top — selector bumped to beat .archive-detail__grid > .text-1-1 */
+  .archive-detail__grid > .archive-detail__text.text-1-1,
+  .archive-detail__grid > .archive-detail__text {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    padding: 0 0 var(--space-2) 0;
+    gap: 4px;
+  }
+  /* Each photo: square tile in 2-col grid */
+  .archive-detail__photo {
+    aspect-ratio: 1 / 1;
+  }
+  /* Down two steps: title(32) → body-lg(20) → body(16); date already floor */
+  .archive-detail__name { font-size: var(--text-body) !important; letter-spacing: var(--tracking-title); }
+  .archive-detail__date { font-size: 10px; letter-spacing: var(--tracking-label); }
+  .archive-nav {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-caption);
+  }
+
+  /* ---------- cafe.html ---------- */
+  .cafe { padding: var(--space-4) var(--space-3); justify-content: flex-start; }
+  .cafe__catalog { align-items: stretch; gap: var(--space-3); }
+  .cafe__photo { width: 100%; min-width: 0; min-height: 0; aspect-ratio: 4 / 3; }
+  .cafe__info { grid-template-columns: 1fr; gap: var(--space-3); }
+  .cafe__right { gap: var(--space-3); }
+  .cafe__spec { max-width: none; }
+  /* Down one step: micro stays (floor); small→caption */
+  .cafe__specs { font-size: var(--text-micro); }
+  .cafe__title { font-size: var(--text-caption); }
+  .cafe__title-meta { font-size: var(--text-micro); }
+  .cafe__essay-title { font-size: var(--text-caption); }
+  .cafe__essay-body { font-size: var(--text-caption); }
+
+  /* ---------- contact.html (Stockists) ---------- */
+  .stockists {
+    padding: var(--space-4) var(--space-3) var(--space-5);
+    align-items: flex-start;
+  }
+  .stockists__grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .stockists__item { gap: var(--space-2); }
+  .stockists__item-image img { max-height: 120px; }
+  /* Down one step — micro is already floor; nothing smaller, but tighten to 10px */
+  .stockists__item-name { font-size: 10px; letter-spacing: 0.04em; }
+  .stockists__item-address { font-size: 10px; letter-spacing: 0.04em; }
+
+  /* ---------- Global: site-footer ---------- */
+  .site-footer__inner { padding: var(--space-4) var(--space-3); gap: var(--space-4); }
+  .site-footer__top { gap: var(--space-4); }
+  .site-footer__columns { gap: var(--space-3); }
+  .site-footer__logo { font-size: var(--text-subhead); }
+  .site-footer__bottom { gap: var(--space-2); }
+  .site-footer__legal { gap: var(--space-2); flex-wrap: wrap; }
+
+  /* ---------- Global: site-nav open state polish ---------- */
+  .site-nav__inner {
+    padding: var(--space-2) var(--space-3);
+  }
+}
