@@ -142,6 +142,82 @@
   color: var(--color-text);
 }
 
+/* ---------- Mobile hamburger toggle ---------- */
+.nav-mobile-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+}
+.nav-mobile-toggle__icon {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  transition: background 150ms var(--ease);
+}
+.nav-mobile-toggle__icon::before,
+.nav-mobile-toggle__icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  transition: transform 200ms var(--ease), top 200ms var(--ease);
+}
+.nav-mobile-toggle__icon::before { top: -7px; }
+.nav-mobile-toggle__icon::after  { top: 7px; }
+.nav-mobile-toggle[aria-expanded="true"] .nav-mobile-toggle__icon {
+  background: transparent;
+}
+.nav-mobile-toggle[aria-expanded="true"] .nav-mobile-toggle__icon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.nav-mobile-toggle[aria-expanded="true"] .nav-mobile-toggle__icon::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .nav-mobile-toggle { display: inline-flex; }
+  .site-nav__inner {
+    min-height: 0;
+    padding: var(--space-2) var(--space-3);
+    gap: var(--space-3);
+  }
+  .site-nav__top {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .nav-brand__logo { margin-left: 0; }
+  .site-nav__sections,
+  .site-nav__bottom { display: none; flex-basis: 100%; }
+  .page-layout__nav.is-open .site-nav__sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-2);
+  }
+  .page-layout__nav.is-open .site-nav__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-top: var(--space-2);
+    border-top: var(--border-hairline);
+  }
+}
+
 
 /* ============================================================
    03 / PRODUCT GRID
