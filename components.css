@@ -176,6 +176,9 @@
 .nav-mobile-toggle__badge.has-items {
   display: block;
 }
+.nav-mobile-toggle[aria-expanded="true"] .nav-mobile-toggle__badge {
+  display: none;
+}
 .nav-mobile-toggle__icon {
   position: relative;
   display: block;
