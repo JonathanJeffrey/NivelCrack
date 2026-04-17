@@ -42,9 +42,7 @@
     }
 
     .cafe__photo {
-      width: 100%;
-      max-width: 980px;
-      max-height: 55dvh;
+      width: min(100%, 980px, calc(55dvh * 4 / 3));
       aspect-ratio: 4 / 3;
       background: var(--color-hover);
       overflow: hidden;
