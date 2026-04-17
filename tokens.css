@@ -14,7 +14,7 @@
   font-display: swap;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+/* Inter is loaded via <link> in each page's <head> for better performance */
 
 /* ---------- 2. Tokens ---------- */
 
@@ -122,10 +122,36 @@ button {
   cursor: pointer;
 }
 
+/* Eliminate 300ms tap delay on touch devices */
+a, button, [role="button"], input, select, textarea, label {
+  touch-action: manipulation;
+}
+
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--color-text);
   outline-offset: -2px;
+}
+
+/* ---------- 3c. Skip-to-content link ---------- */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-2);
+  z-index: 200;
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: var(--space-1);
 }
 
 
