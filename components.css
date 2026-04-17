@@ -154,6 +154,27 @@
   cursor: pointer;
   padding: 0;
   margin-left: auto;
+  position: relative;
+}
+.nav-mobile-toggle__badge {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 2px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-text);
+  color: var(--color-bg, #fff);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  line-height: 16px;
+  text-align: center;
+  padding: 0 4px;
+}
+.nav-mobile-toggle__badge.has-items {
+  display: block;
 }
 .nav-mobile-toggle__icon {
   position: relative;

@@ -54,6 +54,10 @@ var CartStore = (function () {
     document.querySelectorAll('.site-nav__link[href="cart.html"]').forEach(function (el) {
       el.textContent = 'Cart (' + count + ')';
     });
+    document.querySelectorAll('.nav-mobile-toggle__badge').forEach(function (el) {
+      el.textContent = count;
+      el.classList.toggle('has-items', count > 0);
+    });
   }
 
   /* Update badges on load */

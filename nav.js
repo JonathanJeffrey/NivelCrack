@@ -14,7 +14,7 @@
   btn.setAttribute('aria-label', 'Toggle menu');
   btn.setAttribute('aria-expanded', 'false');
   btn.setAttribute('aria-controls', inner.id);
-  btn.innerHTML = '<span class="nav-mobile-toggle__icon" aria-hidden="true"></span>';
+  btn.innerHTML = '<span class="nav-mobile-toggle__icon" aria-hidden="true"></span><span class="nav-mobile-toggle__badge" aria-hidden="true"></span>';
 
   const logo = top.querySelector('.nav-brand__logo');
   if (logo && logo.nextSibling) {
