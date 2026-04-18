@@ -58,9 +58,18 @@
     font-size: var(--text-micro);
     line-height: 1.3;
   }
-  /* no-hover swap on touch: always show name, never swap to price */
-  .specimen-card__price { display: none; }
+  /* No hover on touch — show name + price stacked instead of swap-on-hover */
+  .specimen-card__name,
+  .specimen-card__price {
+    position: static;
+    display: block;
+    opacity: 1;
+    inset: auto;
+  }
+  .specimen-card__price { color: var(--color-text-secondary); }
+  .specimen-card__label { min-height: 0; }
   .specimen-card__link:hover .specimen-card__name { opacity: 1; }
+  .specimen-card__link:hover .specimen-card__price { opacity: 1; }
 
   /* ---------- product.html (pdp) ---------- */
   .pdp { grid-template-columns: 1fr; display: block; }
@@ -101,7 +110,12 @@
     cursor: pointer;
     overflow: hidden;
   }
-  .pdp__thumbs button.is-active { border-color: var(--color-text); }
+  /* Dual-ring active state: dark outer border + white inner inset, so the
+     selection reads on both light and dark product images. */
+  .pdp__thumbs button.is-active {
+    border-color: var(--color-text);
+    box-shadow: inset 0 0 0 2px var(--color-bg);
+  }
   .pdp__thumbs img {
     width: 100%;
     height: 100%;

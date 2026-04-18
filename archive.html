@@ -29,6 +29,16 @@
       min-width: 0;
     }
 
+    .page-label {
+      margin: 0 0 var(--space-1) 55%;
+      font-family: var(--font-body);
+      font-weight: var(--weight-medium);
+      font-size: var(--text-caption);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+
     .archive {
       padding: var(--space-3) var(--space-5) var(--space-7);
     }
@@ -43,6 +53,9 @@
       display: flex;
       justify-content: flex-start;
       padding: var(--space-3) 0;
+    }
+    .archive__list li:first-child {
+      padding-top: 0;
     }
     .archive-row {
       position: relative;
@@ -66,7 +79,7 @@
     }
     .archive-row__num {
       grid-row: 1 / -1;
-      align-self: center;
+      align-self: start;
       font-family: var(--font-body);
       font-size: var(--text-micro);
       font-weight: var(--weight-medium);
@@ -121,6 +134,7 @@
         gap: var(--space-2);
       }
       .archive-row__name { font-size: var(--text-body); }
+      .page-label { margin-left: 0; }
     }
   </style>
   <link rel="stylesheet" href="mobile-overrides.css" />
@@ -153,6 +167,8 @@
 
     <main id="main-content" class="page-layout__main">
       <div class="archive">
+
+        <h1 class="page-label">Archive</h1>
 
         <ol class="archive__list" id="archive-list">
 

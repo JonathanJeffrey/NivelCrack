@@ -1,0 +1,233 @@
+/* ============================================================
+   NIVELCRACK DESIGN TOKENS
+   Single source of truth. Drop into Shopify theme assets/
+   and reference from theme.liquid <head> via stylesheet_tag.
+   ============================================================ */
+
+/* ---------- 1. Font loading ---------- */
+
+@font-face {
+  font-family: "Eurostile LT Std";
+  src: url("Assets/EurostileLTStd-BoldEx2.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* ---------- 2. Tokens ---------- */
+
+:root {
+  /* Color — neutrals only. Accent is per-collection (override --color-accent). */
+  --color-bg:             #FFFFFF;  /* pure white — matches product photo bg */
+  --color-surface:        #FFFFFF;
+  --color-text:           #1A1A1A;  /* near-black */
+  --color-text-secondary: #6B6B6B;
+  --color-text-muted:     #9A9A9A;
+  --color-border:         #E5E5E5;
+  --color-hover:          #F0F0F0;
+  --color-accent:         #1A1A1A;  /* overridden per collection */
+
+  /* Type families — two only. Eurostile for display, Inter for everything else. */
+  --font-display: "Eurostile LT Std", "Oswald", "Arial Narrow", sans-serif;
+  --font-body:    "Inter", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+
+  /* Type scale */
+  --text-micro:     11px;
+  --text-caption:   12px;
+  --text-small:     13px;
+  --text-body:      16px;
+  --text-body-lg:   20px;
+  --text-subhead:   24px;
+  --text-title:     32px;
+  --text-section:   48px;
+  --text-hero:      clamp(3rem, 8vw, 7rem);
+  --text-pullquote: 32px;
+  --text-dropcap:   4em;
+
+  /* Line-height */
+  --lh-tight:    0.95;
+  --lh-display:  1.05;
+  --lh-heading:  1.2;
+  --lh-body:     1.55;
+  --lh-loose:    1.65;
+
+  /* Letter-spacing */
+  --tracking-display: -0.01em;
+  --tracking-title:    0.02em;
+  --tracking-label:    0.05em;
+  --tracking-body:     0;
+
+  /* Font weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Spacing — 8px scale */
+  --space-1:  8px;
+  --space-2:  16px;
+  --space-3:  24px;
+  --space-4:  32px;
+  --space-5:  48px;
+  --space-6:  64px;
+  --space-7:  96px;
+  --space-8:  128px;
+
+  /* Layout */
+  --max-content: 1400px;
+  --max-measure: 680px;    /* readable text column */
+  --page-margin: clamp(24px, 5vw, 80px);
+  --gutter:      24px;
+
+  /* Borders — sharp, no rounding */
+  --border-hairline: 1px solid var(--color-border);
+  --border-thin:     1px solid var(--color-text);
+  --border-thick:    2px solid var(--color-text);
+  --radius:          0;
+
+  /* Transitions */
+  --ease:     cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-med:  250ms;
+}
+
+/* ---------- 3. Base reset ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: -2px;
+}
+
+
+/* ---------- 4. Typography utility classes ---------- */
+/* These are the canonical typographic roles. Prefer these over ad-hoc styles. */
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--lh-display);
+}
+
+.t-hero {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-hero);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--lh-tight);
+}
+
+.t-section-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-section);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-title);
+  line-height: var(--lh-heading);
+}
+
+.t-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-title);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-title);
+  line-height: var(--lh-heading);
+}
+
+.t-subhead {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-subhead);
+  line-height: var(--lh-heading);
+}
+
+.t-lede {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-loose);
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+}
+
+.t-small {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+}
+
+.t-label {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-text);
+}
+
+.t-micro {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-text-secondary);
+}
+
+.t-pullquote {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-pullquote);
+  line-height: var(--lh-heading);
+}
+
+/* ---------- 5. Editorial device: drop cap ---------- */
+
+.dropcap::first-letter {
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-dropcap);
+  float: left;
+  line-height: 0.85;
+  padding: 6px 8px 0 0;
+  margin-top: 4px;
+}

@@ -29,6 +29,16 @@
       min-width: 0;
     }
 
+    .page-label {
+      margin: 0 0 var(--space-1) 0;
+      font-family: var(--font-body);
+      font-weight: var(--weight-medium);
+      font-size: var(--text-caption);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+
     .about {
       padding: var(--space-6) var(--space-2) var(--space-2);
       min-height: 100dvh;
@@ -50,12 +60,17 @@
       grid-column: 3 / 4;
       display: flex;
       flex-direction: column;
-      gap: var(--space-3);
+      gap: var(--space-1);
       font-family: var(--font-body);
       font-size: var(--text-body);
       font-weight: var(--weight-regular);
       line-height: var(--lh-body);
       color: var(--color-text);
+    }
+    .about__intro-paragraphs {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
     }
     .about__intro-text p {
       margin: 0;
@@ -122,8 +137,11 @@
 
         <div class="about__intro">
           <div class="about__intro-text">
-            <p>NIVELCRACK, meaning "top-level footballer" in Spanish, is a Seoul-based brand and creative studio specializing in the intersection of football and fashion.</p>
-            <p>Drawing inspiration from football culture and interpreting it through our own unique lens, we create high-quality products and content. Our mission is to inspire both on and off the pitch through the collections and projects we bring to life.</p>
+            <h1 class="page-label">About</h1>
+            <div class="about__intro-paragraphs">
+              <p>NIVELCRACK, meaning "top-level footballer" in Spanish, is a Seoul-based brand and creative studio specializing in the intersection of football and fashion.</p>
+              <p>Drawing inspiration from football culture and interpreting it through our own unique lens, we create high-quality products and content. Our mission is to inspire both on and off the pitch through the collections and projects we bring to life.</p>
+            </div>
           </div>
         </div>
 

@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product — NVLCRK</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    .page-layout {
+      display: flex;
+      min-height: 100dvh;
+    }
+    .page-layout__nav {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      height: 100dvh;
+      overflow-y: auto;
+    }
+    .page-layout__main {
+      flex: 1;
+      min-width: 0;
+    }
+    @media (max-width: 768px) {
+      .page-layout { flex-direction: column; }
+      .page-layout__nav { width: 100%; position: relative; height: auto; border-right: none; border-bottom: var(--border-hairline); }
+    }
+  </style>
+  <link rel="stylesheet" href="mobile-overrides.css" />
+</head>
+<body>
+
+  <div class="page-layout">
+
+    <div class="page-layout__nav">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="site-nav__inner">
+          <div class="site-nav__top">
+            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><img src="Assets/NC_Logo_Monogram.png" alt="NivelCrack" /></a>
+            <ul class="site-nav__sections" role="list">
+              <li class="nav-section"><a href="shop.html" class="nav-section__header"><span class="nav-section__num">01</span><span class="nav-section__label">Shop</span></a></li>
+              <li class="nav-section"><a href="about.html" class="nav-section__header"><span class="nav-section__num">02</span><span class="nav-section__label">About</span></a></li>
+              <li class="nav-section"><a href="archive.html" class="nav-section__header"><span class="nav-section__num">03</span><span class="nav-section__label">Archive</span></a></li>
+              <li class="nav-section"><a href="cafe.html" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
+              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Stockists</span></a></li>
+            </ul>
+          </div>
+          <div class="site-nav__bottom">
+            <a href="#" class="site-nav__link">Account</a>
+            <a href="#" class="site-nav__link">Cart (0)</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <main class="page-layout__main">
+
+      <article class="pdp">
+        <div class="pdp__image">
+          <img src="Assets/products/image_1773731847731_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Front" class="pdp__hero-img" />
+          <img src="Assets/products/image_1775100049213_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Detail" class="pdp__hero-img" />
+          <img src="Assets/products/image_1773731869138_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Side" class="pdp__hero-img" />
+          <img src="Assets/products/image_1775100049483_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Fabric" class="pdp__hero-img" />
+          <img src="Assets/products/image_1773731878546_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Back" class="pdp__hero-img" />
+          <img src="Assets/products/image_1775100049613_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Lining" class="pdp__hero-img" />
+          <img src="Assets/products/image_1773731884780_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Detail" class="pdp__hero-img" />
+          <img src="Assets/products/image_1775100049740_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Patch" class="pdp__hero-img" />
+          <img src="Assets/products/image_1773731891265_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Flat lay" class="pdp__hero-img" />
+          <img src="Assets/products/image_1775100049907_1000.jpg" alt="Nivelcrack x West Ham United — Work Jacket — Label" class="pdp__hero-img" />
+        </div>
+
+        <div class="pdp__content">
+          <h1 class="pdp__name">Nivelcrack x West Ham United — Work Jacket</h1>
+
+          <div class="pdp__section">
+            <span class="pdp__section-label">Nivelcrack x West Ham United</span>
+            <div class="pdp__section-body">
+              <p>Official Licensed Product</p>
+            </div>
+          </div>
+
+          <div class="pdp__section">
+            <span class="pdp__section-label">Product Details:</span>
+            <div class="pdp__section-body pdp__detail-lines">
+              <span>100% cotton twill</span>
+              <span>Front button closure</span>
+              <span>Two chest patch pockets</span>
+              <span>Front hand pockets</span>
+              <span>Embroidered graphics</span>
+            </div>
+          </div>
+
+          <div class="pdp__section">
+            <span class="pdp__section-label">Size Information (cm):</span>
+            <div class="pdp__section-body pdp__size-chart">
+              <span>M — Length 70 / Shoulder 50 / Chest 60 / Sleeve 61</span>
+              <span>L — Length 72.5 / Shoulder 53.5 / Chest 62 / Sleeve 62</span>
+              <span>XL — Length 75 / Shoulder 57 / Chest 64 / Sleeve 63</span>
+            </div>
+          </div>
+
+          <div class="pdp__section">
+            <span class="pdp__section-label">Price:</span>
+            <div class="pdp__section-body">
+              <p>135.00 USD</p>
+            </div>
+          </div>
+
+          <div class="pdp__section">
+            <span class="pdp__section-label">Select Size:</span>
+            <div class="pdp__section-body pdp__size-list">
+              <button type="button" class="pdp__size-option" data-size="Medium"><span class="pdp__size-label">Medium</span></button>
+              <button type="button" class="pdp__size-option" data-size="Large"><span class="pdp__size-label">Large</span></button>
+              <button type="button" class="pdp__size-option" data-size="Extra Large"><span class="pdp__size-label">Extra Large</span></button>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn--link btn--md pdp__atc" disabled aria-disabled="true">
+            <span class="btn__text">Add to Cart</span><span class="btn__arrow">→</span>
+          </button>
+        </div>
+      </article>
+
+    </main>
+
+  </div>
+
+  <!-- Cart Drawer Overlay -->
+  <div class="cart-overlay" id="cart-overlay" hidden>
+    <div class="cart-overlay__backdrop" id="cart-backdrop"></div>
+    <aside class="cart-drawer cart-drawer--slide" id="cart-drawer" aria-label="Shopping cart">
+      <header class="cart-drawer__header">
+        <button type="button" class="cart-drawer__close" id="cart-close" aria-label="Close cart">Close</button>
+      </header>
+      <div class="cart-drawer__items" id="cart-items"></div>
+      <footer class="cart-drawer__footer">
+        <div class="cart-drawer__subtotal">
+          <span class="cart-drawer__subtotal-label">Subtotal</span>
+          <span class="cart-drawer__subtotal-value" id="cart-subtotal">0.00 USD</span>
+        </div>
+        <p class="cart-drawer__note">Exchange or refund due to size is not acceptable so please check the size chart carefully before ordering.</p>
+        <p class="cart-drawer__note">The customs duties and VAT are not included so please check the conditions of your country before purchasing.</p>
+        <button type="button" class="btn btn--primary btn--lg btn--block">Check Out</button>
+      </footer>
+    </aside>
+  </div>
+
+  <style>
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+    }
+    .cart-overlay__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transition: opacity var(--dur-med) var(--ease);
+    }
+    .cart-overlay.is-open .cart-overlay__backdrop {
+      opacity: 1;
+    }
+    .cart-drawer--slide {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100dvh;
+      width: 25vw;
+      max-width: 25vw;
+      transform: translateX(100%);
+      transition: transform var(--dur-med) var(--ease);
+      z-index: 101;
+    }
+    .cart-overlay.is-open .cart-drawer--slide {
+      transform: translateX(0);
+    }
+    .pdp__atc[disabled],
+    .pdp__atc[aria-disabled="true"] {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  </style>
+
+  <script>
+    (function () {
+      var sizeOptions = document.querySelectorAll(".pdp__size-option");
+      var atcBtn = document.querySelector(".pdp__atc");
+      var overlay = document.getElementById("cart-overlay");
+      var backdrop = document.getElementById("cart-backdrop");
+      var closeBtn = document.getElementById("cart-close");
+      var cartItems = document.getElementById("cart-items");
+      var cartSubtotal = document.getElementById("cart-subtotal");
+
+      if (!sizeOptions.length || !atcBtn) return;
+
+      // Pending-cart state: a map of {size -> quantity}, filled by clicking size
+      // chips. ATC flushes all pending sizes into the cart.
+      var pending = Object.create(null);
+
+      function renderSizeBtn(btn) {
+        var size = btn.getAttribute('data-size');
+        var qty = pending[size] || 0;
+        var labelEl = btn.querySelector('.pdp__size-label');
+        labelEl.textContent = qty > 1 ? size + ' (' + qty + ')' : size;
+        btn.classList.toggle('is-selected', qty > 0);
+      }
+
+      function updateAtcState() {
+        var total = Object.keys(pending).reduce(function (n, k) { return n + pending[k]; }, 0);
+        atcBtn.disabled = total === 0;
+        atcBtn.setAttribute('aria-disabled', total === 0 ? 'true' : 'false');
+        var txt = atcBtn.querySelector('.btn__text');
+        txt.textContent = total > 1 ? 'Add ' + total + ' to Cart' : 'Add to Cart';
+      }
+
+      sizeOptions.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var size = btn.getAttribute('data-size');
+          pending[size] = (pending[size] || 0) + 1;
+          renderSizeBtn(btn);
+          updateAtcState();
+        });
+      });
+      updateAtcState();
+
+      function openCart() {
+        overlay.hidden = false;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            overlay.classList.add("is-open");
+          });
+        });
+      }
+
+      function closeCart() {
+        overlay.classList.remove("is-open");
+        setTimeout(function () { overlay.hidden = true; }, 250);
+      }
+
+      atcBtn.addEventListener("click", function () {
+        if (atcBtn.disabled) return;
+
+        // Flush each pending size into the cart as its own line item.
+        Object.keys(pending).forEach(function (size) {
+          var qty = pending[size];
+          if (!qty) return;
+          addCartLine(size, qty);
+        });
+
+        // Reset pending state and size buttons.
+        pending = Object.create(null);
+        sizeOptions.forEach(renderSizeBtn);
+        updateAtcState();
+        openCart();
+      });
+
+      function addCartLine(size, qty) {
+        var item = document.createElement("article");
+        item.className = "cart-item";
+        item.setAttribute("data-unit-price", "135");
+        item.innerHTML = '' +
+          '<div class="cart-item__image"><img src="Assets/WestHam.jpg" alt="Work Jacket" /></div>' +
+          '<div class="cart-item__details">' +
+            '<span class="cart-item__name">Nivelcrack x West Ham United — Work Jacket</span>' +
+            '<span class="cart-item__variant">Size: ' + size + '</span>' +
+            '<div class="cart-item__qty">' +
+              '<div class="cart-item__qty-controls">' +
+                '<button type="button" class="cart-item__qty-btn" data-dir="down" aria-label="Decrease quantity">–</button>' +
+                '<span class="cart-item__qty-value">' + qty + '</span>' +
+                '<button type="button" class="cart-item__qty-btn" data-dir="up" aria-label="Increase quantity">+</button>' +
+              '</div>' +
+              '<span class="cart-item__price">' + (135 * qty).toFixed(2) + ' USD</span>' +
+            '</div>' +
+          '</div>';
+        cartItems.appendChild(item);
+
+        // Bind quantity buttons on the new item
+        item.querySelectorAll(".cart-item__qty-btn").forEach(function (qBtn) {
+          qBtn.addEventListener("click", function () {
+            var valEl = item.querySelector(".cart-item__qty-value");
+            var priceEl = item.querySelector(".cart-item__price");
+            var unitPrice = parseFloat(item.getAttribute("data-unit-price"));
+            var q = parseInt(valEl.textContent);
+            if (qBtn.getAttribute("data-dir") === "up") q++;
+            else if (q > 1) q--;
+            else { item.remove(); updateSubtotal(); return; }
+            valEl.textContent = q;
+            priceEl.textContent = (unitPrice * q).toFixed(2) + " USD";
+            updateSubtotal();
+          });
+        });
+
+        updateSubtotal();
+      }
+
+      function updateSubtotal() {
+        var total = 0;
+        cartItems.querySelectorAll(".cart-item").forEach(function (ci) {
+          var unitPrice = parseFloat(ci.getAttribute("data-unit-price"));
+          var qty = parseInt(ci.querySelector(".cart-item__qty-value").textContent);
+          total += unitPrice * qty;
+        });
+        cartSubtotal.textContent = total.toFixed(2) + " USD";
+      }
+
+      closeBtn.addEventListener("click", closeCart);
+      backdrop.addEventListener("click", closeCart);
+    })();
+  </script>
+
+  <script src="nav.js" defer></script>
+  <script>
+    // Mobile: collapse the PDP image stack into a single active image + thumbnail strip.
+    (function () {
+      var mq = window.matchMedia('(max-width: 768px)');
+      var gallery = document.querySelector('.pdp__image');
+      if (!gallery) return;
+      var imgs = Array.prototype.slice.call(gallery.querySelectorAll('.pdp__hero-img'));
+      if (!imgs.length) return;
+      var strip = null;
+
+      function setActive(i) {
+        imgs.forEach(function (im, idx) { im.classList.toggle('is-active', idx === i); });
+        if (strip) {
+          strip.querySelectorAll('button').forEach(function (b, idx) {
+            b.classList.toggle('is-active', idx === i);
+          });
+        }
+      }
+
+      function enable() {
+        if (strip) return;
+        strip = document.createElement('div');
+        strip.className = 'pdp__thumbs';
+        imgs.forEach(function (im, i) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.innerHTML = '<img src="' + im.getAttribute('src') + '" alt="">';
+          b.addEventListener('click', function () { setActive(i); });
+          strip.appendChild(b);
+        });
+        gallery.parentNode.insertBefore(strip, gallery.nextSibling);
+        setActive(0);
+      }
+
+      function disable() {
+        if (strip) { strip.remove(); strip = null; }
+        imgs.forEach(function (im) { im.classList.remove('is-active'); });
+      }
+
+      function sync() { mq.matches ? enable() : disable(); }
+      sync();
+      mq.addEventListener ? mq.addEventListener('change', sync) : mq.addListener(sync);
+    })();
+  </script>
+</body>
+</html>

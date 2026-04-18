@@ -29,11 +29,27 @@
       min-width: 0;
     }
 
+    .page-label {
+      margin: 0;
+      font-family: var(--font-body);
+      font-weight: var(--weight-medium);
+      font-size: var(--text-caption);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+
     .stockists {
       padding: var(--space-6) var(--page-margin) 30vh;
       min-height: 100dvh;
       display: flex;
-      align-items: flex-end;
+      flex-direction: column;
+    }
+    .stockists__block {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
     }
 
     .stockists__grid {
@@ -41,7 +57,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: var(--space-5);
-      align-items: end;
+      align-items: start;
     }
 
     .stockists__item {
@@ -53,13 +69,16 @@
 
     .stockists__item-image {
       display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--color-surface);
+      overflow: hidden;
     }
     .stockists__item-image img {
       display: block;
-      max-width: 100%;
-      max-height: 160px;
-      width: auto;
-      height: auto;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .stockists__item-info {
@@ -100,12 +119,7 @@
       }
       .stockists__item-image {
         width: 90%;
-      }
-      .stockists__item-image img {
-        max-height: none;
-        max-width: none;
-        width: 100%;
-        height: auto;
+        aspect-ratio: 4 / 3;
       }
       .stockists__item-info {
         width: 90%;
@@ -142,6 +156,10 @@
 
     <main id="main-content" class="page-layout__main">
       <div class="stockists">
+
+        <div class="stockists__block">
+
+        <h1 class="page-label">Stockists</h1>
 
         <div class="stockists__grid">
           <div class="stockists__item">
@@ -194,6 +212,8 @@
               </div>
             </div>
           </a>
+        </div>
+
         </div>
 
       </div>

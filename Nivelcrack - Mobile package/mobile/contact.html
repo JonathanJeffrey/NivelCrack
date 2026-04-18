@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stockists — NVLCRK</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    .page-layout {
+      display: flex;
+      min-height: 100dvh;
+    }
+    .page-layout__nav {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      height: 100dvh;
+      overflow-y: auto;
+    }
+    .page-layout__main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .stockists {
+      padding: var(--space-6) var(--page-margin) 30vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .stockists__grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+      align-items: end;
+    }
+
+    .stockists__item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .stockists__item-image {
+      display: block;
+    }
+    .stockists__item-image img {
+      display: block;
+      max-width: 100%;
+      max-height: 160px;
+      width: auto;
+      height: auto;
+    }
+
+    .stockists__item-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .stockists__item-name {
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+    .stockists__item-address {
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-body);
+      font-size: var(--text-micro);
+      font-weight: var(--weight-regular);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1024px) {
+      .stockists__grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+    }
+    @media (max-width: 768px) {
+      .page-layout { flex-direction: column; }
+      .page-layout__nav { width: 100%; position: relative; height: auto; border-right: none; border-bottom: var(--border-hairline); }
+      .stockists__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="mobile-overrides.css" />
+</head>
+<body>
+
+  <div class="page-layout">
+
+    <div class="page-layout__nav">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="site-nav__inner">
+          <div class="site-nav__top">
+            <a href="index.html" class="nav-brand__logo" aria-label="NivelCrack home"><img src="Assets/NC_Logo_Monogram.png" alt="NivelCrack" /></a>
+            <ul class="site-nav__sections" role="list">
+              <li class="nav-section"><a href="shop.html" class="nav-section__header"><span class="nav-section__num">01</span><span class="nav-section__label">Shop</span></a></li>
+              <li class="nav-section"><a href="about.html" class="nav-section__header"><span class="nav-section__num">02</span><span class="nav-section__label">About</span></a></li>
+              <li class="nav-section"><a href="archive.html" class="nav-section__header"><span class="nav-section__num">03</span><span class="nav-section__label">Archive</span></a></li>
+              <li class="nav-section"><a href="cafe.html" class="nav-section__header"><span class="nav-section__num">04</span><span class="nav-section__label">Cafe Nivelcrack</span></a></li>
+              <li class="nav-section"><a href="contact.html" class="nav-section__header"><span class="nav-section__num">05</span><span class="nav-section__label">Stockists</span></a></li>
+            </ul>
+          </div>
+          <div class="site-nav__bottom">
+            <a href="#" class="site-nav__link">Account</a>
+            <a href="#" class="site-nav__link">Cart (0)</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <main class="page-layout__main">
+      <div class="stockists">
+
+        <div class="stockists__grid">
+          <div class="stockists__item">
+            <div class="stockists__item-image">
+              <img src="Assets/cafe.jpg" alt="Cafe NivelCrack storefront" />
+            </div>
+            <div class="stockists__item-info">
+              <span class="stockists__item-name">Cafe NivelCrack</span>
+              <div class="stockists__item-address">
+                <span>31, Donggyo-ro 18-gil</span>
+                <span>Mapo-gu, Seoul</span>
+              </div>
+            </div>
+          </div>
+          <a class="stockists__item" href="https://4bfc.square.site/" target="_blank" rel="noopener">
+            <div class="stockists__item-image">
+              <img src="Assets/4bfc.webp" alt="4BFC storefront" />
+            </div>
+            <div class="stockists__item-info">
+              <span class="stockists__item-name">4BFC</span>
+              <div class="stockists__item-address">
+                <span>1 Chome-21-5 Sendagaya, 4B</span>
+                <span>Shibuya, Tokyo 151-0051</span>
+                <span>Japan</span>
+              </div>
+            </div>
+          </a>
+          <a class="stockists__item" href="https://www.classicfootballshirts.com/" target="_blank" rel="noopener">
+            <div class="stockists__item-image">
+              <img src="Assets/Classic football shirts.jpeg" alt="Classic Football Shirts storefront" />
+            </div>
+            <div class="stockists__item-info">
+              <span class="stockists__item-name">Classic Football Shirts</span>
+              <div class="stockists__item-address">
+                <span>323 Canal St</span>
+                <span>New York, NY 10013</span>
+              </div>
+            </div>
+          </a>
+          <a class="stockists__item" href="https://www.dent-studio.com/" target="_blank" rel="noopener">
+            <div class="stockists__item-image">
+              <img src="Assets/dent studio.jpeg" alt="Dent Studio storefront" />
+            </div>
+            <div class="stockists__item-info">
+              <span class="stockists__item-name">Dent Studio</span>
+              <div class="stockists__item-address">
+                <span>95b Eastway</span>
+                <span>London E9 5JA</span>
+                <span>United Kingdom</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <span class="site-footer__logo">NVLCRK</span>
+        <div class="site-footer__columns">
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Shop</span>
+            <a href="shop.html" class="site-footer__link">West Ham United</a>
+            <a href="shop.html" class="site-footer__link">Club America</a>
+            <a href="shop.html" class="site-footer__link">Fresh Patterns</a>
+            <a href="shop.html" class="site-footer__link">Classic Shirts</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Info</span>
+            <a href="about.html" class="site-footer__link">About</a>
+            <a href="cafe.html" class="site-footer__link">Cafe NivelCrack</a>
+            <a href="archive.html" class="site-footer__link">Archive</a>
+            <a href="contact.html" class="site-footer__link">Stockists</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Contact</span>
+            <a href="mailto:hello@nivelcrack.com" class="site-footer__link">hello@nivelcrack.com</a>
+            <a href="mailto:wholesale@nivelcrack.com" class="site-footer__link">Wholesale</a>
+            <a href="https://instagram.com/nivelcrack" class="site-footer__link">Instagram</a>
+            <a href="#" class="site-footer__link">Newsletter</a>
+          </div>
+          <div class="site-footer__col">
+            <span class="site-footer__col-label">Support</span>
+            <a href="#" class="site-footer__link">Shipping</a>
+            <a href="#" class="site-footer__link">Returns</a>
+            <a href="#" class="site-footer__link">Size Guide</a>
+            <a href="#" class="site-footer__link">FAQ</a>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span class="site-footer__copy">&copy; NivelCrack 2025. All rights reserved.</span>
+        <div class="site-footer__legal">
+          <a href="#" class="site-footer__legal-link">Privacy Policy</a>
+          <a href="#" class="site-footer__legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="nav.js" defer></script>
+</body>
+</html>

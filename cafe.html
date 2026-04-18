@@ -29,6 +29,17 @@
       min-width: 0;
     }
 
+    .page-label {
+      width: min(100%, 980px, calc(55dvh * 4 / 3));
+      margin: 0 0 var(--space-1) 0;
+      font-family: var(--font-body);
+      font-weight: var(--weight-medium);
+      font-size: var(--text-caption);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-label);
+      color: var(--color-text);
+    }
+
     .cafe {
       padding: clamp(24px, 4vw, var(--space-6)) var(--space-3) clamp(24px, 4vw, var(--space-5)) var(--page-margin);
       min-height: 100dvh;
@@ -42,7 +53,6 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: clamp(16px, 2vw, var(--space-4));
     }
 
     .cafe__photo {
@@ -52,7 +62,7 @@
       aspect-ratio: 4 / 3;
       background: var(--color-hover);
       overflow: hidden;
-      margin: 0;
+      margin: 0 0 clamp(16px, 2vw, var(--space-4)) 0;
     }
     .cafe__photo img {
       width: 100%;
@@ -191,6 +201,8 @@
       <div class="cafe">
 
         <div class="cafe__catalog">
+
+          <h1 class="page-label">Cafe NivelCrack</h1>
 
           <figure class="cafe__photo">
             <img src="Assets/cafe.jpg" alt="Cafe NivelCrack — Mapo-gu, Seoul" width="1000" height="666" />

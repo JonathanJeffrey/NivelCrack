@@ -28,6 +28,9 @@
       min-height: 100dvh;
       display: flex;
       flex-direction: column;
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .cart-page__header {
@@ -90,8 +93,6 @@
       display: flex;
       flex-direction: column;
       gap: var(--space-3);
-      max-width: 360px;
-      margin-left: auto;
     }
 
     .cart-page__row {
@@ -203,8 +204,7 @@
     @media (max-width: 768px) {
       .page-layout { flex-direction: column; }
       .page-layout__nav { width: 100%; position: relative; height: auto; border-right: none; border-bottom: var(--border-hairline); }
-      .cart-page { padding: var(--space-3); }
-      .cart-page__footer { max-width: none; }
+      .cart-page { padding: var(--space-3); max-width: none; }
     }
   </style>
   <link rel="stylesheet" href="mobile-overrides.css" />
