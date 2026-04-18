@@ -713,7 +713,8 @@
 
 .pdp__hero-img {
   width: 100%;
-  object-fit: cover;
+  height: auto;
+  aspect-ratio: auto;
   display: block;
   flex-shrink: 0;
 }

@@ -54,7 +54,7 @@
           </div>
           <div class="site-nav__bottom">
             <a href="#" class="site-nav__link" data-account-trigger>Account</a>
-            <a href="cart.html" class="site-nav__link">Cart (0)</a>
+            <a href="#" class="site-nav__link" data-cart-trigger>Cart (0)</a>
           </div>
         </div>
       </nav>
@@ -132,78 +132,19 @@
 
   </div>
 
-  <!-- Cart Drawer Overlay -->
-  <div class="cart-overlay" id="cart-overlay" hidden>
-    <div class="cart-overlay__backdrop" id="cart-backdrop"></div>
-    <aside class="cart-drawer cart-drawer--slide" id="cart-drawer" aria-label="Shopping cart">
-      <header class="cart-drawer__header">
-        <button type="button" class="cart-drawer__close" id="cart-close" aria-label="Close cart">Close</button>
-      </header>
-      <div class="cart-drawer__items" id="cart-items"></div>
-      <footer class="cart-drawer__footer">
-        <div class="cart-drawer__subtotal">
-          <span class="cart-drawer__subtotal-label">Subtotal</span>
-          <span class="cart-drawer__subtotal-value" id="cart-subtotal">0.00 USD</span>
-        </div>
-        <p class="cart-drawer__note">Exchange or refund due to size is not acceptable so please check the size chart carefully before ordering.</p>
-        <p class="cart-drawer__note">The customs duties and VAT are not included so please check the conditions of your country before purchasing.</p>
-        <button type="button" class="btn btn--primary btn--lg btn--block">Check Out</button>
-      </footer>
-    </aside>
-  </div>
-
-  <style>
-    .cart-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 100;
-    }
-    .cart-overlay__backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.15);
-      opacity: 0;
-      transition: opacity var(--dur-med) var(--ease);
-    }
-    .cart-overlay.is-open .cart-overlay__backdrop {
-      opacity: 1;
-    }
-    .cart-drawer--slide {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100dvh;
-      width: 25vw;
-      max-width: 25vw;
-      transform: translateX(100%);
-      transition: transform var(--dur-med) var(--ease);
-      z-index: 101;
-    }
-    .cart-overlay.is-open .cart-drawer--slide {
-      transform: translateX(0);
-    }
-  </style>
   <link rel="stylesheet" href="mobile-overrides.css" />
 
   <script src="cart-store.js"></script>
+  <script src="cart-drawer.js" defer></script>
   <script>
     (function () {
       var sizeOptions = document.querySelectorAll(".pdp__size-option");
       var atcBtn = document.querySelector(".pdp__atc");
-      var overlay = document.getElementById("cart-overlay");
-      var backdrop = document.getElementById("cart-backdrop");
-      var closeBtn = document.getElementById("cart-close");
-      var cartItems = document.getElementById("cart-items");
-      var cartSubtotal = document.getElementById("cart-subtotal");
 
       if (!sizeOptions.length || !atcBtn) return;
 
       var UNIT_PRICE = 135;
       var selectedSize = null;
-
       var atcLabel = atcBtn.querySelector(".btn__text");
 
       function refreshSizes() {
@@ -221,59 +162,8 @@
         });
       });
 
-      function openCart() {
-        overlay.hidden = false;
-        requestAnimationFrame(function () {
-          requestAnimationFrame(function () {
-            overlay.classList.add("is-open");
-          });
-        });
-      }
-
-      function closeCart() {
-        overlay.classList.remove("is-open");
-        setTimeout(function () { overlay.hidden = true; }, 250);
-      }
-
       var PRODUCT_NAME = "Nivelcrack x West Ham United — Work Jacket";
       var PRODUCT_IMG = "Assets/products/image_1773731847731_1000.jpg";
-
-      function renderDrawer() {
-        var items = CartStore.getItems();
-        cartItems.innerHTML = "";
-        items.forEach(function (ci, idx) {
-          var el = document.createElement("article");
-          el.className = "cart-item";
-          el.innerHTML = '' +
-            '<div class="cart-item__image"><img src="' + ci.img + '" alt="' + ci.name + '" width="1000" height="1000" /></div>' +
-            '<div class="cart-item__details">' +
-              '<span class="cart-item__name">' + ci.name + '</span>' +
-              '<span class="cart-item__variant">Size: ' + ci.size + '</span>' +
-              '<div class="cart-item__qty">' +
-                '<div class="cart-item__qty-controls">' +
-                  '<button type="button" class="cart-item__qty-btn" data-dir="down" aria-label="Decrease quantity">\u2013</button>' +
-                  '<span class="cart-item__qty-value">' + ci.qty + '</span>' +
-                  '<button type="button" class="cart-item__qty-btn" data-dir="up" aria-label="Increase quantity">+</button>' +
-                '</div>' +
-                '<span class="cart-item__price">' + (ci.price * ci.qty).toFixed(2) + ' USD</span>' +
-              '</div>' +
-            '</div>';
-          cartItems.appendChild(el);
-
-          el.querySelectorAll(".cart-item__qty-btn").forEach(function (qBtn) {
-            qBtn.addEventListener("click", function () {
-              var items2 = CartStore.getItems();
-              var q = items2[idx].qty;
-              if (qBtn.getAttribute("data-dir") === "up") q++;
-              else if (q > 1) q--;
-              else { CartStore.removeItem(idx); renderDrawer(); return; }
-              CartStore.updateItem(idx, q);
-              renderDrawer();
-            });
-          });
-        });
-        cartSubtotal.textContent = CartStore.subtotal().toFixed(2) + " USD";
-      }
 
       atcBtn.addEventListener("click", function () {
         if (atcBtn.disabled || !selectedSize) return;
@@ -286,15 +176,10 @@
         });
         selectedSize = null;
         refreshSizes();
-        renderDrawer();
-        openCart();
+        CartDrawer.open();
       });
 
-      closeBtn.addEventListener("click", closeCart);
-      backdrop.addEventListener("click", closeCart);
-
       refreshSizes();
-      renderDrawer();
     })();
   </script>
 

@@ -51,7 +51,7 @@ var CartStore = (function () {
 
   function updateBadges() {
     var count = totalQty();
-    document.querySelectorAll('.site-nav__link[href="cart.html"]').forEach(function (el) {
+    document.querySelectorAll('[data-cart-trigger]').forEach(function (el) {
       el.textContent = 'Cart (' + count + ')';
     });
     document.querySelectorAll('.nav-mobile-toggle__badge').forEach(function (el) {
